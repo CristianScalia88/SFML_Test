@@ -13,6 +13,8 @@
 #include <map>
 #include <typeinfo>
 #include <iostream>
+#include <fstream>
+#include <sstream> 
 
 using namespace std;
 #endif //PCH_H
