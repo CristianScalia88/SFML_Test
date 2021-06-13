@@ -1,11 +1,20 @@
 #include "pch.h"
 #include "game.h"
 #include "RectangleComponent.h"
+#include "File.h"
+#include "SpriteSheet.h"
 
 using namespace sf;
+const string PATH = "C:/Users/Cristian/source/repos/SFML_Test/filteredSpriteSheet.json";
+void TestJson() {
+
+}
 
 int main()
 {
+	//string json = File::ReadAllText(PATH);
+	SpriteSheet ss(nullptr, "C:/Users/Cristian/source/repos/SFML_Test/filteredSpriteSheet.json");
+
 	RenderWindow* window = new RenderWindow(VideoMode(800, 600), "Test");
 	Event e;
 

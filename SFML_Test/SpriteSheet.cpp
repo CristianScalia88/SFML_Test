@@ -1,17 +1,10 @@
 #include "pch.h"
 #include "SpriteSheet.h"
-#include "json.hpp"
+#include "json/json.h"
 
-SpriteSheet::SpriteSheet(sf::Texture* texture, string json)
+SpriteSheet::SpriteSheet(sf::Texture* texture, string jsonPath)
 {
-	std::ifstream inFile;
-	inFile.open("inFileName"); //open the input file
-
-	std::stringstream strStream;
-	strStream << inFile.rdbuf(); //read the file
-	std::string str = strStream.str(); //str holds the content of the file
-
-	std::cout << str << "\n"; //you can do anything with the string!!!
+	
 }
 
 
