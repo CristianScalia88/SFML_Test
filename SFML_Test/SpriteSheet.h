@@ -7,7 +7,7 @@ private:
 	sf::Texture texture;
 	std::vector<Sprite> sprites;
 public:
-	SpriteSheet(sf::Texture* texture, string json);
+	SpriteSheet(sf::Texture* texture,const char* json);
 	~SpriteSheet();
 };
 

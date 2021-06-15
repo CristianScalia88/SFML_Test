@@ -2,6 +2,6 @@
 class File
 {
 public:
-	static string ReadAllText(string path);
+	static const char* ReadAllText(string path);
 };
 

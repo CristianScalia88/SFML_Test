@@ -6,14 +6,17 @@
 
 using namespace sf;
 const string PATH = "C:/Users/Cristian/source/repos/SFML_Test/filteredSpriteSheet.json";
-void TestJson() {
-
-}
 
 int main()
 {
-	//string json = File::ReadAllText(PATH);
-	SpriteSheet ss(nullptr, "C:/Users/Cristian/source/repos/SFML_Test/filteredSpriteSheet.json");
+	std::ifstream inFile;
+	inFile.open(PATH); //open the input file
+	std::stringstream strStream;
+	strStream << inFile.rdbuf(); //read the file
+	std::string str = strStream.str(); //str holds the content of the file
+	inFile.close();
+
+	SpriteSheet ss(nullptr, str.c_str());
 
 	RenderWindow* window = new RenderWindow(VideoMode(800, 600), "Test");
 	Event e;

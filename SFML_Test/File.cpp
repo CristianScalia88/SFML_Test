@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "File.h"
 
-string File::ReadAllText(string path)
+const char* File::ReadAllText(string path)
 {
 	std::ifstream inFile;
 	inFile.open(path); //open the input file
@@ -9,5 +9,5 @@ string File::ReadAllText(string path)
 	strStream << inFile.rdbuf(); //read the file
 	std::string str = strStream.str(); //str holds the content of the file
 	inFile.close();
-	return str;
+	return str.c_str();
 }
