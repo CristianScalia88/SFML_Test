@@ -6,6 +6,6 @@ struct Sprite
 {
 public:
 	string name;
-	Rect rect;
-	Pivot pivot;
+	Rect* rect;
+	Pivot* pivot;
 };

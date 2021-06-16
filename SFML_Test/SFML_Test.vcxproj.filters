@@ -48,6 +48,9 @@
     <ClInclude Include="File.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="TextureComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -81,6 +84,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="File.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

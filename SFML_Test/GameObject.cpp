@@ -13,6 +13,7 @@ GameObject::~GameObject()
 void GameObject::AddComponent(IGameComponent* component)
 {
 	components->insert(pair<string, IGameComponent*>(typeid(component).name(), component));
+	component->owner = this;
 }
 
 IGameComponent* GameObject::GetComponent(string type)
