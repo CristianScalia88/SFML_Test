@@ -1,10 +1,12 @@
 #pragma once
-class Rect
-{
-public:
-	int x;
-	int y;
-	int width;
-	int height;
-};
+namespace poke {
+	class Rect
+	{
+	public:
+		int x;
+		int y;
+		int width;
+		int height;
+	};
 
+}

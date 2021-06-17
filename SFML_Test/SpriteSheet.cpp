@@ -4,10 +4,10 @@
 #include "rapidjson/prettywriter.h" // for stringify JSON
 #include <cstdio>
 
-SpriteSheet::SpriteSheet(sf::Texture* texture, const char* json)
+poke::SpriteSheet::SpriteSheet(sf::Texture* _texture, const char* json)
 {
-	texture = new sf::Texture();
-	texture->loadFromFile("Animation.png");
+	sprites = new vector<poke::Sprite*>();
+	texture = texture;
 
 	rapidjson::Document document;
 	document.Parse(json);
@@ -35,9 +35,19 @@ SpriteSheet::SpriteSheet(sf::Texture* texture, const char* json)
 		sprite->name = animationName;
 		sprite->rect = rect;
 		sprite->pivot = pivot;
+
+		sprites->push_back(sprite);
 	}
 }
 
-SpriteSheet::~SpriteSheet()
+poke::SpriteSheet::~SpriteSheet()
 {
+	delete texture;
+	//TODO Check memory leaks in sprites
+	delete sprites;
+}
+
+poke::Rect * poke::SpriteSheet::GetSpriteRect(int frameId)
+{
+	return sprites->at(frameId)->rect;
 }

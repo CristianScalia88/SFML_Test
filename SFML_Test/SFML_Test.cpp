@@ -17,23 +17,30 @@ int main()
 	strStream << inFile.rdbuf(); //read the file
 	std::string str = strStream.str(); //str holds the content of the file
 	inFile.close();
-
-	sf::Texture texture;
-	if (!texture.loadFromFile(PATH_TEXTURE)) {
-		cout << "Error" << endl;
-	}
-	sf::Sprite sprite;
-	sprite.setTexture(texture);
-
+	
 	RenderWindow* window = new RenderWindow(VideoMode(800, 600), "Test");
 	Event e;
 
 	Game* game = new Game();
 
+	sf::Texture* texture = new Texture();
+	if (!texture->loadFromFile(PATH_TEXTURE)) 
+	{
+		cout << "Texture Load from File Error" << endl;
+	}
+
+	poke::SpriteSheet* spriteSheet = new poke::SpriteSheet(texture, str.c_str());
+
 	GameObject* go = new GameObject();
-	TextureComponent* textureComponent = new TextureComponent(PATH_TEXTURE);
+	TextureComponent* textureComponent = new TextureComponent(texture);
 	go->AddComponent(textureComponent);
 
+	poke::Rect* rect = new poke::Rect();
+	rect->x = 5;
+	rect->y = 443;
+	rect->width = 44;
+	rect->height = 60;
+	textureComponent->SetRectangle(rect);
 	game->AddGameObject(go);
 
 	window->pollEvent(e);
@@ -51,7 +58,6 @@ int main()
 
 		window->clear(sf::Color::Black);
 		game->Render(window);
-		window->draw(sprite);
 		window->display();
 	}
 
@@ -59,4 +65,5 @@ int main()
 	delete game;
 	delete go;
 	delete textureComponent;
+	delete texture;
 }
