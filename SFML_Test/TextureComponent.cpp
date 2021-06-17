@@ -24,7 +24,7 @@ void TextureComponent::SetRectangle(poke::Rect * rect)
 {
 	sf::IntRect intRect;
 	intRect.left = rect->x;
-	intRect.top = 512 - rect->height - rect->y;
+	intRect.top = rect->y;
 	intRect.width = rect->width;
 	intRect.height = rect->height;
 	sprite->setTextureRect(intRect);

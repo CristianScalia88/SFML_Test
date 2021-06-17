@@ -35,12 +35,9 @@ int main()
 	TextureComponent* textureComponent = new TextureComponent(texture);
 	go->AddComponent(textureComponent);
 
-	poke::Rect* rect = new poke::Rect();
-	rect->x = 5;
-	rect->y = 443;
-	rect->width = 44;
-	rect->height = 60;
-	textureComponent->SetRectangle(rect);
+	
+	textureComponent->SetRectangle(spriteSheet->GetSpriteRect(0));
+
 	game->AddGameObject(go);
 
 	window->pollEvent(e);
