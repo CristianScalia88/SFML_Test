@@ -13,6 +13,7 @@ namespace poke {
 		SpriteSheet(sf::Texture* texture,const char* json);
 		~SpriteSheet();
 		Rect* GetSpriteRect(int frameId);
+		Pivot* GetPivot(int frameId);
 	};
 
 

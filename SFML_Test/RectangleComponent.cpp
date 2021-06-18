@@ -16,3 +16,8 @@ void RectangleComponent::Render(sf::RenderWindow* window)
 {
 	window->draw(*rectangle);
 }
+
+string RectangleComponent::GetClassName()
+{
+	return "RectangleComponent";
+}

@@ -51,3 +51,8 @@ poke::Rect * poke::SpriteSheet::GetSpriteRect(int frameId)
 {
 	return sprites->at(frameId)->rect;
 }
+
+poke::Pivot * poke::SpriteSheet::GetPivot(int frameId)
+{
+	return sprites->at(frameId)->pivot;
+}

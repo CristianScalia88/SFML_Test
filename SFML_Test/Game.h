@@ -10,7 +10,7 @@ public:
 	Game();
 	~Game();
 	void CheckInput(sf::Event);
-	void Update();
+	void Update(float deltaTime);
 	void Render(sf::RenderWindow*);
 	void AddGameObject(GameObject*);
 };

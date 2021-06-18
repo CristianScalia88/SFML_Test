@@ -9,5 +9,6 @@ public:
 	RectangleComponent();
 	~RectangleComponent();
 	void Render(sf::RenderWindow* window);
+	std::string GetClassName();
 };
 

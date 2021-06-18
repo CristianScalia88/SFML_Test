@@ -1,6 +1,8 @@
 #pragma once
 #include "IGameComponent.h"
 #include "Rect.h"
+#include "Pivot.h"
+#include "GameObject.h"
 
 class TextureComponent : public IGameComponent
 {
@@ -11,6 +13,8 @@ public:
 	TextureComponent(sf::Texture* texture);
 	~TextureComponent();
 	void Render(sf::RenderWindow* window);
-	void SetRectangle(poke::Rect* rect);
+	void Update() {}
+	void SetRectangle(poke::Rect* rect, poke::Pivot* pivot);
+	std::string GetClassName();
 };
 

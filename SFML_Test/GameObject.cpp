@@ -4,6 +4,7 @@
 GameObject::GameObject()
 {
 	components = new map<string, IGameComponent*>();
+	transform = new TransformComponent();
 }
 
 GameObject::~GameObject()
@@ -12,8 +13,8 @@ GameObject::~GameObject()
 
 void GameObject::AddComponent(IGameComponent* component)
 {
-	components->insert(pair<string, IGameComponent*>(typeid(component).name(), component));
-	component->owner = this;
+	components->insert(pair<string, IGameComponent*>(component->GetClassName(), component));
+	component->SetOwner(this);
 }
 
 IGameComponent* GameObject::GetComponent(string type)
@@ -32,12 +33,19 @@ void GameObject::Start()
 {
 }
 
-void GameObject::Update()
+void GameObject::Update(float deltaTime)
 {
+	for (auto i = components->begin(); i != components->end(); ++i)
+		i->second->Update(deltaTime);
 }
 
 void GameObject::Render(sf::RenderWindow * window)
 {
 	for (auto i = components->begin(); i != components->end(); ++i)
 		i->second->Render(window);
+}
+
+sf::Vector2f GameObject::GetPosition()
+{
+	return transform->position;
 }

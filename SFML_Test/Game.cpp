@@ -14,9 +14,10 @@ void Game::CheckInput(sf::Event)
 {
 }
 
-void Game::Update()
+void Game::Update(float deltaTime)
 {
-	
+	for (auto i = gameObjects->begin(); i != gameObjects->end(); ++i)
+		(*i)->Update(deltaTime);
 }
 
 void Game::Render(sf::RenderWindow* window)

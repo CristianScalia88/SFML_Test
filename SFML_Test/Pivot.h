@@ -1,8 +1,10 @@
 #pragma once
-class Pivot
+namespace poke 
 {
-public:
-	float x;
-	float y;
-};
-
+	class Pivot
+	{
+	public:
+		float x;
+		float y;
+	};
+}
