@@ -14,18 +14,8 @@ const string PATH_TEXTURE = "Assets/Animation.png";
 
 int main()
 {
-	std::ifstream inFile;
-	inFile.open(PATH_JSON); //open the input file
-	std::stringstream strStream;
-	strStream << inFile.rdbuf(); //read the file
-	std::string str = strStream.str(); //str holds the content of the file
-	inFile.close();
-
+	std::string spriteSheetJson = poke::File::ReadAllText(PATH_JSON); //str holds the content of the file
 	
-	
-	RenderWindow* window = new RenderWindow(VideoMode(800, 600), "Test");
-	Event e;
-
 	Game game = Game();
 
 	sf::Texture texture = Texture();
@@ -37,7 +27,7 @@ int main()
 	s.setTexture(texture);
 	s.setOrigin(10, 30);
 
-	poke::SpriteSheet spriteSheet = poke::SpriteSheet(&texture, str.c_str());
+	poke::SpriteSheet spriteSheet = poke::SpriteSheet(&texture, spriteSheetJson.c_str());
 
 	GameObject go = GameObject();
 	TextureComponent textureComponent = TextureComponent(&texture);
@@ -58,6 +48,9 @@ int main()
 	go.transform->Translate(Vector2f(40, 80));
 
 	game.AddGameObject(&go);
+
+	RenderWindow* window = new RenderWindow(VideoMode(800, 600), "Test");
+	Event e;
 
 	window->pollEvent(e);
 	window->clear(sf::Color(100,100,100));

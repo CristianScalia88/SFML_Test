@@ -1,7 +1,10 @@
 #pragma once
-class File
+namespace poke 
 {
-public:
-	static const char* ReadAllText(string path);
-};
-
+	class File
+	{
+	public:
+		static const string ReadAllText(const string& path);
+		static const void WriteAllText(const string& path, const string& allText);
+	};
+}

@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "PlayerInput.h"
 
-
 PlayerInput::PlayerInput()
 {
 }
