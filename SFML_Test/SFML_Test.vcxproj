@@ -165,6 +165,9 @@
   <ItemGroup>
     <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="CharacterInput.h" />
+    <ClInclude Include="Collider.h" />
+    <ClInclude Include="ColliderComponent.h" />
+    <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
@@ -184,6 +187,9 @@
   <ItemGroup>
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="CharacterInput.cpp" />
+    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="ColliderComponent.cpp" />
+    <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />

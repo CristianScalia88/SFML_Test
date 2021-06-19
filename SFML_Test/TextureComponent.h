@@ -13,7 +13,6 @@ public:
 	TextureComponent(sf::Texture* texture);
 	~TextureComponent();
 	void Render(sf::RenderWindow* window);
-	void Update() {}
 	void SetRectangle(poke::Rect* rect, poke::Pivot* pivot);
 	std::string GetClassName();
 };
