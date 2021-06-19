@@ -7,13 +7,15 @@
 class AnimationComponent : public IGameComponent
 {
 private :
-		bool dirty;
+		const float FPS = .1f;
 		TextureComponent * textureComponent;
 		poke::SpriteSheet * spriteSheet;
 		int* framesIDs;
 		int frames;
 		int currentFrameIndex;
 		float totalTime;
+
+		void UpdateSprite();
 public:
 	AnimationComponent(TextureComponent * textureComponent, poke::SpriteSheet * spriteSheet, int* framesIDs, int frameCount);
 	~AnimationComponent();
