@@ -44,12 +44,15 @@ int main()
 	textureComponent.SetRectangle(spriteSheet.GetSpriteRect(0), spriteSheet.GetPivot(0));
 	go.AddComponent(&textureComponent);
 
-	int frameIds [] = { 0, 1, 2, 3, 4, 5 };
-	AnimationComponent animationComponent = AnimationComponent(&textureComponent, &spriteSheet, frameIds,6);
+	int idleFrameIds[] = { 0, 1, 2, 3, 4, 5 };
+	int runFrameIds[] = { 6,7,8,9,10,11,12,13 };
+	int walkFrameIds[] = { 14,15,16,17,18,19 };
+	int attackFrameIds[] = { 20,21,22 };
+	AnimationComponent animationComponent = AnimationComponent(&textureComponent, &spriteSheet, walkFrameIds, 6);
 	go.AddComponent(&animationComponent);
 
 	PlayerInput playerInput;
-	MovementComponent movementComponent = MovementComponent(&playerInput, 10);
+	MovementComponent movementComponent = MovementComponent(&playerInput, 150);
 	go.AddComponent(&movementComponent);
 	
 	go.transform->Translate(Vector2f(40, 80));
