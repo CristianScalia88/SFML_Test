@@ -1,5 +1,7 @@
 #pragma once
 #include "CharacterInput.h"
+#include <list>
+
 class PlayerInput : public CharacterInput
 {
 public:

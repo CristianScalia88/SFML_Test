@@ -8,6 +8,7 @@ AnimationComponent::AnimationComponent(TextureComponent * _textureComponent, pok
 	spriteSheet = _spriteSheet;
 	framesIDs = _framesIDs;
 	frames = frameCount;
+	dirty = true;
 }
 
 AnimationComponent::~AnimationComponent()
@@ -16,15 +17,22 @@ AnimationComponent::~AnimationComponent()
 
 void AnimationComponent::Update(float deltaTime)
 {
-	if (totalTime > .1f) 
+	if (totalTime > .8f) 
 	{
-		totalTime -= .1f;
+		dirty = true;
+		totalTime -= .8f;
 		currentFrameIndex = (currentFrameIndex + 1) % frames;
 	}
 	totalTime += deltaTime;
-	poke::Rect* rect = spriteSheet->GetSpriteRect(framesIDs[currentFrameIndex]);
-	poke::Pivot * pivot = spriteSheet->GetPivot(0);
-	textureComponent->SetRectangle(rect, pivot);
+
+	if (dirty) 
+	{
+		dirty = false;
+		poke::Rect* rect = spriteSheet->GetSpriteRect(framesIDs[currentFrameIndex]);
+		poke::Pivot * pivot = spriteSheet->GetPivot(framesIDs[currentFrameIndex]);
+		textureComponent->SetRectangle(rect, pivot);
+	}
+	
 }
 
 std::string AnimationComponent::GetClassName()

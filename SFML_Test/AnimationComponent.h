@@ -7,6 +7,7 @@
 class AnimationComponent : public IGameComponent
 {
 private :
+		bool dirty;
 		TextureComponent * textureComponent;
 		poke::SpriteSheet * spriteSheet;
 		int* framesIDs;
