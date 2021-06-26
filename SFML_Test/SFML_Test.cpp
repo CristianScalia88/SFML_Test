@@ -43,7 +43,7 @@ int main()
 	go.AddComponent(&animationComponent);
 
 	PlayerInput playerInput;
-	MovementComponent movementComponent = MovementComponent(&playerInput, 450);
+	MovementComponent movementComponent = MovementComponent(&playerInput, 500);
 	go.AddComponent(&movementComponent);
 	
 	go.AddComponent(colliderManager.CreateCollider(30,30));
@@ -76,7 +76,6 @@ int main()
 		while (window->pollEvent(e))
 			if (e.type == sf::Event::EventType::Closed)
 				window->close();
-
 
 		game.CheckInput(e);
 		game.Update(deltaTime);

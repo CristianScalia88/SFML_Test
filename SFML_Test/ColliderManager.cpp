@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "ColliderManager.h"
 
-
+const float COLLISSION_PER_SECONDS = .035f;
 ColliderManager::ColliderManager()
 {
 	colliders = new vector<ColliderComponent*>();
@@ -15,8 +15,8 @@ static int iss;
 void ColliderManager::CheckCollisions(float deltaTime)
 {
 	totalTime += deltaTime;
-	if (totalTime >= .05f) {
-		totalTime -= .05f;
+	if (totalTime >= COLLISSION_PER_SECONDS) {
+		totalTime -= COLLISSION_PER_SECONDS;
 		for (size_t i = 0; i < colliders->size(); i++)
 		{
 			for (size_t j = i + 1; j < colliders->size(); j++)
