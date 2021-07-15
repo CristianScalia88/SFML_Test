@@ -1,7 +1,8 @@
 #pragma once
 #include "ColliderComponent.h"
+#include "IGameComponent.h"
 
-class ColliderManager
+class ColliderManager : public IGameComponent
 {
 private:
 	vector<ColliderComponent*>* colliders;
@@ -14,5 +15,6 @@ public:
 	~ColliderManager();
 
 	void CheckCollisions(float deltaTime);
+	void Update(float deltaTime);
 };
 

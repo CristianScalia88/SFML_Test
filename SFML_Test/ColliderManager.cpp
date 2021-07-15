@@ -34,6 +34,11 @@ void ColliderManager::CheckCollisions(float deltaTime)
 	}
 }
 
+void ColliderManager::Update(float deltaTime)
+{
+	CheckCollisions(deltaTime);
+}
+
 bool ColliderManager::Intersecting(const sf::RectangleShape * a, const sf::RectangleShape * b)
 {
 	return a->getGlobalBounds().intersects(b->getGlobalBounds());

@@ -10,8 +10,14 @@ Game::~Game()
 {
 }
 
-void Game::CheckInput(sf::Event)
+void Game::CheckInput(sf::Event evv)
 {
+	switch (evv.type)
+	{
+
+		default:
+			break;
+	}
 }
 
 void Game::Update(float deltaTime)

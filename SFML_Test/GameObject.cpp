@@ -9,6 +9,7 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
+
 }
 
 void GameObject::AddComponent(IGameComponent* component)
