@@ -12,7 +12,7 @@
 #include "PlayerInput.h"
 #include "ColliderComponent.h"
 
-class Gameplay
+class Gameplay : public Game
 {
 private:
 	GameObject* player;
@@ -22,6 +22,5 @@ private:
 public:
 	Gameplay();
 	~Gameplay();
-	Game* game;
 };
 

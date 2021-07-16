@@ -40,18 +40,16 @@ Gameplay::Gameplay()
 
 	player->transform->Translate(sf::Vector2f(40, 80));
 
-	game = new Game();
-	game->AddGameObject(player);
+	AddGameObject(player);
 
 	//Add The colliderManager
 	GameObject* colliderManagerGo = new GameObject();
 	colliderManagerGo->AddComponent(colliderManager);
-	game->AddGameObject(colliderManagerGo);
+	AddGameObject(colliderManagerGo);
 }
 
 Gameplay::~Gameplay()
 {
-	delete game;
 	delete player;
 	delete texture;
 	delete spriteSheet;

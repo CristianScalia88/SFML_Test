@@ -16,36 +16,32 @@ GameObject* MainMenu::CreateButton(std::string text, CallbackBase* callback, sf:
 
 MainMenu::MainMenu()
 {
-	game = new Game();
-	
 	fontType.loadFromFile("Assets/Rubric Regular.ttf");
 
-	gameplayButton = CreateButton("Play", make_callback(this, &MainMenu::ShowPlay), {300, 300});
-	game->AddGameObject(gameplayButton);
+	gameplayButton = CreateButton("Play", make_callback(this, &MainMenu::GoToGameplay), {300, 300});
+	AddGameObject(gameplayButton);
 
-	creditsButton = CreateButton("Credits", make_callback(this, &MainMenu::ShowPlay), { 300, 340 });
-	game->AddGameObject(creditsButton);
+	creditsButton = CreateButton("Credits", make_callback(this, &MainMenu::GoToCredits), { 300, 340 });
+	AddGameObject(creditsButton);
 
-	exitButton = CreateButton("Exit", make_callback(this, &MainMenu::ShowPlay), { 300, 380 });
-	game->AddGameObject(exitButton);
+	//exitButton = CreateButton("Exit", make_callback(this, &MainMenu::ShowPlay), { 300, 380 });
+	//AddGameObject(exitButton);
+}
+
+void MainMenu::GoToGameplay() 
+{
+	(*goToGameplay)();
+}
+
+void MainMenu::GoToCredits()
+{
+	(*goToCredits)();
 }
 
 
 MainMenu::~MainMenu()
 {
-	delete game;
 	delete exitButton;
 	delete gameplayButton;
 	delete creditsButton;
-}
-
-void MainMenu::ShowPlay()
-{
-	if (changeToGameplay) 
-	{
-		return;
-	}
-	changeToGameplay = true;
-	Gameplay* gameplay = new Gameplay();
-	*mainScene = gameplay->game;
 }

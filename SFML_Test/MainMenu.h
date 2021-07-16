@@ -5,7 +5,7 @@
 #include "Callbacks.h"
 #include "Gameplay.h"
 
-class MainMenu
+class MainMenu : public Game
 {
 private:
 	GameObject* gameplayButton;
@@ -13,12 +13,13 @@ private:
 	GameObject* exitButton;
 	sf::Font fontType;
 	GameObject* CreateButton(std::string text, CallbackBase* callback, sf::Vector2f pos);
-	bool changeToGameplay;
+	void GoToGameplay();
+	void GoToCredits();
 public:
+	CallbackBase* goToGameplay;
+	CallbackBase* goToCredits;
 	MainMenu();
 	~MainMenu();
-	Game* game;
 	Game** mainScene;
-	void ShowPlay();
 };
 
