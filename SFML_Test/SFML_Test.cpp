@@ -4,6 +4,8 @@
 
 using namespace sf;
 
+const int SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 700;
 
 int main()
 {
@@ -12,7 +14,7 @@ int main()
 	Game* game;
 	GameScenes gameScenes = GameScenes(&game);
 
-	RenderWindow* window = new RenderWindow(VideoMode(800, 600), "Game");
+	RenderWindow* window = new RenderWindow(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Game");
 	Event e;
 
 	window->pollEvent(e);
