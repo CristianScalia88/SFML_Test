@@ -49,11 +49,17 @@ public:
 		RequestChangeGame(credits);
 	}
 
+	void CloseGame()
+	{
+		exit(0);
+	}
+
 	void ChangeToMainMenu()
 	{
 		MainMenu* mainMenu = new MainMenu();
 		mainMenu->goToGameplay = make_callback(this, &GameScenes::ChangeToGameplay);
 		mainMenu->goToCredits = make_callback(this, &GameScenes::ChangeToCredtis);
+		mainMenu->closeGame = make_callback(this, &GameScenes::CloseGame);
 		RequestChangeGame(mainMenu);
 	}
 

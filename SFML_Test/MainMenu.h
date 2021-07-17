@@ -15,9 +15,11 @@ private:
 	GameObject* CreateButton(std::string text, CallbackBase* callback, sf::Vector2f pos);
 	void GoToGameplay();
 	void GoToCredits();
+	void CloseGame();
 public:
 	CallbackBase* goToGameplay;
 	CallbackBase* goToCredits;
+	CallbackBase* closeGame;
 	MainMenu();
 	~MainMenu();
 	Scene** mainScene;

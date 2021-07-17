@@ -24,8 +24,8 @@ MainMenu::MainMenu()
 	creditsButton = CreateButton("Credits", make_callback(this, &MainMenu::GoToCredits), { 300, 340 });
 	AddGameObject(creditsButton);
 
-	//exitButton = CreateButton("Exit", make_callback(this, &MainMenu::ShowPlay), { 300, 380 });
-	//AddGameObject(exitButton);
+	exitButton = CreateButton("Exit", make_callback(this, &MainMenu::CloseGame), { 300, 380 });
+	AddGameObject(exitButton);
 }
 
 void MainMenu::GoToGameplay() 
@@ -38,10 +38,16 @@ void MainMenu::GoToCredits()
 	goToCredits->Invoke();
 }
 
+void MainMenu::CloseGame()
+{
+	closeGame->Invoke();
+}
 
 MainMenu::~MainMenu()
 {
 	delete exitButton;
 	delete gameplayButton;
 	delete creditsButton;
+	delete goToGameplay;
+	delete goToCredits;
 }
