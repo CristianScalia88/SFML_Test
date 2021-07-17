@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "HPComponent.h"
 
-bool HPComponent::IsDead()
+bool poke::HPComponent::IsDead()
 {
     return currentHP == 0;
 }
 
-void HPComponent::TakeDamage(int amount)
+void poke::HPComponent::TakeDamage(int amount)
 {
     currentHP -= amount;
     OnDamage->Invoke();
@@ -17,7 +17,7 @@ void HPComponent::TakeDamage(int amount)
     }
 }
 
-void HPComponent::Heal(int amount)
+void poke::HPComponent::Heal(int amount)
 {
     currentHP += amount;
     OnHeal->Invoke();
@@ -27,15 +27,15 @@ void HPComponent::Heal(int amount)
     }
 }
 
-void HPComponent::Update(float deltaTime)
+void poke::HPComponent::Update(float deltaTime)
 {
 }
 
-void HPComponent::Render(sf::RenderWindow*)
+void poke::HPComponent::Render(sf::RenderWindow*)
 {
 }
 
-std::string HPComponent::GetClassName()
+std::string poke::HPComponent::GetClassName()
 {
     return "HPComponent";
 }

@@ -1,9 +1,7 @@
 #pragma once
-
-#include "Game.h"
 #include "GameObject.h"
-#include "ColliderManager.h"
 #include "SpriteSheet.h"
+#include "ColliderManager.h"
 #include "File.h"
 #include "RectangleComponent.h"
 #include "TextureComponent.h"
@@ -11,15 +9,17 @@
 #include "MovementComponent.h"
 #include "PlayerInput.h"
 #include "ColliderComponent.h"
-#include "Player.h"
+#include "HPComponent.h"
 
-class Gameplay : public Game
+class Player : public GameObject
 {
 private:
-	Player* player;
-	ColliderManager* colliderManager;
+	GameObject* player;
+	sf::Texture* texture;
+	poke::SpriteSheet* spriteSheet;
+	poke::HPComponent* HP;
 public:
-	Gameplay();
-	~Gameplay();
+	Player(ColliderManager* colliderManager);
+	~Player();
 };
 
