@@ -1,11 +1,11 @@
 #pragma once
-#include "Game.h"
+#include "Scene.h"
 #include "TextComponent.h"
 #include "Callbacks.h"
 #include "Button.h"
 #include "MainMenu.h"
 
-class Credits : public Game
+class Credits : public Scene
 {
 private:
 	GameObject* creditLabelName;
@@ -17,6 +17,6 @@ public:
 	CallbackBase* goToMainMenu;
 	Credits();
 	~Credits();
-	Game** mainScene;
+	Scene** mainScene;
 };
 

@@ -36,3 +36,10 @@ std::string TextureComponent::GetClassName()
 {
 	return "TextureComponent";
 }
+
+void TextureComponent::Scale(sf::Vector2f* v2f)
+{
+	if (currentScale == v2f)return;
+	currentScale = v2f;
+	sprite->setScale(*v2f);
+}

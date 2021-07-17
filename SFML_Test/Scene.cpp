@@ -1,16 +1,16 @@
 #include "pch.h"
-#include "Game.h"
+#include "Scene.h"
 
-Game::Game()
+Scene::Scene()
 {
 	gameObjects = new vector<GameObject*>();
 }
 
-Game::~Game()
+Scene::~Scene()
 {
 }
 
-void Game::CheckInput(sf::Event evv)
+void Scene::CheckInput(sf::Event evv)
 {
 	switch (evv.type)
 	{
@@ -19,19 +19,19 @@ void Game::CheckInput(sf::Event evv)
 	}
 }
 
-void Game::Update(float deltaTime)
+void Scene::Update(float deltaTime)
 {
 	for (auto i = gameObjects->begin(); i != gameObjects->end(); ++i)
 		(*i)->Update(deltaTime);
 }
 
-void Game::Render(sf::RenderWindow* window)
+void Scene::Render(sf::RenderWindow* window)
 {
 	for (auto i = gameObjects->begin(); i != gameObjects->end(); ++i)
 		(*i)->Render(window);
 }
 
-void Game::AddGameObject(GameObject * go)
+void Scene::AddGameObject(GameObject * go)
 {
 	gameObjects->push_back(go);
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include "Game.h"
+#include "Scene.h"
 #include "Gameplay.h"
 #include "Credits.h"
 #include "MainMenu.h"
@@ -7,16 +7,16 @@
 class GameScenes
 {
 private:
-	Game ** game;
+	Scene ** game;
 
 public:
 
-	GameScenes(Game** game_) {
+	GameScenes(Scene** game_) {
 		game = game_;
 		ChangeToMainMenu();
 	}
 
-	void ChangeGame(Game* newGame)
+	void ChangeGame(Scene* newGame)
 	{
 		*game = newGame;
 	}

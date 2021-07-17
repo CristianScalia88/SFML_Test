@@ -8,14 +8,14 @@ class AnimationComponent : public IGameComponent
 {
 private :
 		const float FPS = .1f;
-		TextureComponent * textureComponent;
 		poke::SpriteSheet * spriteSheet;
 		int currentFrameIndex;
 		float totalTime;
 		void UpdateSprite();
 		int* framesIDs;
 		int frames;
-
+protected:
+	TextureComponent* textureComponent;
 public:
 	AnimationComponent(TextureComponent * textureComponent, poke::SpriteSheet * spriteSheet);
 	~AnimationComponent();

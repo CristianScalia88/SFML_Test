@@ -11,6 +11,8 @@ private:
 	CharacterInput* characterInput;
 public:
 	bool IsMoving();
+	bool IsMovingLeft();
+	bool IsMovingRight();
 	MovementComponent(CharacterInput* characterInput, float speed);
 	~MovementComponent();
 	virtual std::string GetClassName();

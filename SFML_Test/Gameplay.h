@@ -1,6 +1,5 @@
 #pragma once
-
-#include "Game.h"
+#include "Scene.h"
 #include "GameObject.h"
 #include "ColliderManager.h"
 #include "SpriteSheet.h"
@@ -13,7 +12,7 @@
 #include "ColliderComponent.h"
 #include "Player.h"
 
-class Gameplay : public Game
+class Gameplay : public Scene
 {
 private:
 	Player* player;

@@ -7,6 +7,18 @@ bool MovementComponent::IsMoving()
 	return direction.x != 0 || direction.y != 0;
 }
 
+bool MovementComponent::IsMovingLeft()
+{
+	sf::Vector2f direction = characterInput->GetDirection();
+	return direction.x < 0;
+}
+
+bool MovementComponent::IsMovingRight()
+{
+	sf::Vector2f direction = characterInput->GetDirection();
+	return direction.x > 0;
+}
+
 MovementComponent::MovementComponent(CharacterInput* _characterInput, float _speed)
 {
 	characterInput = _characterInput;

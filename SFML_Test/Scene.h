@@ -1,14 +1,14 @@
 #pragma once
 #include "GameObject.h"
 
-class Game
+class Scene
 {
 private:
 	vector<GameObject*>* gameObjects;
 
 public:
-	Game();
-	~Game();
+	Scene();
+	~Scene();
 	void CheckInput(sf::Event);
 	void Update(float deltaTime);
 	void Render(sf::RenderWindow*);

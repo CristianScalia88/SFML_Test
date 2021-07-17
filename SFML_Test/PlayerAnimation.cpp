@@ -9,6 +9,8 @@ poke::PlayerAnimation::PlayerAnimation(TextureComponent* _textureComponent, poke
 	attackFrameIds = new int[3]{ 20,21,22 };
 	moveComponent = _moveComponent;
 	RunIdle();
+	left = new sf::Vector2f(-1, 1);
+	right = new sf::Vector2f(1, 1);
 }
 
 void poke::PlayerAnimation::RunIdle()
@@ -31,14 +33,33 @@ void poke::PlayerAnimation::RunAttack()
 	ChangeAnimation(attackFrameIds, 3);
 }
 
-void poke::PlayerAnimation::Update(float deltaTime)
+void poke::PlayerAnimation::UpdateHorizontalTexture()
 {
-	AnimationComponent::Update(deltaTime);
-	if (moveComponent->IsMoving()) 
+	if (moveComponent->IsMovingLeft())
+	{
+		textureComponent->Scale(left);
+	}
+	else if(moveComponent->IsMovingRight())
+	{
+		textureComponent->Scale(right);
+	}
+
+}
+
+void poke::PlayerAnimation::UpdateCurrentAnimation()
+{
+	if (moveComponent->IsMoving())
 	{
 		RunWalk();
 	}
 	else {
 		RunIdle();
 	}
+}
+
+void poke::PlayerAnimation::Update(float deltaTime)
+{
+	AnimationComponent::Update(deltaTime);
+	UpdateHorizontalTexture();
+	UpdateCurrentAnimation();
 }

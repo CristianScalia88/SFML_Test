@@ -172,7 +172,7 @@
     <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="Credits.h" />
     <ClInclude Include="File.h" />
-    <ClInclude Include="Game.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Gameplay.h" />
     <ClInclude Include="GameScenes.h" />
@@ -204,7 +204,7 @@
     <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="Credits.cpp" />
     <ClCompile Include="File.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Gameplay.cpp" />
     <ClCompile Include="GameScenes.cpp" />

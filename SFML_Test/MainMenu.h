@@ -1,11 +1,11 @@
 #pragma once
-#include "Game.h"
+#include "Scene.h"
 #include "Button.h"
 #include "GameObject.h"
 #include "Callbacks.h"
 #include "Gameplay.h"
 
-class MainMenu : public Game
+class MainMenu : public Scene
 {
 private:
 	GameObject* gameplayButton;
@@ -20,6 +20,6 @@ public:
 	CallbackBase* goToCredits;
 	MainMenu();
 	~MainMenu();
-	Game** mainScene;
+	Scene** mainScene;
 };
 

@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "game.h"
+#include "Scene.h"
 #include "GameScenes.h"
 
 using namespace sf;
@@ -11,7 +11,7 @@ int main()
 {
 	sf::Color gray = sf::Color(40, 40, 40);
 
-	Game* game;
+	Scene* game;
 	GameScenes gameScenes = GameScenes(&game);
 
 	RenderWindow* window = new RenderWindow(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Game");
