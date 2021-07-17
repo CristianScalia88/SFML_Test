@@ -13,6 +13,14 @@ poke::PlayerAnimation::PlayerAnimation(TextureComponent* _textureComponent, poke
 	right = new sf::Vector2f(1, 1);
 }
 
+poke::PlayerAnimation::~PlayerAnimation()
+{
+	delete[] idleFrameIds;
+	delete[] runFrameIds;
+	delete[] walkFrameIds;
+	delete[] attackFrameIds;
+}
+
 void poke::PlayerAnimation::RunIdle()
 {
 	ChangeAnimation(idleFrameIds, 6);
@@ -43,7 +51,6 @@ void poke::PlayerAnimation::UpdateHorizontalTexture()
 	{
 		textureComponent->Scale(right);
 	}
-
 }
 
 void poke::PlayerAnimation::UpdateCurrentAnimation()
@@ -52,7 +59,8 @@ void poke::PlayerAnimation::UpdateCurrentAnimation()
 	{
 		RunWalk();
 	}
-	else {
+	else 
+	{
 		RunIdle();
 	}
 }

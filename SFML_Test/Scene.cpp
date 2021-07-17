@@ -8,6 +8,10 @@ Scene::Scene()
 
 Scene::~Scene()
 {
+	for (auto i = gameObjects->begin(); i != gameObjects->end(); ++i)
+	{
+		delete *i;
+	}
 }
 
 void Scene::CheckInput(sf::Event evv)

@@ -16,6 +16,7 @@ namespace poke
 		sf::Vector2f* right;
 	public:
 		PlayerAnimation(TextureComponent* _textureComponent, poke::SpriteSheet* _spriteSheet, MovementComponent* moveComponent);
+		~PlayerAnimation();
 		void RunIdle();
 		void RunRun();
 		void RunWalk();

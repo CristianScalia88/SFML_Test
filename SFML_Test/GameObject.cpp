@@ -9,7 +9,12 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
-
+	for (auto i = components->begin(); i != components->end(); ++i)
+	{
+		delete i->second;
+	}
+	delete components;
+	delete transform;
 }
 
 void GameObject::AddComponent(IGameComponent* component)

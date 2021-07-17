@@ -11,7 +11,7 @@ int main()
 {
 	sf::Color gray = sf::Color(40, 40, 40);
 
-	Scene* game;
+	Scene* game = nullptr;
 	GameScenes gameScenes = GameScenes(&game);
 
 	RenderWindow* window = new RenderWindow(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Game");
@@ -37,6 +37,8 @@ int main()
 		window->clear(gray);
 
 		game->Render(window);
+		gameScenes.ChangeScene();
+			
 		window->display();
 	}
 
