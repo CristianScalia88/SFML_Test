@@ -1,15 +1,25 @@
 #include "pch.h"
 #include "HPComponent.h"
 
-poke::HPComponent::HPComponent(int maxHP)
+poke::HPComponent::HPComponent(int _maxHP)
 {
-    currentHP = maxHP;
-    maxHP = maxHP;
+    currentHP = _maxHP;
+    maxHP = _maxHP;
 }
 
 bool poke::HPComponent::IsDead()
 {
     return currentHP == 0;
+}
+
+int poke::HPComponent::GetCurrentHP()
+{
+    return currentHP;
+}
+
+int poke::HPComponent::GetMaxHP()
+{
+    return maxHP;
 }
 
 void poke::HPComponent::TakeDamage(int amount)

@@ -11,8 +11,9 @@
 #include "ColliderComponent.h"
 #include "HPComponent.h"
 #include "PlayerAnimation.h"
+#include "IGameComponent.h"
 
-class Player : public GameObject
+class Player : public IGameComponent
 {
 private:
 	sf::Texture* texture;
@@ -20,7 +21,9 @@ private:
 	poke::HPComponent* HPComponent;
 	poke::PlayerAnimation* playerAnimation;
 public:
-	Player(ColliderManager* colliderManager);
+	Player(ColliderManager* colliderManager, GameObject* owner);
 	~Player();
+	poke::HPComponent* GetHPComponent();
+	void Update(float deltaTime);
 };
 

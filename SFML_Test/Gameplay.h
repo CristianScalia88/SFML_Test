@@ -15,7 +15,7 @@
 class Gameplay : public Scene
 {
 private:
-	Player* player;
+	GameObject* playerGo;
 	ColliderManager* colliderManager;
 public:
 	Gameplay();

@@ -15,6 +15,8 @@ namespace poke
 		CallbackBase* OnDamage;
 		CallbackBase* OnHeal;
 		CallbackBase* OnDead;
+		int GetCurrentHP();
+		int GetMaxHP();
 		void TakeDamage(int amount);
 		void Heal(int amount);
 		void Update(float deltaTime);
