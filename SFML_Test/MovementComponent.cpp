@@ -11,6 +11,11 @@ MovementComponent::~MovementComponent()
 {
 }
 
+std::string MovementComponent::GetClassName()
+{
+	return "MovementComponent";
+}
+
 void MovementComponent::Update(float deltaTime)
 {
 	GetOwner()->transform->Translate(characterInput->GetDirection() * speed * deltaTime);

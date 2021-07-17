@@ -3,7 +3,7 @@
 class CallbackBase
 {
 public:
-	virtual void operator()() {};
+	virtual void Invoke() {};
 	~CallbackBase() { }
 };
 
@@ -14,11 +14,11 @@ public:
 	typedef void (T::* F)();
 
 	Callback(T* t, F f) : t_(t), f_(f) { }
-	void operator()()
-	{ 
-		(t_->*f_)(); 
-	}
 
+	void Invoke() 
+	{
+		(t_->*f_)();
+	}
 private:
 	T* t_;
 	F  f_;

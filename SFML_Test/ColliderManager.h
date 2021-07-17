@@ -16,5 +16,6 @@ public:
 
 	void CheckCollisions(float deltaTime);
 	void Update(float deltaTime);
+	virtual std::string GetClassName();
 };
 

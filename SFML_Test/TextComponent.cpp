@@ -27,3 +27,8 @@ void poke::TextComponent::Render(sf::RenderWindow* window)
 {
 	window->draw(text);
 }
+
+std::string poke::TextComponent::GetClassName()
+{
+	return "TextComponent";
+}

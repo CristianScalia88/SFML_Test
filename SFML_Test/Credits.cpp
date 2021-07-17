@@ -25,7 +25,7 @@ GameObject* Credits::CreateButton(std::string text, CallbackBase* callback, sf::
 
 void Credits::GoToMainMenu()
 {
-	(*goToMainMenu)();
+	goToMainMenu->Invoke();
 }
 
 Credits::Credits()

@@ -21,6 +21,7 @@ namespace poke
 		void CenterText();
 		void Update(float deltaTime);
 		void Render(sf::RenderWindow* window);
+		virtual std::string GetClassName();
 		CallbackBase* callback;
 	};
 }

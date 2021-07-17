@@ -176,6 +176,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Gameplay.h" />
     <ClInclude Include="GameScenes.h" />
+    <ClInclude Include="HPComponent.h" />
     <ClInclude Include="IGameComponent.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MovementComponent.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Gameplay.cpp" />
     <ClCompile Include="GameScenes.cpp" />
+    <ClCompile Include="HPComponent.cpp" />
     <ClCompile Include="IGameComponent.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MovementComponent.cpp" />

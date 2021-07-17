@@ -12,6 +12,7 @@ private:
 public:
 	MovementComponent(CharacterInput* characterInput, float speed);
 	~MovementComponent();
+	virtual std::string GetClassName();
 	void Update(float deltaTime);
 };
 

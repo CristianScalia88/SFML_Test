@@ -12,5 +12,6 @@ namespace poke
 		TextComponent(std::string text, sf::Font& fontType, int fontSize, bool center = true);
 		void SetPosition(sf::Vector2f pos);
 		void Render(sf::RenderWindow* window);
+		virtual std::string GetClassName();
 	};
 }

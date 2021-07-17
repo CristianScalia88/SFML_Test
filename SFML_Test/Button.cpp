@@ -46,7 +46,7 @@ void poke::Button::Update(float deltaTime)
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !clicked) 
 		{
 			clicked = true;
-			(*callback)();
+			callback->Invoke();
 		}
 	}
 	else 
@@ -61,4 +61,9 @@ void poke::Button::Render(sf::RenderWindow* window)
 	mousePos.y = sf::Mouse::getPosition(*window).y;
 	window->draw(buttonBoundaries);
 	window->draw(text);
+}
+
+std::string poke::Button::GetClassName()
+{
+	return "Button";
 }

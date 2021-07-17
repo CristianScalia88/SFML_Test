@@ -30,12 +30,12 @@ MainMenu::MainMenu()
 
 void MainMenu::GoToGameplay() 
 {
-	(*goToGameplay)();
+	goToGameplay->Invoke();
 }
 
 void MainMenu::GoToCredits()
 {
-	(*goToCredits)();
+	goToCredits->Invoke();
 }
 
 
