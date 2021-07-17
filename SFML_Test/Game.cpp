@@ -14,7 +14,6 @@ void Game::CheckInput(sf::Event evv)
 {
 	switch (evv.type)
 	{
-
 		default:
 			break;
 	}

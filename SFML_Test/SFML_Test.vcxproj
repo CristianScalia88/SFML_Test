@@ -183,6 +183,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Pivot.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerAnimation.h" />
     <ClInclude Include="PlayerInput.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="RectangleComponent.h" />
@@ -219,6 +220,7 @@
     </ClCompile>
     <ClCompile Include="Pivot.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerAnimation.cpp" />
     <ClCompile Include="PlayerInput.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="RectangleComponent.cpp" />

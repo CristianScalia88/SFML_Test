@@ -1,6 +1,12 @@
 #include "pch.h"
 #include "MovementComponent.h"
 
+bool MovementComponent::IsMoving()
+{
+	sf::Vector2f direction = characterInput->GetDirection();
+	return direction.x != 0 || direction.y != 0;
+}
+
 MovementComponent::MovementComponent(CharacterInput* _characterInput, float _speed)
 {
 	characterInput = _characterInput;

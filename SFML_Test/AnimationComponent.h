@@ -10,16 +10,17 @@ private :
 		const float FPS = .1f;
 		TextureComponent * textureComponent;
 		poke::SpriteSheet * spriteSheet;
-		int* framesIDs;
-		int frames;
 		int currentFrameIndex;
 		float totalTime;
-
 		void UpdateSprite();
+		int* framesIDs;
+		int frames;
+
 public:
-	AnimationComponent(TextureComponent * textureComponent, poke::SpriteSheet * spriteSheet, int* framesIDs, int frameCount);
+	AnimationComponent(TextureComponent * textureComponent, poke::SpriteSheet * spriteSheet);
 	~AnimationComponent();
 	void Update(float deltaTime);
 	std::string GetClassName();
+	void ChangeAnimation(int* framesIDs, int frameCount);
 };
 

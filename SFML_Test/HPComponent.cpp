@@ -1,6 +1,12 @@
 #include "pch.h"
 #include "HPComponent.h"
 
+poke::HPComponent::HPComponent(int maxHP)
+{
+    currentHP = maxHP;
+    maxHP = maxHP;
+}
+
 bool poke::HPComponent::IsDead()
 {
     return currentHP == 0;

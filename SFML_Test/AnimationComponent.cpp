@@ -2,12 +2,10 @@
 #include "AnimationComponent.h"
 #include "SpriteSheet.h"
 
-AnimationComponent::AnimationComponent(TextureComponent * _textureComponent, poke::SpriteSheet * _spriteSheet, int* _framesIDs, int frameCount)
+AnimationComponent::AnimationComponent(TextureComponent * _textureComponent, poke::SpriteSheet * _spriteSheet)
 {
 	textureComponent = _textureComponent;
 	spriteSheet = _spriteSheet;
-	framesIDs = _framesIDs;
-	frames = frameCount;
 	totalTime = FPS;
 }
 
@@ -37,6 +35,18 @@ void AnimationComponent::Update(float deltaTime)
 std::string AnimationComponent::GetClassName()
 {
 	return "AnimationComponent";
+}
+
+void AnimationComponent::ChangeAnimation(int* _framesIDs, int frameCount)
+{
+	if (framesIDs == _framesIDs) 
+	{
+		return;
+	}
+	framesIDs = _framesIDs;
+	frames = frameCount;
+	currentFrameIndex = 0;
+	totalTime = 0;
 }
 
 

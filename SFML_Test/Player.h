@@ -10,14 +10,15 @@
 #include "PlayerInput.h"
 #include "ColliderComponent.h"
 #include "HPComponent.h"
+#include "PlayerAnimation.h"
 
 class Player : public GameObject
 {
 private:
-	GameObject* player;
 	sf::Texture* texture;
 	poke::SpriteSheet* spriteSheet;
-	poke::HPComponent* HP;
+	poke::HPComponent* HPComponent;
+	poke::PlayerAnimation* playerAnimation;
 public:
 	Player(ColliderManager* colliderManager);
 	~Player();

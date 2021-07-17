@@ -15,6 +15,4 @@ namespace poke {
 		Rect* GetSpriteRect(int frameId);
 		Pivot* GetPivot(int frameId);
 	};
-
-
 }
