@@ -32,3 +32,8 @@ std::string poke::TextComponent::GetClassName()
 {
 	return "TextComponent";
 }
+
+void poke::TextComponent::SetText(string _text)
+{
+	text.setString(_text);
+}

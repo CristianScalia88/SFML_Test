@@ -13,5 +13,6 @@ namespace poke
 		void SetPosition(sf::Vector2f pos);
 		void Render(sf::RenderWindow* window);
 		virtual std::string GetClassName();
+		void SetText(string text);
 	};
 }

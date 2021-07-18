@@ -4,6 +4,7 @@
 void PlayerHud::OnPlayerDamageHandler()
 {
 	string hp = GetPlayHP();
+	textComponent->SetText(hp);
 }
 
 string PlayerHud::GetPlayHP()

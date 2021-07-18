@@ -25,11 +25,15 @@ int poke::HPComponent::GetMaxHP()
 void poke::HPComponent::TakeDamage(int amount)
 {
     currentHP -= amount;
-    OnDamage->Invoke();
     if (currentHP <= 0) 
     {
         currentHP = 0;
+        OnDamage->Invoke();
         OnDead->Invoke();
+    }
+    else
+    {
+        OnDamage->Invoke();
     }
 }
 
