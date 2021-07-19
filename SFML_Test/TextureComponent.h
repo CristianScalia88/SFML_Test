@@ -17,5 +17,6 @@ public:
 	void SetRectangle(poke::Rect* rect, poke::Pivot* pivot);
 	std::string GetClassName();
 	void Scale(sf::Vector2f* v2f);
+	void Tint(sf::Color color);
 };
 

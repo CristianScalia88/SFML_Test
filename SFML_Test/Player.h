@@ -20,10 +20,12 @@ private:
 	poke::SpriteSheet* spriteSheet;
 	poke::HPComponent* HPComponent;
 	poke::PlayerAnimation* playerAnimation;
+	TextureComponent* textureComponent;
 public:
 	Player(ColliderManager* colliderManager, GameObject* owner);
 	~Player();
 	poke::HPComponent* GetHPComponent();
 	void Update(float deltaTime);
+	void OnTakeDamage();
 };
 

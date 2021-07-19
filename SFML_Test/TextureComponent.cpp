@@ -43,3 +43,8 @@ void TextureComponent::Scale(sf::Vector2f* v2f)
 	currentScale = v2f;
 	sprite->setScale(*v2f);
 }
+
+void TextureComponent::Tint(sf::Color color)
+{
+	sprite->setColor(color);
+}

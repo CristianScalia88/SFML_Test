@@ -19,11 +19,12 @@ Player::Player(ColliderManager* colliderManager, GameObject* owner)
 	std::string spriteSheetJson = poke::File::ReadAllText(PATH_JSON); //str holds the content of the file
 	spriteSheet = new poke::SpriteSheet(texture, spriteSheetJson.c_str());
 
-	TextureComponent* textureComponent = new TextureComponent(texture);
+	textureComponent = new TextureComponent(texture);
 	textureComponent->SetRectangle(spriteSheet->GetSpriteRect(0), spriteSheet->GetPivot(0));
 	owner->AddComponent(textureComponent);
 
 	HPComponent = new poke::HPComponent(100);
+	HPComponent->OnDamage->AddCallback(make_callback(this, &Player::OnTakeDamage));
 	playerAnimation = new poke::PlayerAnimation(textureComponent, spriteSheet, movementComponent);
 	owner->AddComponent(playerAnimation);
 
@@ -43,6 +44,8 @@ poke::HPComponent* Player::GetHPComponent()
 	return HPComponent;
 }
 
+float tintDamageCooldown;
+bool tint;
 float t;
 void Player::Update(float deltaTime)
 {
@@ -51,4 +54,24 @@ void Player::Update(float deltaTime)
 		t = 0;
 		HPComponent->TakeDamage(10);
 	}
+
+	if (tintDamageCooldown > 0)
+	{
+		if (!tint) {
+			tint = true;
+			textureComponent->Tint(sf::Color::Red);
+		}
+		tintDamageCooldown -= deltaTime;
+	}
+	else if(tint)
+	{
+		TextureComponent* t = (TextureComponent*)GetOwner()->GetComponent("TextureComponent");
+		textureComponent->Tint(sf::Color::White);
+		tint = false;
+	}
+}
+
+void Player::OnTakeDamage()
+{
+	tintDamageCooldown = .25f;
 }
