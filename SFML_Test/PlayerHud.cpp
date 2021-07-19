@@ -19,7 +19,7 @@ PlayerHud::PlayerHud(poke::HPComponent* _HPComponent, GameObject * _owner)
 	fontType.loadFromFile("Assets/Rubric Regular.ttf");
 
 	HPComponent = _HPComponent;
-	HPComponent->OnDamage = make_callback(this, &PlayerHud::OnPlayerDamageHandler);
+	HPComponent->OnDamage->AddCallback(make_callback(this, &PlayerHud::OnPlayerDamageHandler));
 
 	textComponent = new poke::TextComponent(GetPlayHP(), fontType, 20,false);
 	_owner->AddComponent(textComponent);

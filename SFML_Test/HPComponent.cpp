@@ -5,6 +5,16 @@ poke::HPComponent::HPComponent(int _maxHP)
 {
     currentHP = _maxHP;
     maxHP = _maxHP;
+    OnDamage = new Action();
+    OnHeal = new Action();
+    OnDead = new Action();
+}
+
+poke::HPComponent::~HPComponent()
+{
+    delete OnDamage;
+    delete OnHeal;
+    delete OnDead;
 }
 
 bool poke::HPComponent::IsDead()

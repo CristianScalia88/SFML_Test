@@ -7,21 +7,49 @@ public:
 	~CallbackBase() { }
 };
 
+class Action
+{
+public:
+	vector<CallbackBase*>* callbackss;
+
+	Action()
+	{
+		callbackss = new vector<CallbackBase*>();
+	}
+
+	void AddCallback(CallbackBase* callback)
+	{
+		callbackss->push_back(callback);
+	}
+
+	void Invoke()
+	{
+		for (auto it = callbackss->begin(); it != callbackss->end(); ++it) {
+			(*it)->Invoke();
+		}
+	}
+};
+
 template<typename T>
 class Callback : public CallbackBase
 {
 public:
 	typedef void (T::* F)();
 
-	Callback(T* t, F f) : t_(t), f_(f) { }
+	Callback(T* t, F f) 
+	{
+		t_ = t;
+		callback = f;
+	}
 
 	void Invoke() 
 	{
-		(t_->*f_)();
+		(t_->*callback)();
 	}
+
 private:
 	T* t_;
-	F  f_;
+	F callback;
 };
 
 
@@ -30,4 +58,3 @@ Callback<T>* make_callback(T* t, void (T::* f) ())
 {
 	return new Callback<T>(t, f);
 }
-

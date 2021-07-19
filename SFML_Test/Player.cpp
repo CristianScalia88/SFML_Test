@@ -47,7 +47,7 @@ float t;
 void Player::Update(float deltaTime)
 {
 	t += deltaTime;
-	if (t > 5) {
+	if (t > 2) {
 		t = 0;
 		HPComponent->TakeDamage(10);
 	}

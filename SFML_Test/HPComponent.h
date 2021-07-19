@@ -11,10 +11,11 @@ namespace poke
 		int maxHP;
 	public :
 		HPComponent(int maxHP);
+		~HPComponent();
 		bool IsDead();
-		CallbackBase* OnDamage;
-		CallbackBase* OnHeal;
-		CallbackBase* OnDead;
+		Action* OnDamage;
+		Action* OnHeal;
+		Action* OnDead;
 		int GetCurrentHP();
 		int GetMaxHP();
 		void TakeDamage(int amount);
