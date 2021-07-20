@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Scene.h"
 #include "GameScenes.h"
+#include "Input.h"
 
 using namespace sf;
 
@@ -22,14 +23,26 @@ int main()
 	float deltaTime = 0.0f;
 	sf::Clock clock;
 	window->clear(gray);
+	int frameCount = 0;
 
 	while (window->isOpen()) 
 	{
+		frameCount++;
 		deltaTime = clock.restart().asSeconds();
-
-		while (window->pollEvent(e))
+		while (window->pollEvent(e)) {
 			if (e.type == sf::Event::EventType::Closed)
 				window->close();
+			if(e.type == sf::Event::KeyReleased)
+			{
+				Input::SetState(e.key.code, false);
+			}
+			if (e.type == sf::Event::MouseButtonReleased) 
+			{
+				Input::SetState(Input::Key::Mouse0, false);
+			}
+		}
+
+		Input::Update();
 
 		game->CheckInput(e);
 		game->Update(deltaTime);

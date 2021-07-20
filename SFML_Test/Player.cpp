@@ -47,17 +47,20 @@ poke::HPComponent* Player::GetHPComponent()
 float tintDamageCooldown;
 bool tint;
 float t;
+
 void Player::Update(float deltaTime)
 {
 	t += deltaTime;
-	if (t > 2) {
+	if (t > 2) 
+	{
 		t = 0;
 		HPComponent->TakeDamage(10);
 	}
 
 	if (tintDamageCooldown > 0)
 	{
-		if (!tint) {
+		if (!tint) 
+		{
 			tint = true;
 			textureComponent->Tint(sf::Color::Red);
 		}
