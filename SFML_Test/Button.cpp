@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Button.h"
+#include "Input.h"
 
 poke::Button::Button(std::string buttonLabel,sf::Font& fontType, int fontSize, sf::Vector2f size, sf::Color _normalColor, sf::Color _overColor, sf::Color textColor)
 {
@@ -42,10 +43,8 @@ void poke::Button::Update(float deltaTime)
 	if (isOver) 
 	{
 		SetButtonBackgroundColor(overColor);
-		//TODO this condition should change to a mouse button up event.
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !clicked) 
+		if (Input::GetKeyDown(Input::Key::Mouse0))
 		{
-			clicked = true;
 			callback->Invoke();
 		}
 	}
