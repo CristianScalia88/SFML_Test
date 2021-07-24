@@ -1,10 +1,13 @@
 #include "pch.h"
 #include "ColliderManager.h"
 
+ColliderManager* ColliderManager::instance = nullptr;
 const float COLLISSION_PER_SECONDS = .035f;
+
 ColliderManager::ColliderManager()
 {
 	colliders = new vector<ColliderComponent*>();
+	instance = this;
 }
 
 

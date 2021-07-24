@@ -19,6 +19,7 @@ private:
 	GameObject* playerGo;
 	ColliderManager* colliderManager;
 public:
+	static Gameplay* instance;
 	Gameplay();
 	~Gameplay();
 };

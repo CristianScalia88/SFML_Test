@@ -200,6 +200,8 @@
     <ClInclude Include="TextComponent.h" />
     <ClInclude Include="TextureComponent.h" />
     <ClInclude Include="TransformComponent.h" />
+    <ClInclude Include="VectorUtils.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AIInput.cpp" />
@@ -244,6 +246,8 @@
     <ClCompile Include="TextComponent.cpp" />
     <ClCompile Include="TextureComponent.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
+    <ClCompile Include="VectorUtils.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SFML_Test.rc" />

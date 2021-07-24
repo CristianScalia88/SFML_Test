@@ -10,6 +10,7 @@ class Input
 private:
 	map<int, int>* inputState;
 	static Input instance;
+
 public:
 	enum Key
 	{
@@ -20,7 +21,10 @@ public:
 		Mouse0 = 102
 	};
 
+	sf::Window* windows;
+
 	Input();
+	static void SetWindows(sf::Window* _windows);
 	static Input& Instance() 
 	{
 		return instance;
@@ -31,6 +35,7 @@ public:
 	static void Update();
 	static void UpdateKeyPressed(Input::Key key);
 	static void UpdateMousePressed();
+	static sf::Vector2f GetMousePosition();
 };
 
 

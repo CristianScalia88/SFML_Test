@@ -25,6 +25,8 @@ int main()
 	window->clear(gray);
 	int frameCount = 0;
 
+	Input::SetWindows(window);
+
 	while (window->isOpen()) 
 	{
 		frameCount++;

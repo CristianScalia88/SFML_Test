@@ -8,6 +8,11 @@ Input::Input()
 	inputState = new map<int, int>();
 }
 
+void Input::SetWindows(sf::Window* _windows)
+{
+	Input::Instance().windows = _windows;
+}
+
 bool Input::GetKeyDown(int keyId)
 {
 	bool keyExists = Input::Instance().inputState->find(keyId) != Input::Instance().inputState->end();
@@ -58,4 +63,9 @@ void Input::UpdateMousePressed()
 	{
 		SetState(Input::Mouse0, true);
 	}
+}
+
+sf::Vector2f Input::GetMousePosition()
+{
+	return sf::Vector2f(sf::Mouse::getPosition(*Input::Instance().windows));
 }

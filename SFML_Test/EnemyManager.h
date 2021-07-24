@@ -19,8 +19,6 @@ private:
 
 	void CreateEnemy();
 public:
-	vector<Enemy> enemies;
-	
 	EnemyManager(Scene* game, ColliderManager* colliderManager, int maxEnemies, TransformComponent * playerTransform, float cadency);
 	void Update(float deltaTime);
 };

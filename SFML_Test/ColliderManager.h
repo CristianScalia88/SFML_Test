@@ -9,6 +9,8 @@ private:
 	float totalTime;
 	bool Intersecting(const sf::RectangleShape* a, const sf::RectangleShape* b);
 public:
+	static ColliderManager* instance;
+
 	ColliderComponent * CreateCollider(float width, float height);
 
 	ColliderManager();

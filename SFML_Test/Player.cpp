@@ -24,6 +24,7 @@ Player::Player(ColliderManager* colliderManager, GameObject* owner, CharacterInp
 
 	HPComponent = new poke::HPComponent(100);
 	HPComponent->OnDamage->AddCallback(make_callback(this, &Player::OnTakeDamage));
+
 	playerAnimation = new poke::PlayerAnimation(textureComponent, spriteSheet, movementComponent);
 	owner->AddComponent(playerAnimation);
 
@@ -43,10 +44,15 @@ poke::HPComponent* Player::GetHPComponent()
 
 float tintDamageCooldown;
 bool tint;
-float t;
+float t = 0;
 
 void Player::Update(float deltaTime)
 {
+	t += deltaTime;
+	if (t > 3) {
+		t = 0;
+		HPComponent->TakeDamage(4);
+	}
 
 	if (tintDamageCooldown > 0)
 	{

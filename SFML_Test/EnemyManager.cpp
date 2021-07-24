@@ -19,7 +19,7 @@ void EnemyManager::CreateEnemy()
 	}
 	int y = Random::Range(0,500);
 
-	enemyGo->transform->Translate(sf::Vector2f(x, y));
+	enemyGo->transform->Translate(sf::Vector2f(x,y));
 }
 
 EnemyManager::EnemyManager(Scene* _game, ColliderManager* _colliderManager, int _maxEnemies, TransformComponent* _playerTransform, float _cadency)

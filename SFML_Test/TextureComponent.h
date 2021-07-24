@@ -18,5 +18,6 @@ public:
 	std::string GetClassName();
 	void Scale(sf::Vector2f* v2f);
 	void Tint(sf::Color color);
+	void LookAt(sf::Vector2f color);
 };
 

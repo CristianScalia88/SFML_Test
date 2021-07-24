@@ -48,3 +48,8 @@ void TextureComponent::Tint(sf::Color color)
 {
 	sprite->setColor(color);
 }
+
+void TextureComponent::LookAt(sf::Vector2f color)
+{
+	//sprite->setRotation();
+}
