@@ -17,6 +17,8 @@ Gameplay::Gameplay()
 
 	Player* player = new Player(colliderManager, playerGo, new PlayerInput(), 150);
 	playerGo->AddComponent(player);
+	playerGo->AddComponent(colliderManager->CreateCollider(30, 30, ColliderManager::PLAYER));
+
 
 	Weapon* weapon = new Weapon({ 0, -25});
 	playerGo->AddComponent(weapon);

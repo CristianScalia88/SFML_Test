@@ -2,14 +2,18 @@
 #include "ColliderManager.h"
 
 ColliderManager* ColliderManager::instance = nullptr;
+
 const float COLLISSION_PER_SECONDS = .035f;
 
 ColliderManager::ColliderManager()
 {
-	colliders = new vector<ColliderComponent*>();
+	collidersMap = new map<int, vector<ColliderComponent*>*>();
+	collidersMap->insert(std::pair<int, vector<ColliderComponent*>*>(PLAYER, new vector<ColliderComponent*>()));
+	collidersMap->insert(std::pair<int, vector<ColliderComponent*>*>(PLAYER_BULLETS, new vector<ColliderComponent*>()));
+	collidersMap->insert(std::pair<int, vector<ColliderComponent*>*>(ENEMY, new vector<ColliderComponent*>()));
+	collidersMap->insert(std::pair<int, vector<ColliderComponent*>*>(ENEMY_BULLETS, new vector<ColliderComponent*>()));
 	instance = this;
 }
-
 
 ColliderManager::~ColliderManager()
 {
@@ -20,16 +24,24 @@ void ColliderManager::CheckCollisions(float deltaTime)
 	totalTime += deltaTime;
 	if (totalTime >= COLLISSION_PER_SECONDS) {
 		totalTime -= COLLISSION_PER_SECONDS;
-		for (size_t i = 0; i < colliders->size(); i++)
+
+		vector<ColliderComponent*>* collidersA = collidersMap->find(PLAYER_BULLETS)->second;
+		vector<ColliderComponent*>* collidersB = collidersMap->find(ENEMY)->second;
+		CheckCollission(collidersA, collidersB);
+	}
+}
+
+void ColliderManager::CheckCollission(vector<ColliderComponent*>* collidersA, vector<ColliderComponent*>* collidersB)
+{
+	for (size_t i = 0; i < collidersA->size(); i++)
+	{
+		for (size_t j = 0; j < collidersB->size(); j++)
 		{
-			for (size_t j = i + 1; j < colliders->size(); j++)
-			{
-				ColliderComponent * a = colliders->at(i);
-				ColliderComponent * b = colliders->at(j);
-				if (Intersecting(a->GetRectangleShape(), b->GetRectangleShape())) {
-					a->OnCollisionEnter(b);
-					b->OnCollisionEnter(a);
-				}
+			ColliderComponent* a = collidersA->at(i);
+			ColliderComponent* b = collidersB->at(j);
+			if (Intersecting(a->GetRectangleShape(), b->GetRectangleShape())) {
+				a->OnCollisionEnter(b);
+				b->OnCollisionEnter(a);
 			}
 		}
 	}
@@ -50,14 +62,14 @@ bool ColliderManager::Intersecting(const sf::RectangleShape * a, const sf::Recta
 	return a->getGlobalBounds().intersects(b->getGlobalBounds());
 }
 
-ColliderComponent * ColliderManager::CreateCollider(float width, float height)
+ColliderComponent * ColliderManager::CreateCollider(float width, float height, int layer)
 {
 	sf::RectangleShape* rectangleShape = new sf::RectangleShape(sf::Vector2f(width, height));
 	rectangleShape->setOutlineColor(sf::Color::Red);
 	rectangleShape->setFillColor(sf::Color::Red);
 
 	ColliderComponent* colliderComponent = new ColliderComponent(width, height, rectangleShape);
-	colliders->push_back(colliderComponent);
+	collidersMap->find(layer)->second->push_back(colliderComponent);
 
 	return colliderComponent;
 }

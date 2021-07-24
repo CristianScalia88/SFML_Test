@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "ColliderComponent.h"
+#include "ColliderManager.h"
 
 ColliderComponent::ColliderComponent(float width, float height, sf::RectangleShape* _collider)
 {

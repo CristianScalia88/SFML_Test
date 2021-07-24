@@ -27,8 +27,6 @@ Player::Player(ColliderManager* colliderManager, GameObject* owner, CharacterInp
 
 	playerAnimation = new poke::PlayerAnimation(textureComponent, spriteSheet, movementComponent);
 	owner->AddComponent(playerAnimation);
-
-	owner->AddComponent(colliderManager->CreateCollider(30, 30));
 }
 
 Player::~Player()

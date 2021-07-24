@@ -9,6 +9,8 @@ void EnemyManager::CreateEnemy()
 	enemyGo->AddComponent(enemy);
 	game->AddGameObject(enemyGo);
 
+	enemyGo->AddComponent(colliderManager->CreateCollider(30, 30, ColliderManager::ENEMY));
+
 	enemies->push_back(enemyGo);
 
 	bool left = Random::RandomSign() < 0;
