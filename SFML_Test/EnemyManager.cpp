@@ -4,7 +4,7 @@
 void EnemyManager::CreateEnemy()
 {
 	GameObject* enemyGo = new GameObject();
-	Enemy* enemy = new Enemy(colliderManager, enemyGo, new AIInput(enemyGo->transform, playerTransform), 50);
+	Enemy* enemy = new Enemy(colliderManager, enemyGo, new AIInput(enemyGo->transform, playerTransform), 10);
 	enemyGo->AddComponent(enemy);
 	game->AddGameObject(enemyGo);
 
@@ -12,10 +12,10 @@ void EnemyManager::CreateEnemy()
 	int x = 0;
 	if (left) 
 	{
-		x = -Random::Range(0, 300);
+		x = Random::Range(0, 300);
 	}
 	else {
-		x = Random::Range(800, 800 + 300);
+		x = Random::Range(0, 300);
 	}
 	int y = Random::Range(0,500);
 

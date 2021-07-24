@@ -17,14 +17,14 @@ Gameplay::Gameplay()
 	Player* player = new Player(colliderManager, playerGo, new PlayerInput(), 150);
 	playerGo->AddComponent(player);
 
-	Weapon* weapon = new Weapon();
+	Weapon* weapon = new Weapon({ 0, -25});
 	playerGo->AddComponent(weapon);
 
 	AddGameObject(playerGo);
 	playerGo->transform->Translate(sf::Vector2f(380, 350));
 
 	GameObject* enemyManagerGo = new GameObject();
-	EnemyManager * enemyManager = new EnemyManager(this, colliderManager, 5, playerGo->transform, 5);
+	EnemyManager * enemyManager = new EnemyManager(this, colliderManager, 5, playerGo->transform, 3);
 	enemyManagerGo->AddComponent(enemyManager);
 	AddGameObject(enemyManagerGo);
 

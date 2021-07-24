@@ -7,8 +7,8 @@
 class TextureComponent : public IGameComponent
 {
 private:
-	sf::Texture* texture;
-	sf::Sprite* sprite;
+	sf::Texture* texture = nullptr;
+	sf::Sprite* sprite = nullptr;
 	sf::Vector2f* currentScale;
 public:
 	TextureComponent(sf::Texture* texture);

@@ -12,6 +12,7 @@
 #include "HPComponent.h"
 #include "PlayerAnimation.h"
 #include "IGameComponent.h"
+#include "Input.h"
 
 class Player : public IGameComponent
 {
@@ -29,6 +30,5 @@ public:
 	void Update(float deltaTime);
 	void OnTakeDamage();
 	std::string GetClassName();
-
 };
 

@@ -44,14 +44,12 @@ poke::HPComponent* Player::GetHPComponent()
 
 float tintDamageCooldown;
 bool tint;
-float t = 0;
 
 void Player::Update(float deltaTime)
 {
-	t += deltaTime;
-	if (t > 3) {
-		t = 0;
-		HPComponent->TakeDamage(4);
+	if (Input::GetKeyDown(Input::Key::Mouse1))
+	{
+		HPComponent->TakeDamage(1);
 	}
 
 	if (tintDamageCooldown > 0)
@@ -59,13 +57,13 @@ void Player::Update(float deltaTime)
 		if (!tint) 
 		{
 			tint = true;
+			cout << this << endl;
 			textureComponent->Tint(sf::Color::Red);
 		}
 		tintDamageCooldown -= deltaTime;
 	}
 	else if(tint)
 	{
-		TextureComponent* t = (TextureComponent*)GetOwner()->GetComponent("TextureComponent");
 		textureComponent->Tint(sf::Color::White);
 		tint = false;
 	}
@@ -73,7 +71,7 @@ void Player::Update(float deltaTime)
 
 void Player::OnTakeDamage()
 {
-	tintDamageCooldown = .25f;
+	tintDamageCooldown = .3f;
 }
 
 std::string Player::GetClassName()

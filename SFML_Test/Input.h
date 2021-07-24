@@ -18,7 +18,8 @@ public:
 		A = sf::Keyboard::A,
 		S = sf::Keyboard::S,
 		D = sf::Keyboard::D,
-		Mouse0 = 102
+		Mouse0 = 102,
+		Mouse1 = 103
 	};
 
 	sf::Window* windows;

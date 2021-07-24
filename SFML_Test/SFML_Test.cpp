@@ -40,7 +40,14 @@ int main()
 			}
 			if (e.type == sf::Event::MouseButtonReleased) 
 			{
-				Input::SetState(Input::Key::Mouse0, false);
+				if (e.mouseButton.button == sf::Mouse::Left) 
+				{
+					Input::SetState(Input::Key::Mouse0, false);
+				}
+				if (e.mouseButton.button == sf::Mouse::Right)
+				{
+					Input::SetState(Input::Key::Mouse1, false);
+				}
 			}
 		}
 

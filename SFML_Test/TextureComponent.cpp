@@ -8,7 +8,7 @@ TextureComponent::TextureComponent(sf::Texture* texture)
 {
 	sprite = new sf::Sprite();
 	sprite->setTexture(*texture);
-	sprite->setOrigin(sf::Vector2f(.5f, .5f));
+	sprite->setOrigin((*texture).getSize().x /2, (*texture).getSize().y / 2);
 }
 
 TextureComponent::~TextureComponent()

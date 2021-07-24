@@ -63,6 +63,10 @@ void Input::UpdateMousePressed()
 	{
 		SetState(Input::Mouse0, true);
 	}
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
+	{
+		SetState(Input::Mouse1, true);
+	}
 }
 
 sf::Vector2f Input::GetMousePosition()
