@@ -15,12 +15,12 @@ void Weapon::Update(float deltaTime)
 		sf::Vector2f shootDirection = mousePos - bulletSpawnPoint;
 		shootDirection = VectorUtils::Normalize(shootDirection);
 
-		GameObject* go = new GameObject();
-		go->transform->Translate(bulletSpawnPoint);
-
-		Bullet* b = new Bullet(shootDirection, 450, go);
-		go->AddComponent(b);
-		Gameplay::instance->AddGameObject(go);
+		GameObject* bulletGo = new GameObject();
+		bulletGo->transform->Translate(bulletSpawnPoint);
+		Bullet* b = new Bullet(shootDirection, 450, bulletGo);
+		bulletGo->AddComponent(b);
+		bulletGo->AddComponent(ColliderManager::instance->CreateCollider(15, 15, ColliderManager::PLAYER_BULLETS));
+		Gameplay::instance->AddGameObject(bulletGo);
 	}
 }
 
