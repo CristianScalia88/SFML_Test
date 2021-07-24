@@ -4,6 +4,7 @@
 Scene::Scene()
 {
 	gameObjects = new vector<GameObject*>();
+	gameObjectsToAdd = new vector<GameObject*>();
 }
 
 Scene::~Scene()
@@ -37,6 +38,19 @@ void Scene::Render(sf::RenderWindow* window)
 
 void Scene::AddGameObject(GameObject * go)
 {
-	gameObjects->push_back(go);
+	if (!running) 
+	{
+		gameObjects->push_back(go);
+	}
+	else {
+		gameObjectsToAdd->push_back(go);
+	}
+}
+
+void Scene::AddDynamicGameObjects()
+{
+	for (auto i = gameObjectsToAdd->begin(); i != gameObjectsToAdd->end(); ++i)
+		gameObjects->push_back(*i);
+	gameObjectsToAdd->clear();
 }
 

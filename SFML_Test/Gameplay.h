@@ -11,13 +11,13 @@
 #include "PlayerInput.h"
 #include "ColliderComponent.h"
 #include "Player.h"
+#include "EnemyManager.h"
 
 class Gameplay : public Scene
 {
 private:
 	GameObject* playerGo;
 	ColliderManager* colliderManager;
-	GameObject* enemyGo;
 public:
 	Gameplay();
 	~Gameplay();

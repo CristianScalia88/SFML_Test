@@ -50,6 +50,8 @@ int main()
 		window->clear(gray);
 
 		game->Render(window);
+		game->AddDynamicGameObjects();
+
 		gameScenes.ChangeScene();
 			
 		window->display();

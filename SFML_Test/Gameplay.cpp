@@ -13,13 +13,12 @@ Gameplay::Gameplay()
 	Player* player = new Player(colliderManager, playerGo, new PlayerInput(), 150);
 	playerGo->AddComponent(player);
 	AddGameObject(playerGo);
-	playerGo->transform->Translate(sf::Vector2f(40, 80));
+	playerGo->transform->Translate(sf::Vector2f(380, 350));
 
-	enemyGo = new GameObject();
-	Enemy* enemy = new Enemy(colliderManager, enemyGo, new AIInput(enemyGo->transform, playerGo->transform), 50);
-	enemyGo->AddComponent(enemy);
-	AddGameObject(enemyGo);
-	enemyGo->transform->Translate(sf::Vector2f(400, 600));
+	GameObject* enemyManagerGo = new GameObject();
+	EnemyManager * enemyManager = new EnemyManager(this, colliderManager, 5, playerGo->transform, 5);
+	enemyManagerGo->AddComponent(enemyManager);
+	AddGameObject(enemyManagerGo);
 
 	//Add The colliderManager
 	GameObject* colliderManagerGo = new GameObject();
@@ -30,6 +29,7 @@ Gameplay::Gameplay()
 	PlayerHud* playerHudComponent = new PlayerHud(player->GetHPComponent(), playerHud);
 	playerHud->AddComponent(playerHudComponent);
 	AddGameObject(playerHud);
+	running = true;
 }
 
 Gameplay::~Gameplay()
