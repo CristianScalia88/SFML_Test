@@ -4,9 +4,12 @@
 void EnemyManager::CreateEnemy()
 {
 	GameObject* enemyGo = new GameObject();
+	enemyGo->name = "Enemy-" + enemies->size();
 	Enemy* enemy = new Enemy(colliderManager, enemyGo, new AIInput(enemyGo->transform, playerTransform), 10);
 	enemyGo->AddComponent(enemy);
 	game->AddGameObject(enemyGo);
+
+	enemies->push_back(enemyGo);
 
 	bool left = Random::RandomSign() < 0;
 	int x = 0;
@@ -29,6 +32,7 @@ EnemyManager::EnemyManager(Scene* _game, ColliderManager* _colliderManager, int 
 	playerTransform = _playerTransform;
 	maxEnemies = _maxEnemies;
 	cadency = _cadency;
+	enemies = new vector<GameObject*>();
 }
 
 void EnemyManager::Update(float deltaTime)

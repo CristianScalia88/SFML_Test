@@ -14,7 +14,7 @@ ColliderManager::ColliderManager()
 ColliderManager::~ColliderManager()
 {
 }
-static int iss;
+
 void ColliderManager::CheckCollisions(float deltaTime)
 {
 	totalTime += deltaTime;
@@ -29,8 +29,6 @@ void ColliderManager::CheckCollisions(float deltaTime)
 				if (Intersecting(a->GetRectangleShape(), b->GetRectangleShape())) {
 					a->OnCollisionEnter(b);
 					b->OnCollisionEnter(a);
-					
-					cout << "OnCollider With " << iss++ << endl;
 				}
 			}
 		}

@@ -51,6 +51,12 @@ void GameObject::Render(sf::RenderWindow * window)
 		i->second->Render(window);
 }
 
+void GameObject::OnTriggerEnter(GameObject* collider)
+{
+	for (auto i = components->begin(); i != components->end(); ++i)
+		i->second->OnTriggerEnter(collider);
+}
+
 sf::Vector2f GameObject::GetPosition()
 {
 	return transform->position;

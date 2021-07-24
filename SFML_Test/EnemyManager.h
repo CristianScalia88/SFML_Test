@@ -17,6 +17,8 @@ private:
 	int enemiesKilled = 0;
 	float cadency = 5;
 
+	vector<GameObject*>* enemies;
+
 	void CreateEnemy();
 public:
 	EnemyManager(Scene* game, ColliderManager* colliderManager, int maxEnemies, TransformComponent * playerTransform, float cadency);

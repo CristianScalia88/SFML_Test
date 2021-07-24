@@ -11,6 +11,8 @@ ColliderComponent::ColliderComponent(float width, float height, sf::RectangleSha
 
 ColliderComponent::~ColliderComponent()
 {
+	delete offset;
+	delete collider;
 }
 
 void ColliderComponent::Update(float deltaTime)
@@ -23,8 +25,9 @@ void ColliderComponent::Render(sf::RenderWindow * window)
 	window->draw(*collider);
 }
 
-void ColliderComponent::OnCollisionEnter(ColliderComponent* s)
+void ColliderComponent::OnCollisionEnter(ColliderComponent* otherCollider)
 {
+	GetOwner()->OnTriggerEnter(otherCollider->GetOwner());
 }
 
 const sf::RectangleShape * ColliderComponent::GetRectangleShape()

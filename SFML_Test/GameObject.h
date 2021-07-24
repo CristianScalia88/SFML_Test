@@ -7,6 +7,7 @@ class GameObject
 private:
 	map<string, IGameComponent*>* components;
 public:
+	string name;
 	TransformComponent * transform;
 
 	GameObject();
@@ -18,6 +19,7 @@ public:
 	void Start();
 	void Update(float deltaTime);
 	void Render(sf::RenderWindow* );
+	void OnTriggerEnter(GameObject* collider);
 	sf::Vector2f GetPosition();
 };
 

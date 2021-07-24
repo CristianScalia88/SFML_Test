@@ -13,6 +13,7 @@ Gameplay::Gameplay()
 	colliderManager = new ColliderManager();
 
 	playerGo = new GameObject();
+	playerGo->name = "Player";
 
 	Player* player = new Player(colliderManager, playerGo, new PlayerInput(), 150);
 	playerGo->AddComponent(player);
