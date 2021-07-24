@@ -15,14 +15,15 @@
 
 class Player : public IGameComponent
 {
-private:
+protected:
 	sf::Texture* texture;
 	poke::SpriteSheet* spriteSheet;
 	poke::HPComponent* HPComponent;
 	poke::PlayerAnimation* playerAnimation;
 	TextureComponent* textureComponent;
+	MovementComponent* movementComponent;
 public:
-	Player(ColliderManager* colliderManager, GameObject* owner);
+	Player(ColliderManager* colliderManager, GameObject* owner, CharacterInput* charInput, float speed);
 	~Player();
 	poke::HPComponent* GetHPComponent();
 	void Update(float deltaTime);

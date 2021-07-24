@@ -17,6 +17,7 @@ class Gameplay : public Scene
 private:
 	GameObject* playerGo;
 	ColliderManager* colliderManager;
+	GameObject* enemyGo;
 public:
 	Gameplay();
 	~Gameplay();

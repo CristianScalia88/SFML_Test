@@ -4,7 +4,7 @@
 const string PATH_JSON = "Assets/filteredSpriteSheet.json";
 const string PATH_TEXTURE = "Assets/Animation.png";
 
-Player::Player(ColliderManager* colliderManager, GameObject* owner)
+Player::Player(ColliderManager* colliderManager, GameObject* owner, CharacterInput* charInput, float speed)
 {
 	texture = new sf::Texture();
 	if (!texture->loadFromFile(PATH_TEXTURE))
@@ -12,8 +12,7 @@ Player::Player(ColliderManager* colliderManager, GameObject* owner)
 		cout << "Texture Load from File Error" << endl;
 	}
 
-	PlayerInput* playerInput = new PlayerInput();
-	MovementComponent* movementComponent = new MovementComponent(playerInput, 150);
+	movementComponent = new MovementComponent(charInput, speed);
 	owner->AddComponent(movementComponent);
 
 	std::string spriteSheetJson = poke::File::ReadAllText(PATH_JSON); //str holds the content of the file
@@ -29,8 +28,6 @@ Player::Player(ColliderManager* colliderManager, GameObject* owner)
 	owner->AddComponent(playerAnimation);
 
 	owner->AddComponent(colliderManager->CreateCollider(30, 30));
-
-	owner->transform->Translate(sf::Vector2f(40, 80));
 }
 
 Player::~Player()
@@ -50,12 +47,6 @@ float t;
 
 void Player::Update(float deltaTime)
 {
-	t += deltaTime;
-	if (t > 2) 
-	{
-		t = 0;
-		HPComponent->TakeDamage(10);
-	}
 
 	if (tintDamageCooldown > 0)
 	{

@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AIInput.h" />
     <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Callbacks.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="Credits.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="PlayerHud.h" />
@@ -197,6 +199,7 @@
     <ClInclude Include="TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AIInput.cpp" />
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Callbacks.cpp" />
@@ -205,6 +208,7 @@
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="Credits.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="PlayerHud.cpp" />

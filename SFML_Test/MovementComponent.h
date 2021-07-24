@@ -7,9 +7,9 @@ class MovementComponent :
 	public IGameComponent
 {
 private:
-	float speed;
 	CharacterInput* characterInput;
 public:
+	float speed;
 	bool IsMoving();
 	bool IsMovingLeft();
 	bool IsMovingRight();
