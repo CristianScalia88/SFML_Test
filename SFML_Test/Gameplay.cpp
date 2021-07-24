@@ -13,10 +13,13 @@ Gameplay::Gameplay()
 	colliderManager = new ColliderManager();
 
 	playerGo = new GameObject();
+
 	Player* player = new Player(colliderManager, playerGo, new PlayerInput(), 150);
 	playerGo->AddComponent(player);
+
 	Weapon* weapon = new Weapon();
 	playerGo->AddComponent(weapon);
+
 	AddGameObject(playerGo);
 	playerGo->transform->Translate(sf::Vector2f(380, 350));
 

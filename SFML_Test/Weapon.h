@@ -10,5 +10,6 @@ class Weapon : public IGameComponent
 {
 public:
 	void Update(float deltaTime);
+	std::string GetClassName();
 };
 

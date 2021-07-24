@@ -32,3 +32,8 @@ void PlayerHud::Update(float deltaTime)
 void PlayerHud::Render(sf::RenderWindow*)
 {
 }
+
+std::string PlayerHud::GetClassName()
+{
+	return "PlayerHud";
+}

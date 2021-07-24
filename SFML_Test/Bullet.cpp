@@ -25,6 +25,11 @@ Bullet::~Bullet()
 
 void Bullet::Update(float deltaTime)
 {
-	//sf::Vector2f newPos = GetOwner()->transform->position;
-	//GetOwner()->transform->Translate(newPos);
+	sf::Vector2f newPos = GetOwner()->transform->position;
+	GetOwner()->transform->Translate(newPos);
+}
+
+std::string Bullet::GetClassName()
+{
+	return "Bullet";
 }

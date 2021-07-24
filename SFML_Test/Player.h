@@ -28,5 +28,7 @@ public:
 	poke::HPComponent* GetHPComponent();
 	void Update(float deltaTime);
 	void OnTakeDamage();
+	std::string GetClassName();
+
 };
 

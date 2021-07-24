@@ -17,3 +17,8 @@ void Weapon::Update(float deltaTime)
 		Gameplay::instance->AddGameObject(go);
 	}
 }
+
+std::string Weapon::GetClassName()
+{
+	return "Weapon";
+}

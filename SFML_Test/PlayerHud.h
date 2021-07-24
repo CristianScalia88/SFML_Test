@@ -16,5 +16,6 @@ public:
 	PlayerHud(poke::HPComponent* player, GameObject * owner);
 	void Update(float deltaTime);
 	void Render(sf::RenderWindow*);
+	std::string GetClassName();
 };
 

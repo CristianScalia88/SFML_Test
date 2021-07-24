@@ -21,5 +21,6 @@ private:
 public:
 	EnemyManager(Scene* game, ColliderManager* colliderManager, int maxEnemies, TransformComponent * playerTransform, float cadency);
 	void Update(float deltaTime);
+	std::string GetClassName();
 };
 

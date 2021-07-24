@@ -13,5 +13,6 @@ public:
 	Bullet(sf::Vector2f _direction, float _speed, GameObject* owner);
 	~Bullet();
 	void Update(float deltaTime);
+	std::string GetClassName();
 };
 

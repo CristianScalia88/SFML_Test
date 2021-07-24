@@ -75,3 +75,8 @@ void Player::OnTakeDamage()
 {
 	tintDamageCooldown = .25f;
 }
+
+std::string Player::GetClassName()
+{
+	return "Player";
+}

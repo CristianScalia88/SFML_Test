@@ -40,3 +40,8 @@ void EnemyManager::Update(float deltaTime)
 		CreateEnemy();
 	}
 }
+
+std::string EnemyManager::GetClassName()
+{
+	return "EnemyManager";
+}
