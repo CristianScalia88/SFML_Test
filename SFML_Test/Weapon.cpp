@@ -12,7 +12,8 @@ void Weapon::Update(float deltaTime)
 
 		GameObject* go = new GameObject();
 		go->transform->Translate(ownerPos);
-		Bullet* b = new Bullet(shootDirection, 1, go);
+		cout << shootDirection.x << " " << shootDirection.y << endl;
+		Bullet* b = new Bullet(shootDirection, 450, go);
 		go->AddComponent(b);
 		Gameplay::instance->AddGameObject(go);
 	}

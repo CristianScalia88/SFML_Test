@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "TextureComponent.h"
+#include <math.h> 
 
+#define PI 3.14159265
 
 TextureComponent::TextureComponent(sf::Texture* texture)
 {
@@ -49,7 +51,8 @@ void TextureComponent::Tint(sf::Color color)
 	sprite->setColor(color);
 }
 
-void TextureComponent::LookAt(sf::Vector2f color)
+void TextureComponent::LookAt(sf::Vector2f direction)
 {
-	//sprite->setRotation();
+	float result = atan2(direction.y, direction.x) * 180 / PI;
+	sprite->setRotation(result);
 }

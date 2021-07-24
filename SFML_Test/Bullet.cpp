@@ -16,6 +16,7 @@ Bullet::Bullet(sf::Vector2f _direction, float _speed, GameObject * owner)
 
 	TextureComponent* textureComponent = new TextureComponent(texture);
 	owner->AddComponent(textureComponent);
+	textureComponent->LookAt(direction);
 }
 
 Bullet::~Bullet()
@@ -25,7 +26,8 @@ Bullet::~Bullet()
 
 void Bullet::Update(float deltaTime)
 {
-	sf::Vector2f newPos = GetOwner()->transform->position;
+	sf::Vector2f newPos = (direction * speed * deltaTime);
+	//cout << newPos.x << " " << newPos.y << endl;
 	GetOwner()->transform->Translate(newPos);
 }
 
