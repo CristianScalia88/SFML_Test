@@ -60,6 +60,7 @@ int main()
 
 		game->Render(window);
 		game->AddDynamicGameObjects();
+		game->DestroyAllGameObject();
 
 		gameScenes.ChangeScene();
 			

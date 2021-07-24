@@ -1,10 +1,12 @@
 #include "pch.h"
 #include "Scene.h"
+#include <algorithm>
 
 Scene::Scene()
 {
 	gameObjects = new vector<GameObject*>();
 	gameObjectsToAdd = new vector<GameObject*>();
+	gameObjectsToRemove = new vector<GameObject*>();
 }
 
 Scene::~Scene()
@@ -46,6 +48,25 @@ void Scene::AddGameObject(GameObject * go)
 		gameObjectsToAdd->push_back(go);
 	}
 }
+
+void Scene::DestroyGameObject(GameObject* go)
+{
+	gameObjectsToRemove->push_back(go);
+}
+
+void Scene::DestroyAllGameObject()
+{
+	while (gameObjectsToRemove->size() > 0) 
+	{
+		GameObject* toRemove = gameObjectsToRemove->at(gameObjectsToRemove->size() - 1);
+		gameObjectsToRemove->pop_back();
+		auto begin = gameObjects->begin();
+		auto end = gameObjects->end();
+		std::remove(begin, end, toRemove);
+	}
+}
+
+
 
 void Scene::AddDynamicGameObjects()
 {
