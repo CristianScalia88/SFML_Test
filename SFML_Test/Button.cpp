@@ -56,8 +56,9 @@ void poke::Button::Update(float deltaTime)
 
 void poke::Button::Render(sf::RenderWindow* window)
 {
-	mousePos.x = sf::Mouse::getPosition(*window).x;
-	mousePos.y = sf::Mouse::getPosition(*window).y;
+	sf::Vector2f mouse = Input::Instance().GetMousePosition();
+	mousePos.x = mouse.x;
+	mousePos.y = mouse.y;
 	window->draw(buttonBoundaries);
 	window->draw(text);
 }

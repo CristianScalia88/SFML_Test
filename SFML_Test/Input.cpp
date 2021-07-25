@@ -8,7 +8,7 @@ Input::Input()
 	inputState = new map<int, int>();
 }
 
-void Input::SetWindows(sf::Window* _windows)
+void Input::SetWindows(sf::RenderWindow* _windows)
 {
 	Input::Instance().windows = _windows;
 }
@@ -71,5 +71,6 @@ void Input::UpdateMousePressed()
 
 sf::Vector2f Input::GetMousePosition()
 {
-	return sf::Vector2f(sf::Mouse::getPosition(*Input::Instance().windows));
+	sf::Vector2i f = sf::Mouse::getPosition(*Input::Instance().windows);
+	return Input::Instance().windows->mapPixelToCoords(f);
 }

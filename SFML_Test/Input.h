@@ -22,10 +22,10 @@ public:
 		Mouse1 = 103
 	};
 
-	sf::Window* windows;
+	sf::RenderWindow* windows;
 
 	Input();
-	static void SetWindows(sf::Window* _windows);
+	static void SetWindows(sf::RenderWindow* _windows);
 	static Input& Instance() 
 	{
 		return instance;

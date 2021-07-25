@@ -25,7 +25,9 @@ int main()
 	window->clear(gray);
 	int frameCount = 0;
 
+	sf::View view;
 	Input::SetWindows(window);
+	view.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	while (window->isOpen()) 
 	{
@@ -50,6 +52,7 @@ int main()
 				}
 			}
 		}
+		window->setView(view);
 
 		Input::Update();
 
@@ -59,11 +62,17 @@ int main()
 		window->clear(gray);
 
 		game->Render(window);
+
+		view.setCenter(SCREEN_WIDTH/2, SCREEN_WIDTH /2);
+
 		game->AddDynamicGameObjects();
 		game->DestroyAllGameObject();
 
 		gameScenes.ChangeScene();
-			
+
+
+		window->setView(window->getDefaultView());
+
 		window->display();
 	}
 
