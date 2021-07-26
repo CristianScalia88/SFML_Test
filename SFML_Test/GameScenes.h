@@ -9,10 +9,12 @@ class GameScenes
 private:
 	Scene ** game;
 	Scene* changeToScene;
+	sf::View* view;
 public:
 
-	GameScenes(Scene** game_) {
+	GameScenes(Scene** game_, sf::View* _view) {
 		game = game_;
+		view = _view;
 		changeToScene = nullptr;
 		ChangeToMainMenu();
 		ChangeScene();
@@ -39,7 +41,8 @@ public:
 
 	void ChangeToGameplay()
 	{
-		RequestChangeGame(new Gameplay());
+		Gameplay* gameplay = new Gameplay(view);
+		RequestChangeGame(gameplay);
 	}
 
 	void ChangeToCredtis()

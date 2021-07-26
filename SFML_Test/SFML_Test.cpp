@@ -5,15 +5,17 @@
 
 using namespace sf;
 
-const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 700;
+const int SCREEN_WIDTH = 500;
+const int SCREEN_HEIGHT = 400;
 
 int main()
 {
 	sf::Color gray = sf::Color(40, 40, 40);
 
+	sf::View view;
+
 	Scene* game = nullptr;
-	GameScenes gameScenes = GameScenes(&game);
+	GameScenes gameScenes = GameScenes(&game, &view);
 
 	RenderWindow* window = new RenderWindow(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Game");
 	Event e;
@@ -25,7 +27,6 @@ int main()
 	window->clear(gray);
 	int frameCount = 0;
 
-	sf::View view;
 	Input::SetWindows(window);
 	view.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -62,8 +63,6 @@ int main()
 		window->clear(gray);
 
 		game->Render(window);
-
-		view.setCenter(SCREEN_WIDTH/2, SCREEN_WIDTH /2);
 
 		game->AddDynamicGameObjects();
 		game->DestroyAllGameObject();

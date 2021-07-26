@@ -4,10 +4,11 @@
 #include "AIInput.h"
 #include "Enemy.h"
 #include "Weapon.h"
+#include "CameraComponent.h"
 
 Gameplay* Gameplay::instance = nullptr;
 
-Gameplay::Gameplay()
+Gameplay::Gameplay(sf::View* view)
 {
 	///Create a colliderManager
 	colliderManager = new ColliderManager();
@@ -18,7 +19,8 @@ Gameplay::Gameplay()
 	Player* player = new Player(colliderManager, playerGo, new PlayerInput(), 150);
 	playerGo->AddComponent(player);
 	playerGo->AddComponent(colliderManager->CreateCollider(30, 30, ColliderManager::PLAYER));
-
+	CameraComponent * cc = new CameraComponent(view);
+	playerGo->AddComponent(cc);
 
 	Weapon* weapon = new Weapon({ 0, -25});
 	playerGo->AddComponent(weapon);

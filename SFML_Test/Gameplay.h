@@ -20,7 +20,7 @@ private:
 	ColliderManager* colliderManager;
 public:
 	static Gameplay* instance;
-	Gameplay();
+	Gameplay(sf::View* view);
 	~Gameplay();
 };
 
