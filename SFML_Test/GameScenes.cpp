@@ -40,7 +40,7 @@ void GameScenes::ChangeToGameplay()
 
 void GameScenes::ChangeToCredtis()
 {
-	Credits* credits = new Credits();
+	Credits* credits = new Credits(view);
 	credits->goToMainMenu = make_callback(this, &GameScenes::ChangeToMainMenu);
 	RequestChangeGame(credits);
 }
@@ -52,7 +52,7 @@ void GameScenes::CloseGame()
 
 void GameScenes::ChangeToMainMenu()
 {
-	MainMenu* mainMenu = new MainMenu();
+	MainMenu* mainMenu = new MainMenu(view);
 	mainMenu->goToGameplay = make_callback(this, &GameScenes::ChangeToGameplay);
 	mainMenu->goToCredits = make_callback(this, &GameScenes::ChangeToCredtis);
 	mainMenu->closeGame = make_callback(this, &GameScenes::CloseGame);

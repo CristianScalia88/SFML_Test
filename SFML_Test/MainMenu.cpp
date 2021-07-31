@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "MainMenu.h"
+#include "CameraComponent.h"
 
 const sf::Color gray = sf::Color(40, 40, 40, 0);
 const sf::Color grayOver = sf::Color(30, 30, 30, 200);
@@ -14,7 +15,7 @@ GameObject* MainMenu::CreateButton(std::string text, CallbackBase* callback, sf:
 	return goButton;
 }
 
-MainMenu::MainMenu()
+MainMenu::MainMenu(sf::View* view)
 {
 	fontType.loadFromFile("Assets/Rubric Regular.ttf");
 
@@ -23,6 +24,12 @@ MainMenu::MainMenu()
 
 	creditsButton = CreateButton("Credits", make_callback(this, &MainMenu::GoToCredits), { 300, 340 });
 	AddGameObject(creditsButton);
+
+	GameObject* go = new GameObject();
+	go->transform->Translate({ 400, 350 });
+	CameraComponent* cc = new CameraComponent(view);
+	go->AddComponent(cc);
+	AddGameObject(go);
 
 	exitButton = CreateButton("Exit", make_callback(this, &MainMenu::CloseGame), { 300, 380 });
 	AddGameObject(exitButton);

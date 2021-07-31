@@ -20,7 +20,7 @@ public:
 	CallbackBase* goToGameplay;
 	CallbackBase* goToCredits;
 	CallbackBase* closeGame;
-	MainMenu();
+	MainMenu(sf::View* view);
 	~MainMenu();
 	Scene** mainScene;
 };

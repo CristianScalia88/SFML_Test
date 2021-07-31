@@ -15,7 +15,7 @@ private:
 	void GoToMainMenu();
 public:
 	CallbackBase* goToMainMenu;
-	Credits();
+	Credits(sf::View* view);
 	~Credits();
 	Scene** mainScene;
 };
