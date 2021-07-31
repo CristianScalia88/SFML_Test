@@ -8,6 +8,7 @@ class MovementComponent :
 {
 private:
 	CharacterInput* characterInput;
+	float cooldown = 0;
 public:
 	float speed;
 	bool IsMoving();
@@ -15,6 +16,7 @@ public:
 	bool IsMovingRight();
 	MovementComponent(CharacterInput* characterInput, float speed);
 	~MovementComponent();
+	void BlockByTime(float time);
 	virtual std::string GetClassName();
 	void Update(float deltaTime);
 };

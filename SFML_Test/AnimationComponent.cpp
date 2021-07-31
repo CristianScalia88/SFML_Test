@@ -7,6 +7,7 @@ AnimationComponent::AnimationComponent(TextureComponent * _textureComponent, pok
 	textureComponent = _textureComponent;
 	spriteSheet = _spriteSheet;
 	totalTime = FPS;
+	OnFinish = new Action();
 }
 
 AnimationComponent::~AnimationComponent()
@@ -28,6 +29,10 @@ void AnimationComponent::Update(float deltaTime)
 
 		totalTime -= FPS;
 		currentFrameIndex = (currentFrameIndex + 1) % frames;
+		if (currentFrameIndex == frames - 1) {
+			OnFinish->Invoke();
+			OnFinish->Clear();
+		}
 	}
 	totalTime += deltaTime;
 }

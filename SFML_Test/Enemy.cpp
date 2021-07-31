@@ -2,10 +2,17 @@
 #include "Enemy.h"
 #include "Bullet.h"
 #include "Gameplay.h"
+#include "MeleeComponent.h"
 
-Enemy::Enemy(ColliderManager* colliderManager, GameObject* owner, CharacterInput* charInput, float speed) : Player(colliderManager, owner, charInput, speed)
+Enemy::Enemy(ColliderManager* colliderManager, GameObject* owner, CharacterInput* charInput, float speed, TransformComponent* transformTarget) : Player(colliderManager, owner, charInput, speed)
 {
 	textureComponent->Tint(sf::Color::Magenta);
+	target = target;
+
+	MeleeComponent* melee = new MeleeComponent(40, 1);
+	poke::PlayerAnimation* anim = (poke::PlayerAnimation*)owner->GetComponent("PlayerAnimation");
+	melee->Setup(transformTarget, owner->transform, anim, (MovementComponent*)owner->GetComponent("MovementComponent"));
+	owner->AddComponent(melee);
 }
 
 void Enemy::OnTriggerEnter(GameObject* go)

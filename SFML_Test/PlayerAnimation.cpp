@@ -36,9 +36,11 @@ void poke::PlayerAnimation::RunWalk()
 	ChangeAnimation(walkFrameIds, 6);
 }
 
-void poke::PlayerAnimation::RunAttack()
+void poke::PlayerAnimation::RunAttack(float _cooldown)
 {
+	cooldown = _cooldown;
 	ChangeAnimation(attackFrameIds, 3);
+	OnFinish->AddCallback(make_callback(this, &PlayerAnimation::RunIdle));
 }
 
 void poke::PlayerAnimation::UpdateHorizontalTexture()
@@ -68,6 +70,20 @@ void poke::PlayerAnimation::UpdateCurrentAnimation()
 void poke::PlayerAnimation::Update(float deltaTime)
 {
 	AnimationComponent::Update(deltaTime);
+	if (cooldown > 0) 
+	{
+		cooldown -= deltaTime;
+		if (cooldown <= 0) {
+			cout << "Cooldown Finished " << endl;
+		}
+		return;
+	}
+
 	UpdateHorizontalTexture();
 	UpdateCurrentAnimation();
+}
+
+std::string poke::PlayerAnimation::GetClassName()
+{
+	return "PlayerAnimation";
 }

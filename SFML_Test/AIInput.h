@@ -6,11 +6,10 @@
 class AIInput : public CharacterInput
 {
 protected:
-	TransformComponent* target;
 	TransformComponent* owner;
 	sf::Vector2f delta;
 public:
-	
+	TransformComponent* target;
 	AIInput(TransformComponent * _owner, TransformComponent* _target);
 	sf::Vector2f GetDirection();
 	bool Attack();

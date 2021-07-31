@@ -3,6 +3,7 @@
 #include "IGameComponent.h"
 #include "TextureComponent.h"
 #include "SpriteSheet.h"
+#include "Callbacks.h"
 
 class AnimationComponent : public IGameComponent
 {
@@ -15,12 +16,13 @@ private :
 		int* framesIDs;
 		int frames;
 protected:
+	Action* OnFinish;
 	TextureComponent* textureComponent;
 public:
 	AnimationComponent(TextureComponent * textureComponent, poke::SpriteSheet * spriteSheet);
 	~AnimationComponent();
 	void Update(float deltaTime);
-	std::string GetClassName();
+	virtual std::string GetClassName();
 	void ChangeAnimation(int* framesIDs, int frameCount);
 };
 

@@ -28,6 +28,11 @@ public:
 			(*it)->Invoke();
 		}
 	}
+
+	void Clear()
+	{
+		callbackss->clear();
+	}
 };
 
 template<typename T>

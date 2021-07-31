@@ -55,7 +55,6 @@ void Player::Update(float deltaTime)
 		if (!tint) 
 		{
 			tint = true;
-			cout << this << endl;
 			textureComponent->Tint(sf::Color::Red);
 		}
 		tintDamageCooldown -= deltaTime;

@@ -29,7 +29,7 @@ Gameplay::Gameplay(sf::View* view)
 	playerGo->transform->Translate(sf::Vector2f(380, 350));
 
 	GameObject* enemyManagerGo = new GameObject();
-	EnemyManager * enemyManager = new EnemyManager(this, colliderManager, 5, playerGo->transform, 3);
+	EnemyManager * enemyManager = new EnemyManager(this, colliderManager, 5, playerGo->transform, 1);
 	enemyManagerGo->AddComponent(enemyManager);
 	AddGameObject(enemyManagerGo);
 

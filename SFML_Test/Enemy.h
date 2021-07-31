@@ -4,7 +4,9 @@
 class Enemy : public Player
 {
 public:
-	Enemy(ColliderManager* colliderManager, GameObject* owner, CharacterInput* charInput, float speed);
+	TransformComponent* target;
+
+	Enemy(ColliderManager* colliderManager, GameObject* owner, CharacterInput* charInput, float speed, TransformComponent * target);
 	void OnTriggerEnter(GameObject* go);
 
 };

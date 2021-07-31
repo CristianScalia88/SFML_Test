@@ -5,10 +5,9 @@ void EnemyManager::CreateEnemy()
 {
 	GameObject* enemyGo = new GameObject();
 	enemyGo->name = "Enemy-" + enemies->size();
-	Enemy* enemy = new Enemy(colliderManager, enemyGo, new AIInput(enemyGo->transform, playerTransform), 10);
+	Enemy* enemy = new Enemy(colliderManager, enemyGo, new AIInput(enemyGo->transform, playerTransform), 10, playerTransform);
 	enemyGo->AddComponent(enemy);
 	game->AddGameObject(enemyGo);
-
 	enemyGo->AddComponent(colliderManager->CreateCollider(30, 30, ColliderManager::ENEMY));
 
 	enemies->push_back(enemyGo);
@@ -42,7 +41,7 @@ void EnemyManager::Update(float deltaTime)
 	currentTime += deltaTime;
 	if (currentTime > cadency) 
 	{
-		currentTime = 0;
+		currentTime = -5555555;
 		CreateEnemy();
 	}
 }
