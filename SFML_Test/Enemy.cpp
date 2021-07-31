@@ -7,6 +7,7 @@
 Enemy::Enemy(ColliderManager* colliderManager, GameObject* owner, CharacterInput* charInput, float speed, GameObject* player) : Player(colliderManager, owner, charInput, speed)
 {
 	textureComponent->Tint(sf::Color::Magenta);
+	tint->colorAux = sf::Color::Magenta;
 	target = target;
 
 	MeleeComponent* melee = new MeleeComponent(40, 1);
@@ -25,5 +26,7 @@ void Enemy::OnTriggerEnter(GameObject* go)
 		{
 			Gameplay::instance->DestroyGameObject(GetOwner());
 		}
+		Gameplay::instance->DestroyGameObject(b->GetOwner());
+
 	}
 }

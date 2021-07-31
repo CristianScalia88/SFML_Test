@@ -12,7 +12,6 @@ void TintOnDamageComponent::Update(float deltaTime)
 {
 	if (tintDamageCooldown > 0)
 	{
-		cout << GetOwner()->name << endl;
 		if (!tint)
 		{
 			tint = true;
@@ -22,7 +21,7 @@ void TintOnDamageComponent::Update(float deltaTime)
 	}
 	else if (tint)
 	{
-		texture->Tint(sf::Color::White);
+		texture->Tint(colorAux);
 		tint = false;
 	}
 }

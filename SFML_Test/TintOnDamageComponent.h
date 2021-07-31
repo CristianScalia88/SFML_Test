@@ -11,6 +11,7 @@ private:
 	TextureComponent* texture;
 	poke::HPComponent* hp;
 public:
+	sf::Color colorAux;
 	TintOnDamageComponent(TextureComponent* texture, poke::HPComponent* _hp);
 	void Update(float deltaTime);
 	void OnTakeDamage();
