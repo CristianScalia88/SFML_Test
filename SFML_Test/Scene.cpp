@@ -16,6 +16,7 @@ Scene::~Scene()
 	{
 		delete *i;
 	}
+	gameObjects->clear();
 }
 
 void Scene::CheckInput(sf::Event evv)
@@ -76,7 +77,7 @@ void Scene::DestroyAllGameObject()
 void Scene::AddDynamicGameObjects()
 {
 	for (auto i = gameObjectsToAdd->begin(); i != gameObjectsToAdd->end(); ++i)
-		gameObjects->push_back(*i);
+		gameObjects->insert(gameObjects->begin(), *i);
 	gameObjectsToAdd->clear();
 }
 

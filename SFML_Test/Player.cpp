@@ -42,6 +42,13 @@ poke::HPComponent* Player::GetHPComponent()
 	return HPComponent;
 }
 
+void Player::Update(float dt)
+{
+	if (Input::GetKeyDown(Input::Mouse1)) {
+		HPComponent->TakeDamage(101);
+	}
+}
+
 float tintDamageCooldown;
 bool tint;
 

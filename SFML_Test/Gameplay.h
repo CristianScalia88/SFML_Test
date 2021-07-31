@@ -22,5 +22,6 @@ public:
 	static Gameplay* instance;
 	Gameplay(sf::View* view);
 	~Gameplay();
+	void GoToMainMenu();
 };
 

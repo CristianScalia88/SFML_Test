@@ -5,6 +5,7 @@
 #include "Enemy.h"
 #include "Weapon.h"
 #include "CameraComponent.h"
+#include "GameScenes.h"
 
 Gameplay* Gameplay::instance = nullptr;
 
@@ -21,6 +22,8 @@ Gameplay::Gameplay(sf::View* view)
 	CameraComponent * cc = new CameraComponent(view);
 	playerGo->AddComponent(cc);
 
+	player->GetHPComponent()->OnDead->AddCallback(make_callback(this, &Gameplay::GoToMainMenu));
+
 	Weapon* weapon = new Weapon({ 0, -25});
 	playerGo->AddComponent(weapon);
 
@@ -28,16 +31,20 @@ Gameplay::Gameplay(sf::View* view)
 	playerGo->transform->Translate(sf::Vector2f(380, 350));
 
 	GameObject* enemyManagerGo = new GameObject();
+	enemyManagerGo->name = "EnemyManager";
 	EnemyManager * enemyManager = new EnemyManager(this, colliderManager, 5, playerGo, 1);
 	enemyManagerGo->AddComponent(enemyManager);
 	AddGameObject(enemyManagerGo);
 
 	//Add The colliderManager
 	GameObject* colliderManagerGo = new GameObject();
+	colliderManagerGo->name = "colliderManager";
+
 	colliderManagerGo->AddComponent(colliderManager);
 	AddGameObject(colliderManagerGo);
 
 	GameObject* playerHud = new GameObject();
+	playerHud->name = "Player Hud";
 	PlayerHud* playerHudComponent = new PlayerHud(player->GetHPComponent(), playerHud);
 	playerHud->AddComponent(playerHudComponent);
 	AddGameObjectHUD(playerHud);
@@ -48,4 +55,9 @@ Gameplay::Gameplay(sf::View* view)
 Gameplay::~Gameplay()
 {
 	delete playerGo;
+}
+
+void Gameplay::GoToMainMenu()
+{
+	GameScenes::instance->ChangeToMainMenu();
 }

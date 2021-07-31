@@ -28,7 +28,7 @@ public:
 	Player(ColliderManager* colliderManager, GameObject* owner, CharacterInput* charInput, float speed);
 	~Player();
 	poke::HPComponent* GetHPComponent();
-
+	void Update(float dt);
 	std::string GetClassName();
 };
 

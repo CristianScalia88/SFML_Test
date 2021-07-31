@@ -11,7 +11,7 @@ Enemy::Enemy(ColliderManager* colliderManager, GameObject* owner, CharacterInput
 
 	MeleeComponent* melee = new MeleeComponent(40, 1);
 	poke::PlayerAnimation* anim = (poke::PlayerAnimation*)owner->GetComponent("PlayerAnimation");
-	melee->Setup(5, player, owner->transform, anim, (MovementComponent*)owner->GetComponent("MovementComponent"));
+	melee->Setup(110, player, owner->transform, anim, (MovementComponent*)owner->GetComponent("MovementComponent"));
 	owner->AddComponent(melee);
 }
 

@@ -18,6 +18,7 @@ ColliderManager::ColliderManager()
 
 ColliderManager::~ColliderManager()
 {
+	cout << " DESTRYPED COLLIDER MANAGER" << endl;
 }
 
 void ColliderManager::CheckCollisions(float deltaTime)
