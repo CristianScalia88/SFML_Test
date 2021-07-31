@@ -29,6 +29,10 @@ void IGameComponent::SetOwner(GameObject * go)
 	owner = go;
 }
 
+void IGameComponent::Destroy()
+{
+}
+
 void IGameComponent::OnTriggerEnter(GameObject* go)
 {
 }

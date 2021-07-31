@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "ColliderManager.h"
+#include <Algorithm>
 
 ColliderManager* ColliderManager::instance = nullptr;
 
@@ -52,6 +53,15 @@ void ColliderManager::Update(float deltaTime)
 	CheckCollisions(deltaTime);
 }
 
+void ColliderManager::RemoveCollider(ColliderComponent* collider)
+{
+	vector<ColliderComponent*>* collidersA = collidersMap->find(collider->layer)->second;
+	auto begin = collidersA->begin();
+	auto end = collidersA->end();
+	vector<ColliderComponent*>::iterator it = std::remove(begin, end, collider);
+	collidersA->erase(it, collidersA->end());
+}
+
 std::string ColliderManager::GetClassName()
 {
 	return "ColliderManager";
@@ -70,6 +80,6 @@ ColliderComponent * ColliderManager::CreateCollider(float width, float height, i
 
 	ColliderComponent* colliderComponent = new ColliderComponent(width, height, rectangleShape);
 	collidersMap->find(layer)->second->push_back(colliderComponent);
-
+	colliderComponent->layer = layer;
 	return colliderComponent;
 }

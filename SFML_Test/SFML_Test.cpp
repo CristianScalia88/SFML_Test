@@ -64,17 +64,16 @@ int main()
 
 		game->Render(window);
 
-		game->AddDynamicGameObjects();
-		game->DestroyAllGameObject();
-
 		gameScenes.ChangeScene();
-
 
 		window->setView(window->getDefaultView());
 
 		game->RenderUI(window);
 
 		window->display();
+
+		game->AddDynamicGameObjects();
+		game->DestroyAllGameObject();
 	}
 
 	delete window;

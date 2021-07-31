@@ -69,6 +69,7 @@ void Scene::DestroyAllGameObject()
 		auto begin = gameObjects->begin();
 		auto end = gameObjects->end();
 		std::remove(begin, end, toRemove);
+		delete toRemove;
 	}
 }
 

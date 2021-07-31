@@ -15,6 +15,11 @@ Enemy::Enemy(ColliderManager* colliderManager, GameObject* owner, CharacterInput
 	owner->AddComponent(melee);
 }
 
+Enemy::~Enemy()
+{
+	cout << "ENEMY DESTROYED" << endl;
+}
+
 void Enemy::OnTriggerEnter(GameObject* go)
 {
 	Bullet* b = (Bullet*)go->GetComponent("Bullet");

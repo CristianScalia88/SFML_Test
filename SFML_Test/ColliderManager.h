@@ -24,6 +24,7 @@ public:
 	void CheckCollisions(float deltaTime);
 	void CheckCollission(vector<ColliderComponent*>* listA, vector<ColliderComponent*>* listB);
 	void Update(float deltaTime);
+	void RemoveCollider(ColliderComponent* collider);
 	virtual std::string GetClassName();
 
 };

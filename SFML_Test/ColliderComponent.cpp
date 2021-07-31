@@ -10,12 +10,6 @@ ColliderComponent::ColliderComponent(float width, float height, sf::RectangleSha
 	offset = new sf::Vector2f(width / 2, height);
 }
 
-ColliderComponent::~ColliderComponent()
-{
-	delete offset;
-	delete collider;
-}
-
 void ColliderComponent::Update(float deltaTime)
 {
 	collider->setPosition(GetOwner()->transform->position - *offset);
@@ -39,4 +33,11 @@ const sf::RectangleShape * ColliderComponent::GetRectangleShape()
 std::string ColliderComponent::GetClassName()
 {
 	return "ColliderComponent";
+}
+
+void ColliderComponent::Destroy()
+{
+	ColliderManager::instance->RemoveCollider(this);
+	delete offset;
+	delete collider;
 }

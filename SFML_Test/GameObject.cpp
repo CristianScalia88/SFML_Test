@@ -11,6 +11,7 @@ GameObject::~GameObject()
 {
 	for (auto i = components->begin(); i != components->end(); ++i)
 	{
+		i->second->Destroy();
 		delete i->second;
 	}
 	delete components;
