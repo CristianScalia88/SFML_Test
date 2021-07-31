@@ -7,12 +7,15 @@ MeleeComponent::MeleeComponent(float _attackDistance, float _cooldown)
 	cooldown = _cooldown;
 }
 
-void MeleeComponent::Setup(TransformComponent* _target, TransformComponent* _meTransform, poke::PlayerAnimation* _animation, MovementComponent* _movement)
+void MeleeComponent::Setup(int _damage, GameObject* player, TransformComponent* _meTransform, poke::PlayerAnimation* _animation, MovementComponent* _movement)
 {
-	target = _target;
+	target = player->transform;
 	meTransform = _meTransform;
 	animation = _animation;
 	movement = _movement;
+	damage = _damage;
+	IGameComponent* gcop = player->GetComponent("HPComponent");
+	hp = (poke::HPComponent*)gcop;
 }
 
 void MeleeComponent::Update(float deltaTime)
@@ -25,6 +28,7 @@ void MeleeComponent::Update(float deltaTime)
 	{
 		movement->BlockByTime(cooldown);
 		animation->RunAttack(cooldown);
+		hp->TakeDamage(damage);
 		currentCooldown = cooldown;
 	}
 }

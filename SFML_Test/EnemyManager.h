@@ -10,7 +10,7 @@ class EnemyManager : public IGameComponent
 private:
 	Scene* game;
 	ColliderManager* colliderManager;
-	TransformComponent* playerTransform;
+	GameObject* player;
 
 	float currentTime = 0;
 	int maxEnemies = 10;
@@ -21,7 +21,7 @@ private:
 
 	void CreateEnemy();
 public:
-	EnemyManager(Scene* game, ColliderManager* colliderManager, int maxEnemies, TransformComponent * playerTransform, float cadency);
+	EnemyManager(Scene* game, ColliderManager* colliderManager, int maxEnemies, GameObject * player, float cadency);
 	void Update(float deltaTime);
 	std::string GetClassName();
 };

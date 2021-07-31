@@ -24,6 +24,7 @@ Player::Player(ColliderManager* colliderManager, GameObject* owner, CharacterInp
 
 	HPComponent = new poke::HPComponent(100);
 	HPComponent->OnDamage->AddCallback(make_callback(this, &Player::OnTakeDamage));
+	owner->AddComponent(HPComponent);
 
 	playerAnimation = new poke::PlayerAnimation(textureComponent, spriteSheet, movementComponent);
 	owner->AddComponent(playerAnimation);

@@ -15,7 +15,6 @@ Gameplay::Gameplay(sf::View* view)
 
 	playerGo = new GameObject();
 	playerGo->name = "Player";
-
 	Player* player = new Player(colliderManager, playerGo, new PlayerInput(), 150);
 	playerGo->AddComponent(player);
 	playerGo->AddComponent(colliderManager->CreateCollider(30, 30, ColliderManager::PLAYER));
@@ -29,7 +28,7 @@ Gameplay::Gameplay(sf::View* view)
 	playerGo->transform->Translate(sf::Vector2f(380, 350));
 
 	GameObject* enemyManagerGo = new GameObject();
-	EnemyManager * enemyManager = new EnemyManager(this, colliderManager, 5, playerGo->transform, 1);
+	EnemyManager * enemyManager = new EnemyManager(this, colliderManager, 5, playerGo, 1);
 	enemyManagerGo->AddComponent(enemyManager);
 	AddGameObject(enemyManagerGo);
 
