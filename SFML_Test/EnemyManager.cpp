@@ -8,7 +8,7 @@ void EnemyManager::CreateEnemy()
 	Enemy* enemy = new Enemy(enemyGo, new AIInput(enemyGo->transform, player->transform), 80, player, ColliderManager::ENEMY);
 	enemyGo->AddComponent(enemy);
 	game->AddGameObject(enemyGo);
-
+	enemy->GetHPComponent()->OnDead->AddCallback(make_callback(this, &EnemyManager::OnEnemyDead));
 	enemies->push_back(enemyGo);
 
 	bool left = Random::RandomSign() < 0;
@@ -38,9 +38,10 @@ EnemyManager::EnemyManager(Scene* _game, int _maxEnemies, GameObject* _player, f
 void EnemyManager::Update(float deltaTime)
 {
 	currentTime += deltaTime;
-	if (currentTime > cadency) 
+	if (currentTime > cadency && enemiesCreated < maxEnemies) 
 	{
-		currentTime = -5555555;
+		currentTime = 0;
+		enemiesCreated++;
 		CreateEnemy();
 	}
 }
@@ -48,4 +49,13 @@ void EnemyManager::Update(float deltaTime)
 std::string EnemyManager::GetClassName()
 {
 	return "EnemyManager";
+}
+
+void EnemyManager::OnEnemyDead()
+{
+	enemiesDead++;
+	if (enemiesDead == maxEnemies)
+	{
+		GameScenes::instance->ChangeToMainMenu();
+	}
 }

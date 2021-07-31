@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "TransformComponent.h"
 #include "AIInput.h"
+#include "GameScenes.h"
 #include "Random.h"
 
 class EnemyManager : public IGameComponent
@@ -19,10 +20,14 @@ private:
 
 	vector<GameObject*>* enemies;
 
+	int enemiesDead;
+	int enemiesCreated;
+
 	void CreateEnemy();
 public:
 	EnemyManager(Scene* game, int maxEnemies, GameObject * player, float cadency);
 	void Update(float deltaTime);
 	std::string GetClassName();
+	void OnEnemyDead();
 };
 

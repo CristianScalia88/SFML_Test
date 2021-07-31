@@ -17,6 +17,7 @@ Scene::~Scene()
 		delete *i;
 	}
 	gameObjects->clear();
+	gameObjects->erase(gameObjects->begin(), gameObjects->end());
 }
 
 void Scene::CheckInput(sf::Event evv)
@@ -69,7 +70,8 @@ void Scene::DestroyAllGameObject()
 		gameObjectsToRemove->pop_back();
 		auto begin = gameObjects->begin();
 		auto end = gameObjects->end();
-		std::remove(begin, end, toRemove);
+		vector<GameObject*>::iterator it = std::remove(begin, end, toRemove);
+		gameObjects->erase(it);
 		delete toRemove;
 	}
 }

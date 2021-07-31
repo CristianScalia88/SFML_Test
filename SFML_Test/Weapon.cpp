@@ -16,6 +16,7 @@ void Weapon::Update(float deltaTime)
 		shootDirection = VectorUtils::Normalize(shootDirection);
 
 		GameObject* bulletGo = new GameObject();
+		bulletGo->name = "Bullet";
 		bulletGo->transform->Translate(bulletSpawnPoint);
 		Bullet* b = new Bullet(shootDirection, 450, bulletGo);
 		bulletGo->AddComponent(b);
