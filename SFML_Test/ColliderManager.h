@@ -16,7 +16,7 @@ public:
 	static const int BLOCK = 4;
 
 	static ColliderManager* instance;
-
+	ColliderComponent* placeHolderCollider;
 	ColliderComponent * CreateCollider(float width, float height, int layer);
 
 	ColliderManager();
@@ -24,7 +24,7 @@ public:
 
 	void CheckCollisions(float deltaTime);
 	void CheckCollission(vector<ColliderComponent*>* listA, vector<ColliderComponent*>* listB);
-	bool CheckMovement(ColliderComponent* placeHolderCollider, ColliderComponent* realCollider);
+	sf::Vector2f CheckMovement(ColliderComponent* realCollider, sf::Vector2f movement);
 	void Update(float deltaTime);
 	void RemoveCollider(ColliderComponent* collider);
 	void RemoveBlockCollider(ColliderComponent* collider);

@@ -7,7 +7,6 @@ MovementComponent::MovementComponent(CharacterInput* _characterInput, float _spe
 	characterInput = _characterInput;
 	speed = _speed;
 	realCollider = _realCollider;
-	placeHolderCollider = new ColliderComponent(realCollider->width, realCollider->height);
 }
 
 MovementComponent::~MovementComponent()
@@ -52,11 +51,8 @@ void MovementComponent::Update(float deltaTime)
 		cooldown -= deltaTime;
 		return;
 	}
-	sf::Vector2f newPos = realCollider->GetPosition() + characterInput->GetDirection() * speed * deltaTime;
-	placeHolderCollider->SetPosition(newPos);
-	if (ColliderManager::instance->CheckMovement(placeHolderCollider, realCollider)) 
-	{
-		return;
-	}
-	GetOwner()->transform->Translate(characterInput->GetDirection() * speed * deltaTime);
+	sf::Vector2f movement = characterInput->GetDirection() * speed * deltaTime;
+	
+	movement = ColliderManager::instance->CheckMovement(realCollider, movement);
+	GetOwner()->transform->Translate(movement);
 }

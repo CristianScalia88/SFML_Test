@@ -10,7 +10,6 @@ class MovementComponent :
 private:
 	CharacterInput* characterInput;
 	float cooldown = 0;
-	ColliderComponent* placeHolderCollider;
 	ColliderComponent* realCollider;
 public:
 	float speed;

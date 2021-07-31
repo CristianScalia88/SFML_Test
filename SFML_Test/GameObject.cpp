@@ -14,6 +14,7 @@ GameObject::~GameObject()
 		i->second->Destroy();
 		delete i->second;
 	}
+	components->erase(components->begin(), components->end());
 	delete components;
 	delete transform;
 }

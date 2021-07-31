@@ -8,6 +8,7 @@ const float COLLISSION_PER_SECONDS = .035f;
 
 ColliderManager::ColliderManager()
 {
+	placeHolderCollider = new ColliderComponent(30, 30);
 	collidersMap = new map<int, vector<ColliderComponent*>*>();
 	collidersMap->insert(std::pair<int, vector<ColliderComponent*>*>(PLAYER, new vector<ColliderComponent*>()));
 	collidersMap->insert(std::pair<int, vector<ColliderComponent*>*>(PLAYER_BULLETS, new vector<ColliderComponent*>()));
@@ -50,8 +51,11 @@ void ColliderManager::CheckCollission(vector<ColliderComponent*>* collidersA, ve
 	}
 }
 
-bool ColliderManager::CheckMovement(ColliderComponent* placeHolderCollider, ColliderComponent* realCollider)
+sf::Vector2f ColliderManager::CheckMovement(ColliderComponent* realCollider, sf::Vector2f movement)
 {
+	sf::Vector2f movementX = { movement.x, 0 };
+	sf::Vector2f movementY = { 0, movement.y};
+
 	vector<ColliderComponent*>* collidersA = collidersMap->find(BLOCK)->second;
 	for (size_t j = 0; j < collidersA->size(); j++)
 	{
@@ -59,11 +63,18 @@ bool ColliderManager::CheckMovement(ColliderComponent* placeHolderCollider, Coll
 		ColliderComponent* a = collidersA->at(j);
 		if (a == realCollider)
 			continue;
-		if (Intersecting(a->GetRectangleShape(), placeHolderCollider->GetRectangleShape())) {
-			return true;
+		placeHolderCollider->SetPosition(realCollider->GetPosition() + movementX);
+		if (Intersecting(a->GetRectangleShape(), placeHolderCollider->GetRectangleShape()))
+		{
+			movement.x = 0;
+		}
+		placeHolderCollider->SetPosition(realCollider->GetPosition() + movementY);
+		if (Intersecting(a->GetRectangleShape(), placeHolderCollider->GetRectangleShape()))
+		{
+			movement.y = 0;
 		}
 	}
-	return false;
+	return movement;
 }
 
 void ColliderManager::Update(float deltaTime)
