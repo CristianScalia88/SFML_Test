@@ -23,10 +23,12 @@ bool MovementComponent::IsMovingRight()
 	return direction.x > 0;
 }
 
-MovementComponent::MovementComponent(CharacterInput* _characterInput, float _speed)
+MovementComponent::MovementComponent(CharacterInput* _characterInput, float _speed, ColliderComponent* _realCollider, TransformComponent* _me)
 {
 	characterInput = _characterInput;
 	speed = _speed;
+	realCollider = _realCollider;
+	placeHolderCollider = new ColliderComponent(realCollider->width, realCollider->height);
 }
 
 MovementComponent::~MovementComponent()
@@ -49,5 +51,6 @@ void MovementComponent::Update(float deltaTime)
 		cooldown -= deltaTime;
 		return;
 	}
+	sf::Vector2f newPos = realCollider->GetPosition() + characterInput->GetDirection() * speed * deltaTime;
 	GetOwner()->transform->Translate(characterInput->GetDirection() * speed * deltaTime);
 }

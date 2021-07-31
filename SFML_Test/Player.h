@@ -26,7 +26,7 @@ protected:
 	MovementComponent* movementComponent;
 public:
 	TintOnDamageComponent* tint;
-	Player(ColliderManager* colliderManager, GameObject* owner, CharacterInput* charInput, float speed);
+	Player(GameObject* owner, CharacterInput* charInput, float speed,int layer);
 	~Player();
 	poke::HPComponent* GetHPComponent();
 	void Update(float dt);

@@ -21,7 +21,7 @@ private:
 
 	void CreateEnemy();
 public:
-	EnemyManager(Scene* game, ColliderManager* colliderManager, int maxEnemies, GameObject * player, float cadency);
+	EnemyManager(Scene* game, int maxEnemies, GameObject * player, float cadency);
 	void Update(float deltaTime);
 	std::string GetClassName();
 };

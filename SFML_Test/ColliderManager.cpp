@@ -13,6 +13,7 @@ ColliderManager::ColliderManager()
 	collidersMap->insert(std::pair<int, vector<ColliderComponent*>*>(PLAYER_BULLETS, new vector<ColliderComponent*>()));
 	collidersMap->insert(std::pair<int, vector<ColliderComponent*>*>(ENEMY, new vector<ColliderComponent*>()));
 	collidersMap->insert(std::pair<int, vector<ColliderComponent*>*>(ENEMY_BULLETS, new vector<ColliderComponent*>()));
+	collidersMap->insert(std::pair<int, vector<ColliderComponent*>*>(BLOCK, new vector<ColliderComponent*>()));
 	instance = this;
 }
 
@@ -49,6 +50,14 @@ void ColliderManager::CheckCollission(vector<ColliderComponent*>* collidersA, ve
 	}
 }
 
+/*void ColliderManager::CheckMovement()
+{
+	vector<ColliderComponent*>* collidersA = collidersMap->find(PLAYER_BULLETS)->second;
+	vector<ColliderComponent*>* collidersB = collidersMap->find(BLO)->second;
+	CheckCollission(collidersA, collidersB);
+}*/
+
+
 void ColliderManager::Update(float deltaTime)
 {
 	CheckCollisions(deltaTime);
@@ -57,6 +66,19 @@ void ColliderManager::Update(float deltaTime)
 void ColliderManager::RemoveCollider(ColliderComponent* collider)
 {
 	vector<ColliderComponent*>* collidersA = collidersMap->find(collider->layer)->second;
+	auto begin = collidersA->begin();
+	auto end = collidersA->end();
+	vector<ColliderComponent*>::iterator it = std::remove(begin, end, collider);
+	collidersA->erase(it, collidersA->end());
+	if (collider->layer == PLAYER || collider->layer == ENEMY)
+	{
+		RemoveBlockCollider(collider);
+	}
+}
+
+void ColliderManager::RemoveBlockCollider(ColliderComponent* collider)
+{
+	vector<ColliderComponent*>* collidersA = collidersMap->find(BLOCK)->second;
 	auto begin = collidersA->begin();
 	auto end = collidersA->end();
 	vector<ColliderComponent*>::iterator it = std::remove(begin, end, collider);
@@ -75,12 +97,14 @@ bool ColliderManager::Intersecting(const sf::RectangleShape * a, const sf::Recta
 
 ColliderComponent * ColliderManager::CreateCollider(float width, float height, int layer)
 {
-	sf::RectangleShape* rectangleShape = new sf::RectangleShape(sf::Vector2f(width, height));
-	rectangleShape->setOutlineColor(sf::Color::Red);
-	rectangleShape->setFillColor(sf::Color::Red);
-
-	ColliderComponent* colliderComponent = new ColliderComponent(width, height, rectangleShape);
+	ColliderComponent* colliderComponent = new ColliderComponent(width, height);
 	collidersMap->find(layer)->second->push_back(colliderComponent);
 	colliderComponent->layer = layer;
+
+	if (layer == PLAYER || layer == ENEMY) 
+	{
+		collidersMap->find(BLOCK)->second->push_back(colliderComponent);
+	}
+
 	return colliderComponent;
 }

@@ -4,7 +4,7 @@
 #include "Gameplay.h"
 #include "MeleeComponent.h"
 
-Enemy::Enemy(ColliderManager* colliderManager, GameObject* owner, CharacterInput* charInput, float speed, GameObject* player) : Player(colliderManager, owner, charInput, speed)
+Enemy::Enemy(GameObject* owner, CharacterInput* charInput, float speed, GameObject* player, int layer) : Player(owner, charInput, speed, layer)
 {
 	textureComponent->Tint(sf::Color::Magenta);
 	tint->colorAux = sf::Color::Magenta;

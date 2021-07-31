@@ -13,6 +13,7 @@ public:
 	static const int PLAYER_BULLETS = 1;
 	static const int ENEMY = 2;
 	static const int ENEMY_BULLETS = 3;
+	static const int BLOCK = 4;
 
 	static ColliderManager* instance;
 
@@ -25,6 +26,7 @@ public:
 	void CheckCollission(vector<ColliderComponent*>* listA, vector<ColliderComponent*>* listB);
 	void Update(float deltaTime);
 	void RemoveCollider(ColliderComponent* collider);
+	void RemoveBlockCollider(ColliderComponent* collider);
 	virtual std::string GetClassName();
 
 };

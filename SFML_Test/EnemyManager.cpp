@@ -5,10 +5,9 @@ void EnemyManager::CreateEnemy()
 {
 	GameObject* enemyGo = new GameObject();
 	enemyGo->name = "Enemy-" + enemies->size();
-	Enemy* enemy = new Enemy(colliderManager, enemyGo, new AIInput(enemyGo->transform, player->transform), 10, player);
+	Enemy* enemy = new Enemy(enemyGo, new AIInput(enemyGo->transform, player->transform), 10, player, ColliderManager::ENEMY);
 	enemyGo->AddComponent(enemy);
 	game->AddGameObject(enemyGo);
-	enemyGo->AddComponent(colliderManager->CreateCollider(30, 30, ColliderManager::ENEMY));
 
 	enemies->push_back(enemyGo);
 
@@ -26,10 +25,10 @@ void EnemyManager::CreateEnemy()
 	enemyGo->transform->Translate(sf::Vector2f(x,y));
 }
 
-EnemyManager::EnemyManager(Scene* _game, ColliderManager* _colliderManager, int _maxEnemies, GameObject* _player, float _cadency)
+EnemyManager::EnemyManager(Scene* _game, int _maxEnemies, GameObject* _player, float _cadency)
 {
 	game = _game;
-	colliderManager = _colliderManager;
+	colliderManager = ColliderManager::instance;
 	player = _player;
 	maxEnemies = _maxEnemies;
 	cadency = _cadency;

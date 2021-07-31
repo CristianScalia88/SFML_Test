@@ -16,9 +16,8 @@ Gameplay::Gameplay(sf::View* view)
 
 	playerGo = new GameObject();
 	playerGo->name = "Player";
-	Player* player = new Player(colliderManager, playerGo, new PlayerInput(), 150);
+	Player* player = new Player(playerGo, new PlayerInput(), 150, ColliderManager::PLAYER);
 	playerGo->AddComponent(player);
-	playerGo->AddComponent(colliderManager->CreateCollider(30, 30, ColliderManager::PLAYER));
 
 	player->GetHPComponent()->OnDead->AddCallback(make_callback(this, &Gameplay::GoToMainMenu));
 
@@ -33,7 +32,7 @@ Gameplay::Gameplay(sf::View* view)
 
 	GameObject* enemyManagerGo = new GameObject();
 	enemyManagerGo->name = "EnemyManager";
-	EnemyManager * enemyManager = new EnemyManager(this, colliderManager, 5, playerGo, 1);
+	EnemyManager * enemyManager = new EnemyManager(this, 5, playerGo, 1);
 	enemyManagerGo->AddComponent(enemyManager);
 	AddGameObject(enemyManagerGo);
 

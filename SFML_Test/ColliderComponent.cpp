@@ -2,9 +2,15 @@
 #include "ColliderComponent.h"
 #include "ColliderManager.h"
 
-ColliderComponent::ColliderComponent(float width, float height, sf::RectangleShape* _collider)
+ColliderComponent::ColliderComponent(float _width, float _height)
 {
-	collider = _collider;
+	width = _width;
+	height = _height;
+	sf::RectangleShape* rectangleShape = new sf::RectangleShape(sf::Vector2f(width, height));
+	rectangleShape->setOutlineColor(sf::Color::Red);
+	rectangleShape->setFillColor(sf::Color::Red);
+
+	collider = rectangleShape;
 	collider->setOutlineColor(sf::Color::Red);
 	collider->setFillColor(sf::Color::Red);
 	offset = new sf::Vector2f(width / 2, height);
@@ -39,6 +45,11 @@ const sf::RectangleShape * ColliderComponent::GetRectangleShape()
 std::string ColliderComponent::GetClassName()
 {
 	return "ColliderComponent";
+}
+
+sf::Vector2f ColliderComponent::GetPosition()
+{
+	return collider->getPosition();
 }
 
 void ColliderComponent::Destroy()
