@@ -52,6 +52,12 @@ sf::Vector2f ColliderComponent::GetPosition()
 	return collider->getPosition();
 }
 
+void ColliderComponent::SetPosition(sf::Vector2f pos)
+{
+	collider->setPosition(pos);
+
+}
+
 void ColliderComponent::Destroy()
 {
 	ColliderManager::instance->RemoveCollider(this);

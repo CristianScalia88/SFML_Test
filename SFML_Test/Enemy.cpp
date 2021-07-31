@@ -12,7 +12,7 @@ Enemy::Enemy(GameObject* owner, CharacterInput* charInput, float speed, GameObje
 
 	MeleeComponent* melee = new MeleeComponent(40, 1);
 	poke::PlayerAnimation* anim = (poke::PlayerAnimation*)owner->GetComponent("PlayerAnimation");
-	melee->Setup(110, player, owner->transform, anim, (MovementComponent*)owner->GetComponent("MovementComponent"));
+	melee->Setup(1, player, owner->transform, anim, (MovementComponent*)owner->GetComponent("MovementComponent"));
 	owner->AddComponent(melee);
 }
 

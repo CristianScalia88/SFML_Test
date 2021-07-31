@@ -1,5 +1,18 @@
 #include "pch.h"
 #include "MovementComponent.h"
+#include "ColliderManager.h"
+
+MovementComponent::MovementComponent(CharacterInput* _characterInput, float _speed, ColliderComponent* _realCollider, TransformComponent* _me)
+{
+	characterInput = _characterInput;
+	speed = _speed;
+	realCollider = _realCollider;
+	placeHolderCollider = new ColliderComponent(realCollider->width, realCollider->height);
+}
+
+MovementComponent::~MovementComponent()
+{
+}
 
 bool MovementComponent::IsMoving()
 {
@@ -23,18 +36,6 @@ bool MovementComponent::IsMovingRight()
 	return direction.x > 0;
 }
 
-MovementComponent::MovementComponent(CharacterInput* _characterInput, float _speed, ColliderComponent* _realCollider, TransformComponent* _me)
-{
-	characterInput = _characterInput;
-	speed = _speed;
-	realCollider = _realCollider;
-	placeHolderCollider = new ColliderComponent(realCollider->width, realCollider->height);
-}
-
-MovementComponent::~MovementComponent()
-{
-}
-
 void MovementComponent::BlockByTime(float time)
 {
 	cooldown = time;
@@ -52,5 +53,10 @@ void MovementComponent::Update(float deltaTime)
 		return;
 	}
 	sf::Vector2f newPos = realCollider->GetPosition() + characterInput->GetDirection() * speed * deltaTime;
+	placeHolderCollider->SetPosition(newPos);
+	if (ColliderManager::instance->CheckMovement(placeHolderCollider, realCollider)) 
+	{
+		return;
+	}
 	GetOwner()->transform->Translate(characterInput->GetDirection() * speed * deltaTime);
 }

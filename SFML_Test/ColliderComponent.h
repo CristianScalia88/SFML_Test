@@ -18,6 +18,7 @@ public:
 	const sf::RectangleShape * GetRectangleShape();
 	std::string GetClassName();
 	sf::Vector2f GetPosition();
+	void SetPosition(sf::Vector2f pos);
 	void Destroy();
 };
 

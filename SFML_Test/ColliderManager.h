@@ -24,6 +24,7 @@ public:
 
 	void CheckCollisions(float deltaTime);
 	void CheckCollission(vector<ColliderComponent*>* listA, vector<ColliderComponent*>* listB);
+	bool CheckMovement(ColliderComponent* placeHolderCollider, ColliderComponent* realCollider);
 	void Update(float deltaTime);
 	void RemoveCollider(ColliderComponent* collider);
 	void RemoveBlockCollider(ColliderComponent* collider);

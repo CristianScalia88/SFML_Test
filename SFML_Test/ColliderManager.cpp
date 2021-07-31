@@ -50,13 +50,21 @@ void ColliderManager::CheckCollission(vector<ColliderComponent*>* collidersA, ve
 	}
 }
 
-/*void ColliderManager::CheckMovement()
+bool ColliderManager::CheckMovement(ColliderComponent* placeHolderCollider, ColliderComponent* realCollider)
 {
-	vector<ColliderComponent*>* collidersA = collidersMap->find(PLAYER_BULLETS)->second;
-	vector<ColliderComponent*>* collidersB = collidersMap->find(BLO)->second;
-	CheckCollission(collidersA, collidersB);
-}*/
+	vector<ColliderComponent*>* collidersA = collidersMap->find(BLOCK)->second;
+	for (size_t j = 0; j < collidersA->size(); j++)
+	{
 
+		ColliderComponent* a = collidersA->at(j);
+		if (a == realCollider)
+			continue;
+		if (Intersecting(a->GetRectangleShape(), placeHolderCollider->GetRectangleShape())) {
+			return true;
+		}
+	}
+	return false;
+}
 
 void ColliderManager::Update(float deltaTime)
 {

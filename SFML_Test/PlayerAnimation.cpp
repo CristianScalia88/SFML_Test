@@ -73,9 +73,6 @@ void poke::PlayerAnimation::Update(float deltaTime)
 	if (cooldown > 0) 
 	{
 		cooldown -= deltaTime;
-		if (cooldown <= 0) {
-			cout << "Cooldown Finished " << endl;
-		}
 		return;
 	}
 

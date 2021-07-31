@@ -12,6 +12,7 @@ Player::Player(GameObject* owner, CharacterInput* charInput, float speed, int la
 		cout << "Texture Load from File Error" << endl;
 	}
 
+
 	//TODO CRETE COLLIDER HERE;
 	ColliderComponent* cc = ColliderManager::instance->CreateCollider(30, 30, layer);
 	owner->AddComponent(cc);
@@ -31,7 +32,9 @@ Player::Player(GameObject* owner, CharacterInput* charInput, float speed, int la
 
 	playerAnimation = new poke::PlayerAnimation(textureComponent, spriteSheet, movementComponent);
 	owner->AddComponent(playerAnimation);
+
 	tint = new TintOnDamageComponent(textureComponent, HPComponent);
+	tint->colorAux = sf::Color::White;
 	owner->AddComponent(tint);
 }
 
