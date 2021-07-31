@@ -41,7 +41,7 @@ Gameplay::Gameplay(sf::View* view)
 	GameObject* playerHud = new GameObject();
 	PlayerHud* playerHudComponent = new PlayerHud(player->GetHPComponent(), playerHud);
 	playerHud->AddComponent(playerHudComponent);
-	AddGameObject(playerHud);
+	AddGameObjectHUD(playerHud);
 	running = true;
 	instance = this;
 }
