@@ -53,6 +53,6 @@ void TextureComponent::Tint(sf::Color color)
 
 void TextureComponent::LookAt(sf::Vector2f direction)
 {
-	float result = atan2(direction.y, direction.x) * 180 / PI;
+	float result = ((double)atan2(direction.y, direction.x) * (double)180) / PI;
 	sprite->setRotation(result);
 }

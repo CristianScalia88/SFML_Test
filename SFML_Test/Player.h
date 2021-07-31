@@ -13,6 +13,7 @@
 #include "PlayerAnimation.h"
 #include "IGameComponent.h"
 #include "Input.h"
+#include "TintOnDamageComponent.h"
 
 class Player : public IGameComponent
 {
@@ -27,8 +28,7 @@ public:
 	Player(ColliderManager* colliderManager, GameObject* owner, CharacterInput* charInput, float speed);
 	~Player();
 	poke::HPComponent* GetHPComponent();
-	void Update(float deltaTime);
-	void OnTakeDamage();
+
 	std::string GetClassName();
 };
 

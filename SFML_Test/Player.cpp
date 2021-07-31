@@ -23,11 +23,12 @@ Player::Player(ColliderManager* colliderManager, GameObject* owner, CharacterInp
 	owner->AddComponent(textureComponent);
 
 	HPComponent = new poke::HPComponent(100);
-	HPComponent->OnDamage->AddCallback(make_callback(this, &Player::OnTakeDamage));
 	owner->AddComponent(HPComponent);
 
 	playerAnimation = new poke::PlayerAnimation(textureComponent, spriteSheet, movementComponent);
 	owner->AddComponent(playerAnimation);
+
+	owner->AddComponent(new TintOnDamageComponent(textureComponent, HPComponent));
 }
 
 Player::~Player()
@@ -43,34 +44,6 @@ poke::HPComponent* Player::GetHPComponent()
 
 float tintDamageCooldown;
 bool tint;
-
-void Player::Update(float deltaTime)
-{
-	if (Input::GetKeyDown(Input::Key::Mouse1))
-	{
-		HPComponent->TakeDamage(1);
-	}
-
-	if (tintDamageCooldown > 0)
-	{
-		if (!tint) 
-		{
-			tint = true;
-			textureComponent->Tint(sf::Color::Red);
-		}
-		tintDamageCooldown -= deltaTime;
-	}
-	else if(tint)
-	{
-		textureComponent->Tint(sf::Color::White);
-		tint = false;
-	}
-}
-
-void Player::OnTakeDamage()
-{
-	tintDamageCooldown = .3f;
-}
 
 std::string Player::GetClassName()
 {
