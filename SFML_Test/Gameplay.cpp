@@ -19,8 +19,6 @@ Gameplay::Gameplay(sf::View* view)
 	Player* player = new Player(colliderManager, playerGo, new PlayerInput(), 150);
 	playerGo->AddComponent(player);
 	playerGo->AddComponent(colliderManager->CreateCollider(30, 30, ColliderManager::PLAYER));
-	CameraComponent * cc = new CameraComponent(view);
-	playerGo->AddComponent(cc);
 
 	player->GetHPComponent()->OnDead->AddCallback(make_callback(this, &Gameplay::GoToMainMenu));
 
@@ -29,6 +27,9 @@ Gameplay::Gameplay(sf::View* view)
 
 	AddGameObject(playerGo);
 	playerGo->transform->Translate(sf::Vector2f(380, 350));
+
+	CameraComponent* cc = new CameraComponent(view, playerGo->transform, true);
+	playerGo->AddComponent(cc);
 
 	GameObject* enemyManagerGo = new GameObject();
 	enemyManagerGo->name = "EnemyManager";

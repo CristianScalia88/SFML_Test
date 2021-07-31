@@ -41,7 +41,7 @@ Credits::Credits(sf::View* view)
 
 	GameObject* go = new GameObject();
 	go->transform->Translate({ 400, 300 });
-	CameraComponent* cc = new CameraComponent(view);
+	CameraComponent* cc = new CameraComponent(view, go->transform, false);
 	go->AddComponent(cc);
 	AddGameObject(go);
 }
