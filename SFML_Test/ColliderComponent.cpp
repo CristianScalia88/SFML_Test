@@ -6,13 +6,7 @@ ColliderComponent::ColliderComponent(float _width, float _height)
 {
 	width = _width;
 	height = _height;
-	sf::RectangleShape* rectangleShape = new sf::RectangleShape(sf::Vector2f(width, height));
-	rectangleShape->setOutlineColor(sf::Color::Red);
-	rectangleShape->setFillColor(sf::Color::Red);
-
-	collider = rectangleShape;
-	collider->setOutlineColor(sf::Color::Red);
-	collider->setFillColor(sf::Color::Red);
+	collider = new sf::RectangleShape(sf::Vector2f(width, height));
 	offset = new sf::Vector2f(width / 2, height);
 }
 

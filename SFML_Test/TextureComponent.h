@@ -12,6 +12,7 @@ private:
 	sf::Vector2f* currentScale;
 public:
 	TextureComponent(sf::Texture* texture);
+	TextureComponent(sf::Texture* texture, float x, float y);
 	~TextureComponent();
 	void Render(sf::RenderWindow* window);
 	void SetRectangle(poke::Rect* rect, poke::Pivot* pivot);

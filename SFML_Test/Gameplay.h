@@ -24,5 +24,6 @@ public:
 	~Gameplay();
 	void GoToMainMenu();
 	void OnLoopEnd();
+	void CreateLevelColliders();
 };
 

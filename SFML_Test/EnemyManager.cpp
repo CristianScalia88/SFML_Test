@@ -15,14 +15,14 @@ void EnemyManager::CreateEnemy()
 	int x = 0;
 	if (left) 
 	{
-		x = Random::Range(0, 300);
+		x = Random::Range(500, 1100);
 	}
 	else {
-		x = Random::Range(0, 300);
+		x = Random::Range(500, 1100);
 	}
-	int y = Random::Range(0,500);
+	int y = Random::Range(370, 250);
 
-	enemyGo->transform->Translate(sf::Vector2f(x,y));
+	enemyGo->transform->Translate(sf::Vector2f(x, y));
 }
 
 EnemyManager::EnemyManager(Scene* _game, int _maxEnemies, GameObject* _player, float _cadency)
