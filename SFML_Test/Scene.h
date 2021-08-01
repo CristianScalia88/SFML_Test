@@ -3,9 +3,10 @@
 
 class Scene
 {
-private:
+protected:
 	vector<GameObject*>* gameObjects;
 	vector<GameObject*>* gameObjectsHUD;
+
 	vector<GameObject*>* gameObjectsToAdd;
 	vector<GameObject*>* gameObjectsToRemove;
 public:
@@ -21,5 +22,6 @@ public:
 	void DestroyAllGameObject();
 	void AddDynamicGameObjects();
 	void RenderUI(sf::RenderWindow*);
+	virtual void OnLoopEnd();
 };
 

@@ -23,5 +23,6 @@ public:
 	Gameplay(sf::View* view);
 	~Gameplay();
 	void GoToMainMenu();
+	void OnLoopEnd();
 };
 

@@ -89,3 +89,7 @@ void Scene::RenderUI(sf::RenderWindow* window)
 		(*i)->Render(window);
 }
 
+void Scene::OnLoopEnd()
+{
+}
+

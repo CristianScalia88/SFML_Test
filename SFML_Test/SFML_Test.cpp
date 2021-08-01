@@ -74,6 +74,8 @@ int main()
 
 		game->AddDynamicGameObjects();
 		game->DestroyAllGameObject();
+
+		game->OnLoopEnd();
 	}
 
 	delete window;

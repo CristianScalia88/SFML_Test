@@ -39,7 +39,7 @@ Gameplay::Gameplay(sf::View* view)
 	//Add The colliderManager
 	GameObject* colliderManagerGo = new GameObject();
 	colliderManagerGo->name = "colliderManager";
-
+	colliderManagerGo->transform->Translate({ 0,9999 });
 	colliderManagerGo->AddComponent(colliderManager);
 	AddGameObject(colliderManagerGo);
 
@@ -60,4 +60,9 @@ Gameplay::~Gameplay()
 void Gameplay::GoToMainMenu()
 {
 	GameScenes::instance->ChangeToMainMenu();
+}
+
+void Gameplay::OnLoopEnd()
+{
+	std::sort(gameObjects->begin(), gameObjects->end(), [](GameObject* a, GameObject* b) { return a->transform->position.y < b->transform->position.y; } );
 }
