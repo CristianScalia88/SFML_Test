@@ -8,7 +8,8 @@
 /// <returns></returns>
 int Random::Range(int minValue, int maxValue)
 {
-    return rand() % (maxValue + 1) + minValue;
+    int dif = maxValue - minValue;
+    return rand() % (dif + 1) + minValue;
 }
 
 int Random::RandomSign()
