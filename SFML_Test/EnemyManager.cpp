@@ -11,16 +11,16 @@ void EnemyManager::CreateEnemy()
 	enemy->GetHPComponent()->OnDead->AddCallback(make_callback(this, &EnemyManager::OnEnemyDead));
 	enemies->push_back(enemyGo);
 
-	bool left = Random::RandomSign() < 0;
+	//bool left = Random::RandomSign() < 0;
 	int x = 0;
-	if (left) 
+	/*if (left) 
 	{
 		x = Random::Range(500, 1100);
 	}
-	else {
-		x = Random::Range(500, 1100);
-	}
-	int y = Random::Range(370, 250);
+	else {*/
+		x = Random::Range(500, 1557);
+	//}
+	int y = Random::Range(380, 620);
 
 	enemyGo->transform->Translate(sf::Vector2f(x, y));
 }

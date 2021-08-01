@@ -45,7 +45,7 @@ Gameplay::Gameplay(sf::View* view)
 
 	GameObject* enemyManagerGo = new GameObject();
 	enemyManagerGo->name = "EnemyManager";
-	EnemyManager * enemyManager = new EnemyManager(this, 8, playerGo, 3);
+	EnemyManager * enemyManager = new EnemyManager(this, 8, playerGo, 2);
 	enemyManagerGo->AddComponent(enemyManager);
 	AddGameObject(enemyManagerGo);
 
