@@ -51,9 +51,9 @@ poke::HPComponent* Player::GetHPComponent()
 
 void Player::Update(float dt)
 {
-	if (Input::GetKeyDown(Input::Mouse1)) {
-		HPComponent->TakeDamage(101);
-	}
+	/*if (Input::GetKeyDown(Input::Mouse1) && GetOwner()->name == "Player") {
+		cout << GetOwner()->GetPosition().x << " " << GetOwner()->GetPosition().y << " " << endl;
+	}*/
 }
 
 float tintDamageCooldown;
