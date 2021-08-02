@@ -23,7 +23,7 @@ void ColliderComponent::Update(float deltaTime)
 
 void ColliderComponent::Render(sf::RenderWindow * window)
 {
-	window->draw(*collider);
+	//window->draw(*collider);
 }
 
 void ColliderComponent::OnCollisionEnter(ColliderComponent* otherCollider)

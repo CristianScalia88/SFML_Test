@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Weapon.h"
+#include "SoundManager.h"
 
 Weapon::Weapon(sf::Vector2f _offset)
 {
@@ -22,6 +23,8 @@ void Weapon::Update(float deltaTime)
 		bulletGo->AddComponent(b);
 		bulletGo->AddComponent(ColliderManager::instance->CreateCollider(15, 15, ColliderManager::PLAYER_BULLETS));
 		Gameplay::instance->AddGameObject(bulletGo);
+
+		SoundManager::instance->Play("fireBall");
 	}
 }
 

@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "GameScenes.h"
 #include "Input.h"
+#include "SoundManager.h"
 
 using namespace sf;
 
@@ -13,6 +14,9 @@ int main()
 	sf::Color gray = sf::Color(40, 40, 40);
 
 	sf::View view;
+
+
+	SoundManager soundManager;
 
 	Scene* game = nullptr;
 	GameScenes gameScenes = GameScenes(&game, &view);

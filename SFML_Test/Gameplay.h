@@ -18,6 +18,7 @@ class Gameplay : public Scene
 private:
 	GameObject* playerGo;
 	ColliderManager* colliderManager;
+	void OnPlayerGetDamaged();
 public:
 	static Gameplay* instance;
 	Gameplay(sf::View* view);

@@ -6,10 +6,16 @@
 #include "Weapon.h"
 #include "CameraComponent.h"
 #include "GameScenes.h"
+#include "SoundManager.h"
 
 Gameplay* Gameplay::instance = nullptr;
 
 const string LEVEL_PATH = "Assets/level.png";
+
+void Gameplay::OnPlayerGetDamaged()
+{
+	SoundManager::instance->Play("playerDamage");
+}
 
 Gameplay::Gameplay(sf::View* view)
 {
@@ -29,10 +35,11 @@ Gameplay::Gameplay(sf::View* view)
 
 	playerGo = new GameObject();
 	playerGo->name = "Player";
-	Player* player = new Player(playerGo, new PlayerInput(), 150, ColliderManager::PLAYER);
+	Player* player = new Player(playerGo, new PlayerInput(), 350, ColliderManager::PLAYER);
 	playerGo->AddComponent(player);
 
 	player->GetHPComponent()->OnDead->AddCallback(make_callback(this, &Gameplay::GoToMainMenu));
+	player->GetHPComponent()->OnDamage->AddCallback(make_callback(this, &Gameplay::OnPlayerGetDamaged));
 
 	Weapon* weapon = new Weapon({ 0, -25});
 	playerGo->AddComponent(weapon);

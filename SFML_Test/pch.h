@@ -9,6 +9,7 @@
 #define PCH_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <string>
 #include <map>
 #include <typeinfo>

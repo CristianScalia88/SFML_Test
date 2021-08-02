@@ -5,7 +5,7 @@ void EnemyManager::CreateEnemy()
 {
 	GameObject* enemyGo = new GameObject();
 	enemyGo->name = "Enemy-" + enemies->size();
-	Enemy* enemy = new Enemy(enemyGo, new AIInput(enemyGo->transform, player->transform), 80, player, ColliderManager::ENEMY);
+	Enemy* enemy = new Enemy(enemyGo, new AIInput(enemyGo->transform, player->transform), 50, player, ColliderManager::ENEMY);
 	enemyGo->AddComponent(enemy);
 	game->AddGameObject(enemyGo);
 	enemy->GetHPComponent()->OnDead->AddCallback(make_callback(this, &EnemyManager::OnEnemyDead));
