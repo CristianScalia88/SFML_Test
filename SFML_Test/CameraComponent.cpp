@@ -15,7 +15,9 @@ void CameraComponent::Update(float deltaTime)
 	if (update) 
 	{
 		sf::Vector2f delta = target->position - view->getCenter();
-		view->setCenter(view->getCenter() + delta * (deltaTime * 3));
+		sf::Vector2f newPos = view->getCenter() + delta * (deltaTime * 3);
+		newPos.y = 320;
+		view->setCenter(newPos);
 	}
 }
 
