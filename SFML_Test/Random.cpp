@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "VectorUtils.h"
 #include "Random.h"
 /// <summary>
 /// returns a random value (inclusive , inclusive).
@@ -21,4 +22,11 @@ int Random::RandomSign()
     else {
         return 1;
     }
+}
+
+sf::Vector2f Random::RandomDirection()
+{
+    float x = Random::Range(-100, 100);
+    float y = Random::Range(-100, 100);
+    return VectorUtils::Normalize(sf::Vector2f(x, y));
 }

@@ -11,7 +11,7 @@ protected:
 public:
 	TransformComponent* target;
 	AIInput(TransformComponent * _owner, TransformComponent* _target);
-	sf::Vector2f GetDirection();
+	virtual sf::Vector2f GetDirection();
 	bool Attack();
 };
 

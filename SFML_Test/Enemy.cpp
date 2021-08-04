@@ -16,6 +16,7 @@ Enemy::Enemy(GameObject* owner, CharacterInput* charInput, float speed, GameObje
 	owner->AddComponent(melee);
 }
 
+
 void Enemy::OnTriggerEnter(GameObject* go)
 {
 	Bullet* b = (Bullet*)go->GetComponent("Bullet");

@@ -181,6 +181,7 @@
     <ClInclude Include="MeleeComponent.h" />
     <ClInclude Include="PlayerHud.h" />
     <ClInclude Include="Random.h" />
+    <ClInclude Include="RangeAIInput.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Gameplay.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="MeleeComponent.cpp" />
     <ClCompile Include="PlayerHud.cpp" />
     <ClCompile Include="Random.cpp" />
+    <ClCompile Include="RangeAIInput.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Gameplay.cpp" />
