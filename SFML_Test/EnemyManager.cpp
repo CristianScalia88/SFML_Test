@@ -91,6 +91,15 @@ void EnemyManager::Update(float deltaTime)
 		enemiesCreated++;
 		CreateEnemy();
 	}
+
+	if (endGameInSeconds != 0)
+	{
+		endGameInSeconds -= deltaTime;
+		if (endGameInSeconds <= 0) 
+		{
+			GameScenes::instance->ChangeToMainMenu();
+		}
+	}
 }
 
 std::string EnemyManager::GetClassName()
@@ -106,6 +115,6 @@ void EnemyManager::OnEnemyDead()
 		cout << (1 + (extraScoreMultiplier / MAX_EXTRA_SCORE)) << endl;
 		float calcualtedScore = (enemiesDead *32) *  (1 + (extraScoreMultiplier / MAX_EXTRA_SCORE));
 		ScoreManager::instance->AddScore(new Score("UserName", calcualtedScore));
-		GameScenes::instance->ChangeToMainMenu();
+		endGameInSeconds = 2;
 	}
 }

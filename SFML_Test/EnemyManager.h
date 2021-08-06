@@ -25,6 +25,8 @@ private:
 
 	void CreateEnemy();
 
+	float endGameInSeconds;
+
 	const float MAX_EXTRA_SCORE = 60;
 	float extraScoreMultiplier = MAX_EXTRA_SCORE;
 public:
