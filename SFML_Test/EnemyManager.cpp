@@ -112,7 +112,6 @@ void EnemyManager::OnEnemyDead()
 	enemiesDead++;
 	if (enemiesDead == maxEnemies)
 	{
-		cout << (1 + (extraScoreMultiplier / MAX_EXTRA_SCORE)) << endl;
 		float calcualtedScore = (enemiesDead *32) *  (1 + (extraScoreMultiplier / MAX_EXTRA_SCORE));
 		ScoreManager::instance->AddScore(new Score("UserName", calcualtedScore));
 		endGameInSeconds = 2;
