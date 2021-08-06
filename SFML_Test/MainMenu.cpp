@@ -31,8 +31,12 @@ MainMenu::MainMenu(sf::View* view)
 	go->AddComponent(cc);
 	AddGameObject(go);
 
+
 	exitButton = CreateButton("Exit", make_callback(this, &MainMenu::CloseGame), { 300, 380 });
 	AddGameObject(exitButton);
+
+	GameObject* scoreButton = CreateButton("Score", make_callback(GameScenes::instance, &GameScenes::ChangeToScoreScreen), { 300, 420 });
+	AddGameObject(scoreButton);
 }
 
 void MainMenu::GoToGameplay() 

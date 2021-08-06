@@ -3,6 +3,7 @@
 #include "Gameplay.h"
 #include "Credits.h"
 #include "MainMenu.h"
+#include "ScoreScreen.h"
 
 class GameScenes
 {
@@ -19,4 +20,5 @@ public:
 	void ChangeToCredtis();
 	void CloseGame();
 	void ChangeToMainMenu();
+	void ChangeToScoreScreen();
 };

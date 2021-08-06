@@ -2,6 +2,7 @@
 #include "EnemyManager.h"
 #include "Random.h"
 #include "RangeAIInput.h"
+#include "../../Cpp/Clase2/HighScore/ScoreManager.h"
 
 void EnemyManager::CreateEnemy()
 {
@@ -101,6 +102,7 @@ void EnemyManager::OnEnemyDead()
 	enemiesDead++;
 	if (enemiesDead == maxEnemies)
 	{
+		ScoreManager::instance->AddScore(new Score("UserName", enemiesDead));
 		GameScenes::instance->ChangeToMainMenu();
 	}
 }

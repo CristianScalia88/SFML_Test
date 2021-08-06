@@ -3,6 +3,7 @@
 #include "GameScenes.h"
 #include "Input.h"
 #include "SoundManager.h"
+#include "../../Cpp/Clase2/HighScore/ScoreManager.h"
 
 using namespace sf;
 
@@ -33,6 +34,11 @@ int main()
 
 	Input::SetWindows(window);
 	view.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+
+	ScoreManager scoreManager = ScoreManager(10);
+	
+
 
 	while (window->isOpen()) 
 	{
@@ -80,6 +86,11 @@ int main()
 		game->DestroyAllGameObject();
 
 		game->OnLoopEnd();
+	}
+
+	if (game != nullptr) 
+	{
+		delete game;
 	}
 
 	delete window;

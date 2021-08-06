@@ -150,6 +150,9 @@
     <ClInclude Include="RangeAttackComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="ScoreScreen.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -285,6 +288,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="RangeAttackComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreScreen.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

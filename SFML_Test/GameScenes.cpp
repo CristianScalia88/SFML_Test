@@ -4,13 +4,14 @@
 GameScenes* GameScenes::instance;
 
 
-GameScenes::GameScenes(Scene** game_, sf::View* _view) {
+GameScenes::GameScenes(Scene** game_, sf::View* _view)
+{
+	instance = this;
 	game = game_;
 	view = _view;
 	changeToScene = nullptr;
 	ChangeToMainMenu();
 	ChangeScene();
-	instance = this;
 }
 
 void GameScenes::RequestChangeGame(Scene* newGame)
@@ -57,4 +58,10 @@ void GameScenes::ChangeToMainMenu()
 	mainMenu->goToCredits = make_callback(this, &GameScenes::ChangeToCredtis);
 	mainMenu->closeGame = make_callback(this, &GameScenes::CloseGame);
 	RequestChangeGame(mainMenu);
+}
+
+void GameScenes::ChangeToScoreScreen()
+{
+	ScoreScreen* scoreScreen = new ScoreScreen(view);
+	RequestChangeGame(scoreScreen);
 }
