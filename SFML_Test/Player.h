@@ -19,17 +19,23 @@ class Player : public IGameComponent
 {
 protected:
 	sf::Texture* texture;
-	poke::SpriteSheet* spriteSheet;
+	
 	poke::HPComponent* HPComponent;
-	poke::PlayerAnimation* playerAnimation;
-	TextureComponent* textureComponent;
-	MovementComponent* movementComponent;
+	PlayerAnimation* playerAnimation;
 public:
+	MovementComponent* movementComponent;
+	poke::SpriteSheet* spriteSheet;
+	TextureComponent* textureComponent;
+	static const string PATH_JSON;
+	static const string PATH_TEXTURE;
 	TintOnDamageComponent* tint;
 	Player(GameObject* owner, CharacterInput* charInput, float speed,int layer);
 	~Player();
 	poke::HPComponent* GetHPComponent();
+	void SetupSprite(GameObject* owner, string jsonName, string textureName);
+	virtual void SetupAnimation(GameObject* owner, PlayerAnimation* pa);
 	void Update(float dt);
 	std::string GetClassName();
+	void OnTriggerEnter(GameObject* go);
 };
 

@@ -27,7 +27,6 @@ Bullet::~Bullet()
 void Bullet::Update(float deltaTime)
 {
 	sf::Vector2f newPos = (direction * speed * deltaTime);
-	//cout << newPos.x << " " << newPos.y << endl;
 	GetOwner()->transform->Translate(newPos);
 }
 

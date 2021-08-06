@@ -10,9 +10,13 @@ class Weapon : public IGameComponent
 {
 private:
 	sf::Vector2f offset;
+	bool isPlayer; //ITs Sucks...i now xD
+	float damage;
 public:
-	Weapon(sf::Vector2f _offset);
+	Weapon(sf::Vector2f _offset, float damage, bool player);
 	void Update(float deltaTime);
+	void Shoot(sf::Vector2f origin, sf::Vector2f direction);
 	std::string GetClassName();
+	sf::Vector2f GetBulletSpawnPoint();
 };
 

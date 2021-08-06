@@ -1,17 +1,61 @@
 #include "pch.h"
 #include "EnemyManager.h"
+#include "Random.h"
 #include "RangeAIInput.h"
 
 void EnemyManager::CreateEnemy()
 {
 	GameObject* enemyGo = new GameObject();
-	enemyGo->name = "Enemy-" + enemies->size();
-	Enemy* enemy = new Enemy(enemyGo, new RangeAIInput(enemyGo->transform, player->transform), 50, player, ColliderManager::ENEMY);
+	enemyGo->name = "Enemy-" + std::to_string(enemies->size());
+	string texture = Player::PATH_TEXTURE;
+	string atlas = Player::PATH_JSON;
+	CharacterInput* charInput = new AIInput(enemyGo->transform, player->transform);
+	float speed = 50;
+
+	Enemy* enemy = new Enemy(enemyGo, charInput, 50, ColliderManager::ENEMY);
+	bool isRangeEnemy = Random::Range(0, 100) > 50;
+	int* idleFrameIds;
+	int* walk;
+	int* attackFrameIds;
+	if(isRangeEnemy)
+	{
+		isRangeEnemy = true;
+		texture = "Assets/enemy2.png";
+		atlas = "Assets/enemy2Atlas.json";
+		charInput = new RangeAIInput(enemyGo->transform, player->transform);
+		speed = 70;
+		idleFrameIds = new int[6]{ 0, 1, 2, 3, 4, 5 };
+		walk = new int[6]{ 6,7,8,9,10,11 };
+		attackFrameIds = new int[3]{ 12,13,14 };
+	}
+	else 
+	{
+		idleFrameIds = new int[6]{ 0, 1, 2, 3, 4, 5 };
+		walk = new int[6]{ 14,15,16,17,18,19 };
+		attackFrameIds = new int[3]{ 20,21,22 };
+	}
+
+	enemy->SetupSprite(enemyGo, atlas, texture);
+	
+	enemy->SetupAnimation(enemyGo, new PlayerAnimation(enemy->textureComponent, enemy->spriteSheet, enemy->movementComponent, idleFrameIds, walk, attackFrameIds));
+
 	enemyGo->AddComponent(enemy);
 	game->AddGameObject(enemyGo);
 	enemy->GetHPComponent()->OnDead->AddCallback(make_callback(this, &EnemyManager::OnEnemyDead));
 	enemies->push_back(enemyGo);
 
+	if (isRangeEnemy) 
+	{
+		enemy->SetRangeCombat(enemyGo, player);
+
+	}
+	else 
+	{
+		enemy->SetMeeleCombat(enemyGo, player);
+		enemy->textureComponent->Tint(sf::Color::Magenta);
+		enemy->tint->colorAux = sf::Color::Magenta;
+	}
+	
 	//bool left = Random::RandomSign() < 0;
 	int x = 0;
 	/*if (left) 

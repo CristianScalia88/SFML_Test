@@ -36,12 +36,19 @@ Gameplay::Gameplay(sf::View* view)
 	playerGo = new GameObject();
 	playerGo->name = "Player";
 	Player* player = new Player(playerGo, new PlayerInput(), 350, ColliderManager::PLAYER);
+	player->SetupSprite(playerGo, Player::PATH_JSON, Player::PATH_TEXTURE);
+
+	int * idleFrameIds = new int[6]{ 0, 1, 2, 3, 4, 5 };
+	int * walk = new int[6]{ 14,15,16,17,18,19 };
+	int * attackFrameIds = new int[3]{ 20,21,22 };
+
+	player->SetupAnimation(playerGo, new PlayerAnimation(player->textureComponent, player->spriteSheet, player->movementComponent, idleFrameIds, walk, attackFrameIds));
 	playerGo->AddComponent(player);
 
 	player->GetHPComponent()->OnDead->AddCallback(make_callback(this, &Gameplay::GoToMainMenu));
 	player->GetHPComponent()->OnDamage->AddCallback(make_callback(this, &Gameplay::OnPlayerGetDamaged));
 
-	Weapon* weapon = new Weapon({ 0, -25});
+	Weapon* weapon = new Weapon({ 0, -25}, 50, true);
 	playerGo->AddComponent(weapon);
 
 	AddGameObject(playerGo);
@@ -55,6 +62,7 @@ Gameplay::Gameplay(sf::View* view)
 	EnemyManager * enemyManager = new EnemyManager(this, 8, playerGo, 2);
 	enemyManagerGo->AddComponent(enemyManager);
 	AddGameObject(enemyManagerGo);
+
 
 	//Add The colliderManager
 	GameObject* colliderManagerGo = new GameObject();

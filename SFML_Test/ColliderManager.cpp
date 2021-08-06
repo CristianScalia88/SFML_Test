@@ -32,6 +32,10 @@ void ColliderManager::CheckCollisions(float deltaTime)
 		vector<ColliderComponent*>* collidersA = collidersMap->find(PLAYER_BULLETS)->second;
 		vector<ColliderComponent*>* collidersB = collidersMap->find(ENEMY)->second;
 		CheckCollission(collidersA, collidersB);
+
+		collidersA = collidersMap->find(ENEMY_BULLETS)->second;
+		collidersB = collidersMap->find(PLAYER)->second;
+		CheckCollission(collidersA, collidersB);
 	}
 }
 

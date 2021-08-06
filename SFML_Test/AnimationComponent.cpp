@@ -28,8 +28,9 @@ void AnimationComponent::Update(float deltaTime)
 		UpdateSprite();
 
 		totalTime -= FPS;
-		currentFrameIndex = (currentFrameIndex + 1) % frames;
-		if (currentFrameIndex == frames - 1) {
+		currentFrameIndex++;
+		currentFrameIndex = currentFrameIndex % frames ;
+		if (currentFrameIndex == frames -1) {
 			OnFinish->Invoke();
 			OnFinish->Clear();
 		}

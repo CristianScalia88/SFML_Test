@@ -7,7 +7,7 @@ MeleeComponent::MeleeComponent(float _attackDistance, float _cooldown)
 	cooldown = _cooldown;
 }
 
-void MeleeComponent::Setup(int _damage, GameObject* player, TransformComponent* _meTransform, poke::PlayerAnimation* _animation, MovementComponent* _movement)
+void MeleeComponent::Setup(int _damage, GameObject* player, TransformComponent* _meTransform, PlayerAnimation* _animation, MovementComponent* _movement)
 {
 	target = player->transform;
 	meTransform = _meTransform;

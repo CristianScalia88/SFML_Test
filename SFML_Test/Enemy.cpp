@@ -3,26 +3,19 @@
 #include "Bullet.h"
 #include "Gameplay.h"
 #include "MeleeComponent.h"
+#include "RangeAttackComponent.h"
 
-Enemy::Enemy(GameObject* owner, CharacterInput* charInput, float speed, GameObject* player, int layer) : Player(owner, charInput, speed, layer)
+Enemy::Enemy(GameObject* owner, CharacterInput* charInput, float speed, int layer) : Player(owner, charInput, speed, layer)
 {
-	textureComponent->Tint(sf::Color::Magenta);
-	tint->colorAux = sf::Color::Magenta;
 	target = target;
-
-	MeleeComponent* melee = new MeleeComponent(40, 1);
-	poke::PlayerAnimation* anim = (poke::PlayerAnimation*)owner->GetComponent("PlayerAnimation");
-	melee->Setup(1, player, owner->transform, anim, (MovementComponent*)owner->GetComponent("MovementComponent"));
-	owner->AddComponent(melee);
 }
-
 
 void Enemy::OnTriggerEnter(GameObject* go)
 {
 	Bullet* b = (Bullet*)go->GetComponent("Bullet");
 	if (b != nullptr) 
 	{
-		HPComponent->TakeDamage(50);
+		HPComponent->TakeDamage(b->damage);
 		if (HPComponent->IsDead()) 
 		{
 			Gameplay::instance->DestroyGameObject(GetOwner());
@@ -30,4 +23,26 @@ void Enemy::OnTriggerEnter(GameObject* go)
 		Gameplay::instance->DestroyGameObject(b->GetOwner());
 
 	}
+}
+
+void Enemy::SetupSprite(GameObject* owner, string jsonName, string textureName)
+{
+	Player::SetupSprite(owner, jsonName, textureName);
+	
+}
+
+void Enemy::SetMeeleCombat(GameObject* owner, GameObject* player)
+{
+	MeleeComponent* melee = new MeleeComponent(40, 1);
+	PlayerAnimation* anim = (PlayerAnimation*)owner->GetComponent("PlayerAnimation");
+	melee->Setup(1, player, owner->transform, anim, (MovementComponent*)owner->GetComponent("MovementComponent"));
+	owner->AddComponent(melee);
+}
+
+void Enemy::SetRangeCombat(GameObject* owner, GameObject* player)
+{
+	RangeAttackComponent* attack = new RangeAttackComponent(300, 3);
+	PlayerAnimation* anim = (PlayerAnimation*)owner->GetComponent("PlayerAnimation");
+	attack->Setup(owner, 1, player, owner->transform, anim, (MovementComponent*)owner->GetComponent("MovementComponent"));
+	owner->AddComponent(attack);
 }

@@ -1,19 +1,19 @@
 #include "pch.h"
 #include "PlayerAnimation.h"
 
-poke::PlayerAnimation::PlayerAnimation(TextureComponent* _textureComponent, poke::SpriteSheet* _spriteSheet, MovementComponent* _moveComponent) : AnimationComponent(_textureComponent, _spriteSheet)
+PlayerAnimation::PlayerAnimation(TextureComponent* _textureComponent, poke::SpriteSheet* _spriteSheet, MovementComponent* _moveComponent, int* _idle, int* _walk, int* _attack) : AnimationComponent(_textureComponent, _spriteSheet)
 {
-	idleFrameIds = new int[6]{ 0, 1, 2, 3, 4, 5 };
+	idleFrameIds = _idle;
 	runFrameIds = new int[8]{ 6,7,8,9,10,11,12,13 };
-	walkFrameIds = new int[6]{ 14,15,16,17,18,19 };
-	attackFrameIds = new int[3]{ 20,21,22 };
+	walkFrameIds = _walk;
+	attackFrameIds = _attack;
 	moveComponent = _moveComponent;
 	RunIdle();
 	left = new sf::Vector2f(-1, 1);
 	right = new sf::Vector2f(1, 1);
 }
 
-poke::PlayerAnimation::~PlayerAnimation()
+PlayerAnimation::~PlayerAnimation()
 {
 	delete[] idleFrameIds;
 	delete[] runFrameIds;
@@ -21,29 +21,29 @@ poke::PlayerAnimation::~PlayerAnimation()
 	delete[] attackFrameIds;
 }
 
-void poke::PlayerAnimation::RunIdle()
+void PlayerAnimation::RunIdle()
 {
 	ChangeAnimation(idleFrameIds, 6);
 }
 
-void poke::PlayerAnimation::RunRun()
+void PlayerAnimation::RunRun()
 {
 	ChangeAnimation(runFrameIds, 8);
 }
 
-void poke::PlayerAnimation::RunWalk()
+void PlayerAnimation::RunWalk()
 {
 	ChangeAnimation(walkFrameIds, 6);
 }
 
-void poke::PlayerAnimation::RunAttack(float _cooldown)
+void PlayerAnimation::RunAttack(float _cooldown)
 {
 	cooldown = _cooldown;
 	ChangeAnimation(attackFrameIds, 3);
 	OnFinish->AddCallback(make_callback(this, &PlayerAnimation::RunIdle));
 }
 
-void poke::PlayerAnimation::UpdateHorizontalTexture()
+void PlayerAnimation::UpdateHorizontalTexture()
 {
 	if (moveComponent->IsMovingLeft())
 	{
@@ -55,7 +55,7 @@ void poke::PlayerAnimation::UpdateHorizontalTexture()
 	}
 }
 
-void poke::PlayerAnimation::UpdateCurrentAnimation()
+void PlayerAnimation::UpdateCurrentAnimation()
 {
 	if (moveComponent->IsMoving())
 	{
@@ -67,7 +67,7 @@ void poke::PlayerAnimation::UpdateCurrentAnimation()
 	}
 }
 
-void poke::PlayerAnimation::Update(float deltaTime)
+void PlayerAnimation::Update(float deltaTime)
 {
 	AnimationComponent::Update(deltaTime);
 	if (cooldown > 0) 
@@ -80,7 +80,7 @@ void poke::PlayerAnimation::Update(float deltaTime)
 	UpdateCurrentAnimation();
 }
 
-std::string poke::PlayerAnimation::GetClassName()
+std::string PlayerAnimation::GetClassName()
 {
 	return "PlayerAnimation";
 }

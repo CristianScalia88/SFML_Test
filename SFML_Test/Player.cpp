@@ -1,18 +1,15 @@
 #include "pch.h"
 #include "Player.h"
+#include "Bullet.h"
 
-const string PATH_JSON = "Assets/filteredSpriteSheet.json";
-const string PATH_TEXTURE = "Assets/Animation.png";
+
+const string Player::PATH_JSON = "Assets/filteredSpriteSheet.json";
+const string Player::PATH_TEXTURE = "Assets/Animation.png";
 
 Player::Player(GameObject* owner, CharacterInput* charInput, float speed, int layer)
 {
 	texture = new sf::Texture();
-	if (!texture->loadFromFile(PATH_TEXTURE))
-	{
-		cout << "Texture Load from File Error" << endl;
-	}
-
-
+	
 	//TODO CRETE COLLIDER HERE;
 	ColliderComponent* cc = ColliderManager::instance->CreateCollider(30, 30, layer);
 	owner->AddComponent(cc);
@@ -20,22 +17,9 @@ Player::Player(GameObject* owner, CharacterInput* charInput, float speed, int la
 	movementComponent = new MovementComponent(charInput, speed, cc, owner->transform);
 	owner->AddComponent(movementComponent);
 
-	std::string spriteSheetJson = poke::File::ReadAllText(PATH_JSON); //str holds the content of the file
-	spriteSheet = new poke::SpriteSheet(texture, spriteSheetJson.c_str());
-
-	textureComponent = new TextureComponent(texture);
-	textureComponent->SetRectangle(spriteSheet->GetSpriteRect(0), spriteSheet->GetPivot(0));
-	owner->AddComponent(textureComponent);
 
 	HPComponent = new poke::HPComponent(100);
-	owner->AddComponent(HPComponent);
-
-	playerAnimation = new poke::PlayerAnimation(textureComponent, spriteSheet, movementComponent);
-	owner->AddComponent(playerAnimation);
-
-	tint = new TintOnDamageComponent(textureComponent, HPComponent);
-	tint->colorAux = sf::Color::White;
-	owner->AddComponent(tint);
+	owner->AddComponent(HPComponent);	
 }
 
 Player::~Player()
@@ -56,8 +40,40 @@ void Player::Update(float dt)
 	}*/
 }
 
-float tintDamageCooldown;
-bool tint;
+void Player::SetupSprite(GameObject* owner, string jsonName, string textureName)
+{
+	if (!texture->loadFromFile(textureName))
+	{
+		cout << "Texture Load from File Error" << endl;
+	}
+
+	std::string spriteSheetJson = poke::File::ReadAllText(jsonName); //str holds the content of the file
+	spriteSheet = new poke::SpriteSheet(texture, spriteSheetJson.c_str());
+
+	textureComponent = new TextureComponent(texture);
+	textureComponent->SetRectangle(spriteSheet->GetSpriteRect(0), spriteSheet->GetPivot(0));
+	owner->AddComponent(textureComponent);
+
+	tint = new TintOnDamageComponent(textureComponent, HPComponent);
+	tint->colorAux = sf::Color::White;
+	owner->AddComponent(tint);
+}
+
+void Player::OnTriggerEnter(GameObject* go)
+{
+	Bullet* b = (Bullet*)go->GetComponent("Bullet");
+	if (b != nullptr)
+	{
+		HPComponent->TakeDamage(b->damage);
+	}
+}
+
+void Player::SetupAnimation(GameObject* owner, PlayerAnimation * pa)
+{
+	playerAnimation = pa;
+	owner->AddComponent(playerAnimation);
+}
+
 
 std::string Player::GetClassName()
 {

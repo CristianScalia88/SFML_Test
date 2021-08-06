@@ -1,11 +1,12 @@
 #pragma once
 #include "IGameComponent.h"
-#include "TransformComponent.h"
-#include "VectorUtils.h"
 #include "PlayerAnimation.h"
 #include "HPComponent.h"
+#include "VectorUtils.h"
+#include "GameObject.h"
+#include "Weapon.h"
 
-class MeleeComponent : public IGameComponent
+class RangeAttackComponent : public IGameComponent
 {
 private:
 	float attackDistance;
@@ -16,13 +17,13 @@ private:
 	TransformComponent* target;
 	TransformComponent* meTransform;
 	MovementComponent* movement;
+	Weapon* weapon;
 	int damage;
 public:
-	MeleeComponent(float attackDistance, float cooldown);
-	void Setup(int damage, GameObject* target, TransformComponent* meTransform, PlayerAnimation* animation, MovementComponent* movement);
+	RangeAttackComponent(float attackDistance, float cooldown);
+	void Setup(GameObject* owner, int damage, GameObject* target, TransformComponent* meTransform, PlayerAnimation* animation, MovementComponent* movement);
 	void Update(float deltaTime);
 	bool IsInRange(float distance);
 	bool IsOnCooldown();
 	std::string GetClassName();
 };
-

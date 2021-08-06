@@ -10,8 +10,8 @@ class AnimationComponent : public IGameComponent
 private :
 		const float FPS = .1f;
 		poke::SpriteSheet * spriteSheet;
-		int currentFrameIndex;
-		float totalTime;
+		int currentFrameIndex = 0;
+		float totalTime = 0;
 		void UpdateSprite();
 		int* framesIDs;
 		int frames;

@@ -10,6 +10,7 @@ class Bullet : public IGameComponent
 	sf::Texture* texture;
 
 public:
+	float damage;
 	Bullet(sf::Vector2f _direction, float _speed, GameObject* owner);
 	~Bullet();
 	void Update(float deltaTime);

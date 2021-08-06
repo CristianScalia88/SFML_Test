@@ -23,7 +23,6 @@ sf::Vector2f RangeAIInput::GetRandomPositionInLevel()
 {
 	sf::Vector2f randomDir = Random::RandomDirection();
 	targetPosition = target->position + (randomDir * (float)100);
-	cout << targetPosition.x << " " << targetPosition.y << endl;
 	targetPosition.x = Clamp(targetPosition.x, 500, 1557);
 	targetPosition.y = Clamp(targetPosition.y, 380, 620);
 	return targetPosition;
