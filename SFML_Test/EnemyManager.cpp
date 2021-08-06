@@ -84,6 +84,7 @@ EnemyManager::EnemyManager(Scene* _game, int _maxEnemies, GameObject* _player, f
 void EnemyManager::Update(float deltaTime)
 {
 	currentTime += deltaTime;
+	extraScoreMultiplier = std::max(extraScoreMultiplier - deltaTime, (float)0);
 	if (currentTime > cadency && enemiesCreated < maxEnemies) 
 	{
 		currentTime = 0;
@@ -102,7 +103,9 @@ void EnemyManager::OnEnemyDead()
 	enemiesDead++;
 	if (enemiesDead == maxEnemies)
 	{
-		ScoreManager::instance->AddScore(new Score("UserName", enemiesDead));
+		cout << (1 + (extraScoreMultiplier / MAX_EXTRA_SCORE)) << endl;
+		float calcualtedScore = (enemiesDead *32) *  (1 + (extraScoreMultiplier / MAX_EXTRA_SCORE));
+		ScoreManager::instance->AddScore(new Score("UserName", calcualtedScore));
 		GameScenes::instance->ChangeToMainMenu();
 	}
 }

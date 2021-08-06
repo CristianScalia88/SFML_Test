@@ -24,6 +24,9 @@ private:
 	int enemiesCreated;
 
 	void CreateEnemy();
+
+	const float MAX_EXTRA_SCORE = 60;
+	float extraScoreMultiplier = MAX_EXTRA_SCORE;
 public:
 	EnemyManager(Scene* game, int maxEnemies, GameObject * player, float cadency);
 	void Update(float deltaTime);

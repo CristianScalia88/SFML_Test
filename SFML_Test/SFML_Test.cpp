@@ -16,7 +16,6 @@ int main()
 
 	sf::View view;
 
-
 	SoundManager soundManager;
 
 	Scene* game = nullptr;
