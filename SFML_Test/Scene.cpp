@@ -64,16 +64,23 @@ void Scene::DestroyGameObject(GameObject* go)
 
 void Scene::DestroyAllGameObject()
 {
-	while (gameObjectsToRemove->size() > 0) 
+	int i = 0;
+	int j = 0;
+	for (i = gameObjectsToRemove->size()-1; i >=0; i--)
 	{
-		GameObject* toRemove = gameObjectsToRemove->at(gameObjectsToRemove->size() - 1);
-		gameObjectsToRemove->pop_back();
-		auto begin = gameObjects->begin();
-		auto end = gameObjects->end();
-		vector<GameObject*>::iterator it = std::remove(begin, end, toRemove);
-		gameObjects->erase(it);
-		delete toRemove;
+		GameObject* toRemove = gameObjectsToRemove->at(i);
+		for (j = gameObjects->size() - 1; j >= 0; j--)
+		{
+			GameObject* activeGo = gameObjects->at(j);
+			if (activeGo == toRemove) 
+			{
+				gameObjects->erase(gameObjects->begin() + j);
+				delete activeGo;
+			}
+		}
 	}
+
+	gameObjectsToRemove->clear();
 }
 
 void Scene::AddDynamicGameObjects()
