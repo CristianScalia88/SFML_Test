@@ -10,13 +10,16 @@ CameraComponent::CameraComponent(sf::View* _view, TransformComponent* _target, b
 
 }
 
+
 void CameraComponent::Update(float deltaTime)
 {
 	if (update) 
 	{
 		sf::Vector2f delta = target->position - view->getCenter();
 		sf::Vector2f newPos = view->getCenter() + delta * (deltaTime * 3);
-		newPos.y = 320;
+		newPos.y = y;
+		newPos.x = std::max(minX, newPos.x);
+		newPos.x = std::min(maxX, newPos.x);
 		view->setCenter(newPos);
 	}
 }
