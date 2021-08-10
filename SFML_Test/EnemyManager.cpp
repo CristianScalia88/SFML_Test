@@ -2,7 +2,10 @@
 #include "EnemyManager.h"
 #include "Random.h"
 #include "RangeAIInput.h"
+#include "SpriteSheet.h"
 #include "../../Cpp/Clase2/HighScore/ScoreManager.h"
+
+
 
 void EnemyManager::CreateEnemy()
 {
@@ -36,6 +39,7 @@ void EnemyManager::CreateEnemy()
 		attackFrameIds = new int[3]{ 20,21,22 };
 	}
 
+
 	enemy->SetupSprite(enemyGo, atlas, texture);
 	
 	enemy->SetupAnimation(enemyGo, new PlayerAnimation(enemy->textureComponent, enemy->spriteSheet, enemy->movementComponent, idleFrameIds, walk, attackFrameIds));
@@ -57,18 +61,17 @@ void EnemyManager::CreateEnemy()
 		enemy->tint->colorAux = sf::Color::Magenta;
 	}
 	
-	//bool left = Random::RandomSign() < 0;
 	int x = 0;
-	/*if (left) 
-	{
-		x = Random::Range(500, 1100);
-	}
-	else {*/
-		x = Random::Range(500, 1557);
-	//}
+	x = Random::Range(500, 1557);
 	int y = Random::Range(380, 620);
 
 	enemyGo->transform->Translate(sf::Vector2f(x, y));
+
+
+	GameObject* smoke = new GameObject();
+	SetupSprite(smoke, "Assets/smoke.json", "Assets/Smoke.png", { 0, -50 });
+	smoke->transform->Translate(sf::Vector2f(x, y + 20));
+	Gameplay::instance->AddGameObject(smoke);
 }
 
 EnemyManager::EnemyManager(Scene* _game, int _maxEnemies, GameObject* _player, float _cadency)
@@ -117,3 +120,31 @@ void EnemyManager::OnEnemyDead()
 		endGameInSeconds = 2;
 	}
 }
+
+
+void EnemyManager::SetupSprite(GameObject* owner, string jsonName, string textureName, sf::Vector2f offset)
+{
+	texture = new sf::Texture();
+
+	if (!texture->loadFromFile(textureName))
+	{
+		cout << "Texture Load from File Error" << endl;
+	}
+
+	std::string spriteSheetJson = poke::File::ReadAllText(jsonName); //str holds the content of the file
+	poke::SpriteSheet* spriteSheet = new poke::SpriteSheet(texture, spriteSheetJson.c_str());
+
+	TextureComponent * textureComponent = new TextureComponent(texture);
+	textureComponent->offset->x = offset.x;
+	textureComponent->offset->y = offset.y;
+	textureComponent->SetRectangle(spriteSheet->GetSpriteRect(0), spriteSheet->GetPivot(0));
+	owner->AddComponent(textureComponent);
+
+	AnimationComponent* anim = new AnimationComponent(textureComponent, spriteSheet);
+	anim->ChangeAnimation(new int[] {0, 1, 2, 3, 4}, 5);
+	anim->OnFinish->AddCallback(make_callback(anim, &AnimationComponent::Destroy));
+	anim->time = 0.07f;
+	owner->AddComponent(anim);
+
+}
+

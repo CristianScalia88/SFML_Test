@@ -9,6 +9,8 @@
 class EnemyManager : public IGameComponent
 {
 private:
+	sf::Texture* texture;
+
 	Scene* game;
 	ColliderManager* colliderManager;
 	GameObject* player;
@@ -34,5 +36,6 @@ public:
 	void Update(float deltaTime);
 	std::string GetClassName();
 	void OnEnemyDead();
+	void SetupSprite(GameObject* owner, string jsonName, string textureName, sf::Vector2f offset);
 };
 

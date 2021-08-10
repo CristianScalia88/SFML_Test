@@ -13,7 +13,6 @@ sf::Vector2f RangeAIInput::GetDirection()
 	if (magnitude < 30 || ShouldChangePosition())
 	{
 		targetPosition = GetRandomPositionInLevel();
-		cout << "Destination Reached" << endl;
 	}
 	delta = delta/magnitude;
 	return delta;

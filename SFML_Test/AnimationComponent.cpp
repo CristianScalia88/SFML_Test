@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "AnimationComponent.h"
 #include "SpriteSheet.h"
+#include "Gameplay.h"
 
 AnimationComponent::AnimationComponent(TextureComponent * _textureComponent, poke::SpriteSheet * _spriteSheet)
 {
@@ -23,14 +24,15 @@ void AnimationComponent::UpdateSprite()
 
 void AnimationComponent::Update(float deltaTime)
 {
-	if (totalTime >= FPS)
+	if (totalTime >= time)
 	{
 		UpdateSprite();
 
-		totalTime -= FPS;
+		totalTime -= time;
 		currentFrameIndex++;
 		currentFrameIndex = currentFrameIndex % frames ;
-		if (currentFrameIndex == frames -1) {
+		if (currentFrameIndex == frames -1) 
+		{
 			OnFinish->Invoke();
 			OnFinish->Clear();
 		}
@@ -53,6 +55,11 @@ void AnimationComponent::ChangeAnimation(int* _framesIDs, int frameCount)
 	frames = frameCount;
 	currentFrameIndex = 0;
 	totalTime = 0;
+}
+
+void AnimationComponent::Destroy()
+{
+	Gameplay::instance->DestroyGameObject(GetOwner());
 }
 
 

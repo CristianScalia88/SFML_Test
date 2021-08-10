@@ -183,6 +183,8 @@
     <ClInclude Include="Random.h" />
     <ClInclude Include="RangeAIInput.h" />
     <ClInclude Include="RangeAttackComponent.h" />
+    <ClInclude Include="ScaleData.h" />
+    <ClInclude Include="ScaleUpComponent.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Gameplay.h" />
@@ -231,6 +233,7 @@
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="RangeAIInput.cpp" />
     <ClCompile Include="RangeAttackComponent.cpp" />
+    <ClCompile Include="ScaleUpComponent.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Gameplay.cpp" />

@@ -11,5 +11,7 @@ public:
 	virtual void SetupSprite(GameObject* owner, string jsonName, string textureName);
 	void SetMeeleCombat(GameObject* owner, GameObject* player);
 	void SetRangeCombat(GameObject* owner, GameObject* player);
+	void Update(float deltaTime);
+	void Destroy();
 };
 

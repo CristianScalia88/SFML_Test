@@ -16,13 +16,15 @@ private :
 		int* framesIDs;
 		int frames;
 protected:
-	Action* OnFinish;
 	TextureComponent* textureComponent;
 public:
+	float time = FPS;
+	Action* OnFinish;
 	AnimationComponent(TextureComponent * textureComponent, poke::SpriteSheet * spriteSheet);
 	~AnimationComponent();
 	void Update(float deltaTime);
 	virtual std::string GetClassName();
 	void ChangeAnimation(int* framesIDs, int frameCount);
+	void Destroy();
 };
 

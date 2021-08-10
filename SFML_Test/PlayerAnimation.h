@@ -8,6 +8,7 @@ private:
 	MovementComponent* moveComponent;
 	sf::Vector2f* left;
 	sf::Vector2f* right;
+	sf::Vector2f* ns;
 	float cooldown;
 protected:
 	int* idleFrameIds;

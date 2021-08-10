@@ -5,6 +5,7 @@ RangeAttackComponent::RangeAttackComponent(float _attackDistance, float _cooldow
 {
 	attackDistance = _attackDistance;
 	cooldown = _cooldown;
+	currentCooldown = cooldown;
 }
 
 

@@ -11,6 +11,7 @@ PlayerAnimation::PlayerAnimation(TextureComponent* _textureComponent, poke::Spri
 	RunIdle();
 	left = new sf::Vector2f(-1, 1);
 	right = new sf::Vector2f(1, 1);
+	ns = new sf::Vector2f(1, 1);
 }
 
 PlayerAnimation::~PlayerAnimation()
@@ -45,13 +46,20 @@ void PlayerAnimation::RunAttack(float _cooldown)
 
 void PlayerAnimation::UpdateHorizontalTexture()
 {
+	sf::Vector2f scale = textureComponent->GetScale();
+	ns->y = scale.y;
+
 	if (moveComponent->IsMovingLeft())
 	{
-		textureComponent->Scale(left);
+		if (scale.x >= 0)
+			ns->x = -scale.x;
+		textureComponent->Scale(ns);
 	}
 	else if(moveComponent->IsMovingRight())
 	{
-		textureComponent->Scale(right);
+		if (scale.x <= 0);
+			ns->x = std::abs(scale.x);
+		textureComponent->Scale(ns);
 	}
 }
 

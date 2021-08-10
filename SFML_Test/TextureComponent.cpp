@@ -28,7 +28,7 @@ TextureComponent::~TextureComponent()
 
 void TextureComponent::Render(sf::RenderWindow * window)
 {
-	sprite->setPosition(GetOwner()->transform->position);
+	sprite->setPosition(GetOwner()->transform->position + *offset);
 	window->draw(*sprite);
 }
 
@@ -53,6 +53,11 @@ void TextureComponent::Scale(sf::Vector2f* v2f)
 	if (currentScale == v2f)return;
 	currentScale = v2f;
 	sprite->setScale(*v2f);
+}
+
+sf::Vector2f TextureComponent::GetScale()
+{
+	return sprite->getScale();
 }
 
 void TextureComponent::Tint(sf::Color color)

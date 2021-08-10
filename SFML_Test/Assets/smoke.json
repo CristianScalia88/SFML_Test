@@ -1,0 +1,164 @@
+{
+    "sprites": [
+      {
+        "serializedVersion": 2,
+        "name": "Smoke_4",
+        "rect": {
+          "serializedVersion": 2,
+          "x": 84,
+          "y": 110,
+          "width": 60,
+          "height": 59
+        },
+        "alignment": 0,
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "border": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "outline": [],
+        "physicsShape": [],
+        "tessellationDetail": 0,
+        "bones": [],
+        "spriteID": "985ec5be50df18a60800000000000000",
+        "internalID": 7674693441881433000,
+        "vertices": [],
+        "indices": null,
+        "edges": [],
+        "weights": []
+      },
+      {
+        "serializedVersion": 2,
+        "name": "Smoke_5",
+        "rect": {
+          "serializedVersion": 2,
+          "x": 181,
+          "y": 90,
+          "width": 90,
+          "height": 94
+        },
+        "alignment": 0,
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "border": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "outline": [],
+        "physicsShape": [],
+        "tessellationDetail": 0,
+        "bones": [],
+        "spriteID": "86834ae1efeca06c0800000000000000",
+        "internalID": -4176298113601620000,
+        "vertices": [],
+        "indices": null,
+        "edges": [],
+        "weights": []
+      },
+      {
+        "serializedVersion": 2,
+        "name": "Smoke_6",
+        "rect": {
+          "serializedVersion": 2,
+          "x": 309,
+          "y": 46,
+          "width": 148,
+          "height": 148
+        },
+        "alignment": 9,
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "border": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "outline": [],
+        "physicsShape": [],
+        "tessellationDetail": 0,
+        "bones": [],
+        "spriteID": "f507a021bec5a0590800000000000000",
+        "internalID": -7707245647601439000,
+        "vertices": [],
+        "indices": null,
+        "edges": [],
+        "weights": []
+      },
+      {
+        "serializedVersion": 2,
+        "name": "Smoke_9",
+        "rect": {
+          "serializedVersion": 2,
+          "x": 24,
+          "y": 121,
+          "width": 30,
+          "height": 33
+        },
+        "alignment": 0,
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "border": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "outline": [],
+        "physicsShape": [],
+        "tessellationDetail": 0,
+        "bones": [],
+        "spriteID": "0169963bf6dc9cc40800000000000000",
+        "internalID": 5533179496836471000,
+        "vertices": [],
+        "indices": null,
+        "edges": [],
+        "weights": []
+      },
+      {
+        "serializedVersion": 2,
+        "name": "Smoke_0",
+        "rect": {
+          "serializedVersion": 2,
+          "x": 486,
+          "y": 37,
+          "width": 186,
+          "height": 179
+        },
+        "alignment": 0,
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "border": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "outline": [],
+        "physicsShape": [],
+        "tessellationDetail": 0,
+        "bones": [],
+        "spriteID": "9e446be47195f3720800000000000000",
+        "internalID": 2828077047651648500,
+        "vertices": [],
+        "indices": null,
+        "edges": [],
+        "weights": []
+      }
+    ]
+}

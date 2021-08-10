@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Player.h"
 #include "Bullet.h"
+#include "ScaleUpComponent.h"
 
 
 const string Player::PATH_JSON = "Assets/filteredSpriteSheet.json";
@@ -33,11 +34,9 @@ poke::HPComponent* Player::GetHPComponent()
 	return HPComponent;
 }
 
-void Player::Update(float dt)
+void Player::Update(float deltaTime)
 {
-	/*if (Input::GetKeyDown(Input::Mouse1) && GetOwner()->name == "Player") {
-		cout << GetOwner()->GetPosition().x << " " << GetOwner()->GetPosition().y << " " << endl;
-	}*/
+	
 }
 
 void Player::SetupSprite(GameObject* owner, string jsonName, string textureName)
@@ -57,6 +56,11 @@ void Player::SetupSprite(GameObject* owner, string jsonName, string textureName)
 	tint = new TintOnDamageComponent(textureComponent, HPComponent);
 	tint->colorAux = sf::Color::White;
 	owner->AddComponent(tint);
+	ScaleData* sd1 = new ScaleData(0, 1.2f, .5f);
+	ScaleData* sd2 = new ScaleData(1.2f, 1, .2f);
+	ScaleUpComponent* scaleUp = new ScaleUpComponent(sd1, textureComponent);
+	scaleUp->Add(sd2);
+	owner->AddComponent(scaleUp);
 }
 
 void Player::OnTriggerEnter(GameObject* go)
