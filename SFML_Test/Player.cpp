@@ -4,8 +4,8 @@
 #include "ScaleUpComponent.h"
 
 
-const string Player::PATH_JSON = "Assets/filteredSpriteSheet.json";
-const string Player::PATH_TEXTURE = "Assets/Animation.png";
+const string Player::PATH_JSON = "Assets/player.json";
+const string Player::PATH_TEXTURE = "Assets/player.png";
 
 Player::Player(GameObject* owner, CharacterInput* charInput, float speed, int layer)
 {

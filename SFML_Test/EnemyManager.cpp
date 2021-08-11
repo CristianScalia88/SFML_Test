@@ -25,7 +25,7 @@ void EnemyManager::CreateEnemy()
 	{
 		isRangeEnemy = true;
 		texture = "Assets/enemy2.png";
-		atlas = "Assets/enemy2Atlas.json";
+		atlas = "Assets/enemy2.json";
 		charInput = new RangeAIInput(enemyGo->transform, player->transform);
 		speed = 70;
 		idleFrameIds = new int[6]{ 0, 1, 2, 3, 4, 5 };
