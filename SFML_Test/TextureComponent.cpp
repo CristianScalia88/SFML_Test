@@ -11,6 +11,7 @@ TextureComponent::TextureComponent(sf::Texture* texture)
 	float x = (*texture).getSize().x / 2;
 	float y = (*texture).getSize().y / 2;
 	sprite->setOrigin(x, y);
+	currentScale = new sf::Vector2f(1, 1);
 }
 
 TextureComponent::TextureComponent(sf::Texture* texture, float x, float y)
@@ -18,6 +19,7 @@ TextureComponent::TextureComponent(sf::Texture* texture, float x, float y)
 	sprite = new sf::Sprite();
 	sprite->setTexture(*texture);
 	sprite->setOrigin(x, y);
+	currentScale = new sf::Vector2f(1, 1);
 }
 
 TextureComponent::~TextureComponent()
@@ -51,13 +53,14 @@ std::string TextureComponent::GetClassName()
 void TextureComponent::Scale(sf::Vector2f* v2f)
 {
 	if (currentScale == v2f)return;
-	currentScale = v2f;
+	currentScale->x = v2f->x;
+	currentScale->y = v2f->y;
 	sprite->setScale(*v2f);
 }
 
 sf::Vector2f TextureComponent::GetScale()
 {
-	return sprite->getScale();
+	return *currentScale;
 }
 
 void TextureComponent::Tint(sf::Color color)

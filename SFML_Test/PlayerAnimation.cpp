@@ -47,20 +47,17 @@ void PlayerAnimation::RunAttack(float _cooldown)
 void PlayerAnimation::UpdateHorizontalTexture()
 {
 	sf::Vector2f scale = textureComponent->GetScale();
-	ns->y = scale.y;
 
 	if (moveComponent->IsMovingLeft())
 	{
-		if (scale.x >= 0)
-			ns->x = -scale.x;
-		textureComponent->Scale(ns);
+		ns->x = -std::abs(scale.x);;
 	}
 	else if(moveComponent->IsMovingRight())
 	{
-		if (scale.x <= 0);
-			ns->x = std::abs(scale.x);
-		textureComponent->Scale(ns);
+		ns->x = std::abs(scale.x);
 	}
+	textureComponent->Scale(ns);
+
 }
 
 void PlayerAnimation::UpdateCurrentAnimation()
