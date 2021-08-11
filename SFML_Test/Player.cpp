@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "ScaleUpComponent.h"
+#include "Gameplay.h"
+#include <functional>
 
 
 const string Player::PATH_JSON = "Assets/player.json";

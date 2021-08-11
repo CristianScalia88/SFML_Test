@@ -57,7 +57,7 @@ void AnimationComponent::ChangeAnimation(int* _framesIDs, int frameCount)
 	totalTime = 0;
 }
 
-void AnimationComponent::Destroy()
+void AnimationComponent::RemoveFromScene()
 {
 	Gameplay::instance->DestroyGameObject(GetOwner());
 }

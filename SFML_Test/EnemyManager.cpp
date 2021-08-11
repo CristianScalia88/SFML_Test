@@ -67,11 +67,8 @@ void EnemyManager::CreateEnemy()
 
 	enemyGo->transform->Translate(sf::Vector2f(x, y));
 
-
-	GameObject* smoke = new GameObject();
-	SetupSprite(smoke, "Assets/smoke.json", "Assets/Smoke.png", { 0, -50 });
-	smoke->transform->Translate(sf::Vector2f(x, y + 20));
-	Gameplay::instance->AddGameObject(smoke);
+	CreateSmoke(x, y + 20);
+	
 }
 
 EnemyManager::EnemyManager(Scene* _game, int _maxEnemies, GameObject* _player, float _cadency)
@@ -121,6 +118,15 @@ void EnemyManager::OnEnemyDead()
 	}
 }
 
+void EnemyManager::CreateSmoke(float x, float y)
+{
+	GameObject* smoke = new GameObject();
+	smoke->name = "Smoke - " + std::to_string(enemies->size());
+	SetupSprite(smoke, "Assets/smoke.json", "Assets/Smoke.png", { 0, -50 });
+	smoke->transform->Translate(sf::Vector2f(x, y + 20));
+	Gameplay::instance->AddGameObject(smoke);
+}
+
 
 void EnemyManager::SetupSprite(GameObject* owner, string jsonName, string textureName, sf::Vector2f offset)
 {
@@ -142,8 +148,8 @@ void EnemyManager::SetupSprite(GameObject* owner, string jsonName, string textur
 
 	AnimationComponent* anim = new AnimationComponent(textureComponent, spriteSheet);
 	anim->ChangeAnimation(new int[] {0, 1, 2, 3, 4}, 5);
-	anim->OnFinish->AddCallback(make_callback(anim, &AnimationComponent::Destroy));
-	anim->time = 0.07f;
+	anim->OnFinish->AddCallback(make_callback(anim, &AnimationComponent::RemoveFromScene));
+	anim->time = 0.08f;
 	owner->AddComponent(anim);
 
 }

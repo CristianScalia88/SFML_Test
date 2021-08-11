@@ -36,6 +36,7 @@ public:
 	void Update(float deltaTime);
 	std::string GetClassName();
 	void OnEnemyDead();
+	void CreateSmoke(float x, float y);
 	void SetupSprite(GameObject* owner, string jsonName, string textureName, sf::Vector2f offset);
 };
 

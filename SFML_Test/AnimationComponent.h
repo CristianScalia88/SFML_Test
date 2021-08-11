@@ -4,6 +4,7 @@
 #include "TextureComponent.h"
 #include "SpriteSheet.h"
 #include "Callbacks.h"
+#include "GameObject.h"
 
 class AnimationComponent : public IGameComponent
 {
@@ -25,6 +26,6 @@ public:
 	void Update(float deltaTime);
 	virtual std::string GetClassName();
 	void ChangeAnimation(int* framesIDs, int frameCount);
-	void Destroy();
+	void RemoveFromScene();
 };
 
