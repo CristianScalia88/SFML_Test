@@ -13,6 +13,8 @@ private:
 	bool isPlayer; //ITs Sucks...i now xD
 	float damage;
 public:
+	Action* OnSpecialShoot;
+	int specialAttack = 3;
 	Weapon(sf::Vector2f _offset, float damage, bool player);
 	void Update(float deltaTime);
 	void Shoot(sf::Vector2f origin, sf::Vector2f direction);

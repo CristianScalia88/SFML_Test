@@ -19,6 +19,8 @@ void Gameplay::OnPlayerGetDamaged()
 
 Gameplay::Gameplay(sf::View* view)
 {
+	instance = this;
+
 	///Create a colliderManager
 	colliderManager = new ColliderManager();
 
@@ -73,11 +75,10 @@ Gameplay::Gameplay(sf::View* view)
 
 	GameObject* playerHud = new GameObject();
 	playerHud->name = "Player Hud";
-	PlayerHud* playerHudComponent = new PlayerHud(player->GetHPComponent(), playerHud);
+	PlayerHud* playerHudComponent = new PlayerHud(player, playerHud, weapon);
 	playerHud->AddComponent(playerHudComponent);
 	AddGameObjectHUD(playerHud);
 	running = true;
-	instance = this;
 
 	CreateLevelColliders();
 }

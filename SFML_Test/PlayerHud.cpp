@@ -1,10 +1,16 @@
 #include "pch.h"
 #include "PlayerHud.h"
+#include "Gameplay.h"
 
 void PlayerHud::OnPlayerDamageHandler()
 {
 	string hp = GetPlayHP();
-	textComponent->SetText(hp);
+	hpText->SetText(hp);
+}
+
+void PlayerHud::OnSpecialShootHandler()
+{
+	specialAttackText->SetText("Special Attack: " + std::to_string(weapon->specialAttack));
 }
 
 string PlayerHud::GetPlayHP()
@@ -14,15 +20,26 @@ string PlayerHud::GetPlayHP()
 	return  currentHP + " / " + maxHP;
 }
 
-PlayerHud::PlayerHud(poke::HPComponent* _HPComponent, GameObject * _owner)
+
+PlayerHud::PlayerHud(Player* _player, GameObject * _owner, Weapon* _weapon)
 {
 	fontType.loadFromFile("Assets/Rubric Regular.ttf");
 
-	HPComponent = _HPComponent;
+	player = _player;
+	HPComponent = player->GetHPComponent();
 	HPComponent->OnDamage->AddCallback(make_callback(this, &PlayerHud::OnPlayerDamageHandler));
 
-	textComponent = new poke::TextComponent(GetPlayHP(), fontType, 20,false);
-	_owner->AddComponent(textComponent);
+	hpText = new poke::TextComponent(GetPlayHP(), fontType, 20,false);
+	_owner->AddComponent(hpText);
+	weapon = _weapon;
+
+	GameObject* weaponGo = new GameObject();
+	specialAttackText = new poke::TextComponent("Special Attack: " + std::to_string(weapon->specialAttack), fontType, 20, false);
+	weaponGo->AddComponent(specialAttackText);
+	specialAttackText->SetPosition({ 0, 30 });
+	Gameplay::instance->AddGameObjectHUD(weaponGo);
+
+	_weapon->OnSpecialShoot->AddCallback(make_callback(this, &PlayerHud::OnSpecialShootHandler));
 }
 
 void PlayerHud::Update(float deltaTime)
