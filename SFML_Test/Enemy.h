@@ -13,5 +13,9 @@ public:
 	void SetRangeCombat(GameObject* owner, GameObject* player);
 	void Update(float deltaTime);
 	void Destroy();
+	void CreateBloodFX();
+	void SetupSprite(GameObject* owner, string jsonName, string textureName, sf::Vector2f offset);
+	
+
 };
 
